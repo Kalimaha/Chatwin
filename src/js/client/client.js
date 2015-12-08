@@ -17,5 +17,14 @@ Template.login_page.events({
             Meteor.isLogged = true;
             Router.go('events');
         });
+    },
+    'click #twitter_button': function (e) {
+        Meteor.loginWithTwitter({
+            requestPermissions: ['email']
+        }, function (e) {
+            console.log(Meteor.user());
+            Meteor.isLogged = true;
+            Router.go('events');
+        });
     }
 });
