@@ -3,8 +3,7 @@ Template.login_page.events({
         Meteor.loginWithFacebook({
             requestPermissions: ['email']
         }, function (e) {
-            console.log(Meteor.user().services.facebook.name);
-            console.log(Meteor.user().services.facebook.email);
+            console.log('facebook_' + Meteor.user().services.facebook.id);
             Meteor.isLogged = true;
             Router.go('events');
         });
@@ -13,16 +12,14 @@ Template.login_page.events({
         Meteor.loginWithGoogle({
             requestPermissions: ['email']
         }, function (e) {
-            console.log(Meteor.user());
+            console.log('google_' + Meteor.user().services.google.id);
             Meteor.isLogged = true;
             Router.go('events');
         });
     },
     'click #twitter_button': function (e) {
-        Meteor.loginWithTwitter({
-            requestPermissions: ['email']
-        }, function (e) {
-            console.log(Meteor.user());
+        Meteor.loginWithTwitter(function (e) {
+            console.log('twitter_' + Meteor.user().services.twitter.id);
             Meteor.isLogged = true;
             Router.go('events');
         });
