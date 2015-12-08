@@ -39,11 +39,82 @@
     <div data-role='content'>
         <div class='container-fluid'>
             {{> navbar navbar_title='Events'}}
+            <br>
             <div class='row'>
-                <div class='col-lg-12 text-center'>
-                    <h1>
-                        Events
-                    </h1>
+                <div class='col-lg-12'>
+                    <div class='panel panel-default'>
+                        <div class='panel-heading'>
+                            <h4>
+                                Viaggio a Lisbona
+                            </h4>
+                        </div>
+                        <div class='panel-body'>
+                            12 attivitá svolte
+                            <span class='badge pull-right'>
+                                177.43 &euro;
+                            </span>
+                        </div>
+                        <div class='panel-footer text-right' style='height: 3em; padding-top: 8px;'>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar.png'>
+                            </span>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar2.jpg'>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    <div class='panel panel-default'>
+                        <div class='panel-heading'>
+                            <h4>
+                                Viaggio a Lisbona
+                            </h4>
+                        </div>
+                        <div class='panel-body'>
+                            12 attivitá svolte
+                            <span class='badge pull-right'>
+                                177.43 &euro;
+                            </span>
+                        </div>
+                        <div class='panel-footer text-right' style='height: 3em; padding-top: 8px;'>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar.png'>
+                            </span>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar2.jpg'>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    <div class='panel panel-default'>
+                        <div class='panel-heading'>
+                            <h4>
+                                Viaggio a Lisbona
+                            </h4>
+                        </div>
+                        <div class='panel-body'>
+                            12 attivitá svolte
+                            <span class='badge pull-right'>
+                                177.43 &euro;
+                            </span>
+                        </div>
+                        <div class='panel-footer text-right' style='height: 3em; padding-top: 8px;'>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar.png'>
+                            </span>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar2.jpg'>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,27 +202,44 @@
 
 <template name='footer'>
     {{> yield}}
-    <div data-role='footer'>
-        <div class='container-fluid'>
-            <div class='row'>
-                {{> toolbar}}
+    <nav class='col-xs-12 navbar navbar-default navbar-fixed-bottom'>
+        <div class='row'>
+            <div class='col-xs-4 text-center'>
+                <a href='#'>
+                    <i class='fa fa-trash-o fa-3x'></i>
+                </a>
+            </div>
+            <div class='col-xs-4 text-center'>
+                <a href='#'>
+                    <i class='fa fa-trash-o fa-3x'></i>
+                </a>
+            </div>
+            <div class='col-xs-4 text-center'>
+                <a href='#'>
+                    <i class='fa fa-trash-o fa-3x'></i>
+                </a>
             </div>
         </div>
-    </div>
+    </nav>
 </template>
 
 <template name='navbar'>
-    <div class='row navbar text-center' style='margin-bottom: 0;'>
-        <div class='col-lg-12'>
-            <button class='btn btn-primary pull-left'>
-                <i class='fa fa-trash-o'></i>
-            </button>
-            <span class='page_title'>
-                {{navbar_title}}
-            </span>
-            <button class='btn btn-primary pull-right'>
-                <i class='fa fa-plus'></i>
-            </button>
+    <!--<div class='row navbar text-center' style='margin-bottom: 0;'>-->
+        <!--<div class='col-lg-12'>-->
+            <!--<button class='btn btn-primary pull-left'>-->
+                <!--<i class='fa fa-trash-o'></i>-->
+            <!--</button>-->
+            <!--<span class='page_title'>-->
+                <!--{{navbar_title}}-->
+            <!--</span>-->
+            <!--<button class='btn btn-primary pull-right'>-->
+                <!--<i class='fa fa-plus'></i>-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            ...
         </div>
-    </div>
+    </nav>
 </template>
