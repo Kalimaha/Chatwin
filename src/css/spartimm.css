@@ -1,5 +1,7 @@
 html, body {
     height: 100%;
+    background-image: url('/images/background.png');
+    background-repeat: repeat;
 }
 
 div[data-role='content'] {
@@ -17,6 +19,34 @@ div[data-role='footer'], div[data-role='content']:after {
 }
 
 div[data-role='footer'] {
-    background-color: orange;
+    background: rgba(208, 208, 208, 0.5);
     padding: 1em;
+}
+
+.navbar {
+    padding: .5em;
+    background-color: pink;
+}
+
+.page_title {
+    line-height: 2em;
+    font-weight: bold;
+}
+
+.btn-facebook {
+    background-color: #3b5998;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-google {
+    background-color: #d34836;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-twitter {
+    background-color: #00aced;
+    color: #fff;
+    width: 100%;
 }
