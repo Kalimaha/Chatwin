@@ -36,15 +36,48 @@
 </template>
 
 <template name='events_page'>
-
+    <div data-role='content'>
+        <div class='container-fluid'>
+            {{> navbar}}
+            <div class='row'>
+                <div class='col-lg-12 text-center'>
+                    <h1>
+                        Events
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name='create_event_page'>
-
+    <div data-role='content'>
+        <div class='container-fluid'>
+            {{> navbar}}
+            <div class='row'>
+                <div class='col-lg-12 text-center'>
+                    <h1>
+                        New Event
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name='activities_page'>
-
+    <div data-role='content'>
+        <div class='container-fluid'>
+            {{> navbar}}
+            <div class='row'>
+                <div class='col-lg-12 text-center'>
+                    <h1>
+                        Activities
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name='create_activity_page'>
@@ -114,7 +147,7 @@
                 <i class='fa fa-trash-o'></i>
             </button>
             <span class='page_title'>
-                New Activity
+                {{navbar_title}}
             </span>
             <button class='btn btn-primary pull-right'>
                 <i class='fa fa-plus'></i>
