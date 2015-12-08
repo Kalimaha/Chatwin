@@ -1,1 +1,22 @@
-/* CSS declarations go here */
+html, body {
+    height: 100%;
+}
+
+div[data-role='content'] {
+    min-height: 100%;
+    margin-bottom: -4em;
+}
+
+div[data-role='content']:after {
+    content: '';
+    display: block;
+}
+
+div[data-role='footer'], div[data-role='content']:after {
+    height: 4em;
+}
+
+div[data-role='footer'] {
+    background-color: orange;
+    padding: 1em;
+}
