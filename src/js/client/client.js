@@ -8,5 +8,14 @@ Template.login_page.events({
             Meteor.isLogged = true;
             Router.go('events');
         });
+    },
+    'click #google_button': function (e) {
+        Meteor.loginWithGoogle({
+            requestPermissions: ['email']
+        }, function (e) {
+            console.log(Meteor.user());
+            Meteor.isLogged = true;
+            Router.go('events');
+        });
     }
 });
