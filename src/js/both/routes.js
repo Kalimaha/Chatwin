@@ -7,13 +7,13 @@ Router.route('/', {
         var that = this;
         Meteor.call('firstAccess', function (error, firstAccess) {
             if (firstAccess) {
-                that.route('/carousel_page');
+                Router.go('/carousel');
             } else {
                 Meteor.call('isLogged', function (error, isLogged) {
                     if (isLogged) {
-                        that.route('/events_page');
+                        Router.go('events');
                     } else {
-                        that.route('/login');
+                        Router.go('login');
                     }
                 });
             }
@@ -40,4 +40,9 @@ Router.route('/activities', {
 Router.route('/carousel', {
     name: 'carousel',
     template: 'carousel_page'
+});
+
+Router.route('/events', {
+    name: 'events',
+    template: 'events_page'
 });
