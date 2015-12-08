@@ -38,7 +38,7 @@
 <template name='events_page'>
     <div data-role='content'>
         <div class='container-fluid'>
-            {{> navbar}}
+            {{> navbar navbar_title='Events'}}
             <div class='row'>
                 <div class='col-lg-12 text-center'>
                     <h1>
@@ -53,7 +53,7 @@
 <template name='create_event_page'>
     <div data-role='content'>
         <div class='container-fluid'>
-            {{> navbar}}
+            {{> navbar navbar_title='New Event'}}
             <div class='row'>
                 <div class='col-lg-12 text-center'>
                     <h1>
@@ -68,7 +68,7 @@
 <template name='activities_page'>
     <div data-role='content'>
         <div class='container-fluid'>
-            {{> navbar}}
+            {{> navbar navbar_title='Activities'}}
             <div class='row'>
                 <div class='col-lg-12 text-center'>
                     <h1>
@@ -83,7 +83,7 @@
 <template name='create_activity_page'>
     <div data-role='content'>
         <div class='container-fluid'>
-            {{> navbar}}
+            {{> navbar navbar_title='New Activity'}}
             <div class='row'>
                 <div class='col-lg-12 text-center'>
                     <h1>
@@ -108,19 +108,19 @@
             <hr>
             <div class='row'>
                 <div class='col-lg-12 text-center'>
-                    <button class='btn btn-facebook'>
+                    <button class='btn btn-facebook' id='facebook_button'>
                         <i class='fa fa-facebook'></i> Login with Facebook
                     </button>
                 </div>
                 <br>
                 <div class='col-lg-12 text-center'>
-                    <button class='btn btn-google'>
+                    <button class='btn btn-google' id='google_button'>
                         <i class='fa fa-google-plus'></i> Login with Google
                     </button>
                 </div>
                 <br>
                 <div class='col-lg-12 text-center'>
-                    <button class='btn btn-twitter'>
+                    <button class='btn btn-twitter' id='twitter_button'>
                         <i class='fa fa-twitter'></i> Login with Twitter
                     </button>
                 </div>
@@ -141,7 +141,7 @@
 </template>
 
 <template name='navbar'>
-    <div class='row navbar text-center'>
+    <div class='row navbar text-center' style='margin-bottom: 0;'>
         <div class='col-lg-12'>
             <button class='btn btn-primary pull-left'>
                 <i class='fa fa-trash-o'></i>

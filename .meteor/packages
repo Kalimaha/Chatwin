@@ -21,3 +21,10 @@ insecure                # Allow all DB writes from clients (for prototyping)
 fortawesome:fontawesome
 twbs:bootstrap
 iron:router
+accounts-facebook
+accounts-google
+accounts-twitter
+service-configuration
+http
+email
+meteorhacks:ssr

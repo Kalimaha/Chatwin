@@ -1,2 +1,2 @@
-Meteor.isLogged = true;
+Meteor.isLogged = false;
 Meteor.firstAccess = false;

@@ -3,6 +3,7 @@ Router.configure({
 });
 
 Router.route('/', {
+    name: 'home',
     before: function (pause) {
         var that = this;
         Meteor.call('firstAccess', function (error, firstAccess) {
