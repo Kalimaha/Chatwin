@@ -4,12 +4,9 @@ html, body {
     background-repeat: repeat;
 }
 
-/*div[data-role='content'] {*/
-    /*min-height: 100%;*/
-    /*margin-bottom: -4em;*/
-    /*overflow-y: auto;*/
-    /*overflow-x: hidden;*/
-/*}*/
+div[data-role='content'] {
+    margin-top: 50px;
+}
 
 /*div[data-role='content']:after {*/
     /*content: '';*/
@@ -31,7 +28,7 @@ html, body {
 /*}*/
 
 .page_title {
-    line-height: 2em;
+    line-height: 1.7em;
     font-weight: bold;
     font-size: 1.25em;
 }
