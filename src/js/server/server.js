@@ -4,6 +4,13 @@ Meteor.methods({
     },
     firstAccess: function () {
         return Meteor.firstAccess;
+    },
+    create_event: function (event) {
+        console.log(Meteor.user_id);
+        if (Meteor.user_id === undefined) {
+            console.log('throw error');
+            throw new Meteor.Error(422, 'not-authorized');
+        }
     }
 });
 

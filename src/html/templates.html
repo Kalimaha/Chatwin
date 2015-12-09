@@ -38,11 +38,37 @@
 <template name='events_page'>
     <div data-role='content'>
         <div class='container-fluid'>
-            {{> navbar navbar_title='Events'}}
+            {{> navbar navbar_title='Events' show_create_button=true show_delete_button=true}}
             <br>
             <div class='row'>
                 <div class='col-lg-12'>
-                    <div class='panel panel-default'>
+                    <div class='panel panel-primary'>
+                        <div class='panel-heading'>
+                            <h4>
+                                Viaggio a Lisbona
+                            </h4>
+                        </div>
+                        <div class='panel-body'>
+                            12 attivitá svolte
+                            <span class='badge pull-right'>
+                                177.43 &euro;
+                            </span>
+                        </div>
+                        <div class='panel-footer text-right' style='height: 3em; padding-top: 8px;'>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar.png'>
+                            </span>
+                            <span style='float: right;'>
+                                <img class='img-responsive img-circle avatar' src='/images/avatar2.jpg'>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    <div class='panel panel-warning'>
                         <div class='panel-heading'>
                             <h4>
                                 Viaggio a Lisbona
@@ -91,32 +117,7 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <div class='row'>
-                <div class='col-lg-12'>
-                    <div class='panel panel-default'>
-                        <div class='panel-heading'>
-                            <h4>
-                                Viaggio a Lisbona
-                            </h4>
-                        </div>
-                        <div class='panel-body'>
-                            12 attivitá svolte
-                            <span class='badge pull-right'>
-                                177.43 &euro;
-                            </span>
-                        </div>
-                        <div class='panel-footer text-right' style='height: 3em; padding-top: 8px;'>
-                            <span style='float: right;'>
-                                <img class='img-responsive img-circle avatar' src='/images/avatar.png'>
-                            </span>
-                            <span style='float: right;'>
-                                <img class='img-responsive img-circle avatar' src='/images/avatar2.jpg'>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class='v-space'></div>
         </div>
     </div>
 </template>
@@ -124,14 +125,23 @@
 <template name='create_event_page'>
     <div data-role='content'>
         <div class='container-fluid'>
-            {{> navbar navbar_title='New Event'}}
+            {{> navbar navbar_title='New Event' show_create_button=false show_delete_button=false}}
+            <div class='v-space-half'></div>
             <div class='row'>
-                <div class='col-lg-12 text-center'>
-                    <h1>
-                        New Event
-                    </h1>
+                <div class='col-lg-12'>
+                    <div class='form-group'>
+                        <label for='event_title'>
+                            Event Name
+                        </label>
+                        <input class='form-control' id='event_name' placeholder='e.g. Trip to NYC'>
+                        <hr>
+                        <button id='create_event_button' class='btn btn-primary'>
+                            <i class='fa fa-magic'></i> Create Event
+                        </button>
+                    </div>
                 </div>
             </div>
+            <p class="error">{{errorMessage}}</p>
         </div>
     </div>
 </template>
@@ -202,11 +212,11 @@
 
 <template name='footer'>
     {{> yield}}
-    <nav class='col-xs-12 navbar navbar-default navbar-fixed-bottom' style='padding-top: 10px;'>
+    <nav class='col-xs-12 navbar navbar-inverse navbar-fixed-bottom' style='padding-top: 10px;'>
         <div class='row'>
             <div class='col-xs-4 text-center'>
                 <a href='#'>
-                    <i class='fa fa-archive fa-2x'></i>
+                    <i class='fa fa-map fa-2x'></i>
                 </a>
             </div>
             <div class='col-xs-4 text-center'>
@@ -224,21 +234,51 @@
 </template>
 
 <template name='navbar'>
-    <nav class='col-xs-12 navbar navbar-default navbar-fixed-top'>
+    <nav class='col-xs-12 navbar navbar-inverse navbar-fixed-top'>
         <div class='row' style='padding-top: 10px;'>
-            <div class='col-xs-4 text-center'>
-                <a href='#'>
-                    <i class='fa fa-trash fa-2x pull-left'></i>
-                </a>
-            </div>
-            <div class='col-xs-4 text-center page_title'>
+            {{#if show_delete_button}}
+                <div class='col-xs-2 text-center' id='delete_button'>
+                    <a>
+                        <i class='fa fa-trash fa-2x pull-left'></i>
+                    </a>
+                </div>
+            {{else}}
+                <div class='col-xs-2 text-center' id='back_button'>
+                    <a>
+                        <i class='fa fa-arrow-left fa-2x pull-left'></i>
+                    </a>
+                </div>
+            {{/if}}
+            <div class='col-xs-8 text-center page_title'>
                 {{navbar_title}}
             </div>
-            <div class='col-xs-4 text-center'>
-                <a href='#'>
-                    <i class='fa fa-plus fa-2x pull-right'></i>
-                </a>
-            </div>
+            {{#if show_create_button}}
+                <div class='col-xs-2 text-center' id='create_button'>
+                    <a>
+                        <i class='fa fa-plus fa-2x pull-right'></i>
+                    </a>
+                </div>
+            {{else}}
+                <div class='col-xs-2 text-center' id='create_button'>
+                    &nbsp;
+                </div>
+            {{/if}}
         </div>
     </nav>
+</template>
+
+<template name='error_page'>
+    <div data-role='content'>
+        <div class='container-fluid'>
+            {{> navbar navbar_title='Error' show_create_button=false show_delete_button=false}}
+            <div class='v-space-half'></div>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    <h1>
+                        {{errorMessage}}
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

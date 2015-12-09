@@ -47,3 +47,13 @@ Router.route('/events', {
     name: 'events',
     template: 'events_page'
 });
+
+Router.route('/create/event', {
+    name: 'create_event',
+    template: 'create_event_page'
+});
+
+Router.route('/error', {
+    name: 'error',
+    template: 'error_page'
+});
