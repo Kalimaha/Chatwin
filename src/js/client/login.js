@@ -42,16 +42,20 @@
         },
 
         'click #twitter_button': function () {
-            Meteor.subscribe('status');
-            var user_id = 'twitter_' + Meteor.user().services.twitter.id,
-                picture = Meteor.user().services.twitter.profile_image_url;
-            Meteor.call('update_logged_status', user_id, picture, function (error) {
-                if (error) {
-                    Session.set('errorMessage', error.reason);
-                    Router.go('error');
-                } else {
-                    Router.go('events');
-                }
+            Meteor.loginWithTwitter({
+                requestPermissions: ['email']
+            }, function () {
+                Meteor.subscribe('status');
+                var user_id = 'twitter_' + Meteor.user().services.twitter.id,
+                    picture = Meteor.user().services.twitter.profile_image_url;
+                Meteor.call('update_logged_status', user_id, picture, function (error) {
+                    if (error) {
+                        Session.set('errorMessage', error.reason);
+                        Router.go('error');
+                    } else {
+                        Router.go('events');
+                    }
+                });
             });
         }
 

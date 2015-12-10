@@ -79,6 +79,25 @@
                     return response;
                 }
             );
+        },
+
+        logout_user: function () {
+            return Meteor.Status.update(
+                {
+                    meteor_id: Meteor.userId()
+                },
+                {
+                    $set: {
+                        is_logged: false
+                    }
+                },
+                function (error, response) {
+                    if (error) {
+                        throw new Meteor.Error(500, error);
+                    }
+                    return response;
+                }
+            );
         }
 
     });

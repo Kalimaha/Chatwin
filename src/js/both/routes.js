@@ -50,6 +50,27 @@
         }
     });
 
+    Router.route('/logout', {
+        name: 'logout',
+        waitOn: function () {
+            return Meteor.subscribe('status');
+        },
+        before: function () {
+            Meteor.call('logout_user', function (error, response) {
+                if (error) {
+                    Session.set('errorMessage', error.reason);
+                    Router.go('error');
+                }
+            });
+            Router.go('logout_success');
+        }
+    });
+
+    Router.route('/logout/success', {
+        name: 'logout_success',
+        template: 'logout_page'
+    });
+
     Router.route('/create/activity', {
         name: 'create_activity',
         template: 'create_activity_page'
