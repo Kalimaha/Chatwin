@@ -1,80 +1,8 @@
-Template.login_page.events({
-    'click #facebook_button': function (e) {
-        Meteor.loginWithFacebook({
-            requestPermissions: ['email']
-        }, function (e) {
-            Meteor.Status.insert({
-                meteor_id: Meteor.userId(),
-                isLogged: true,
-                user_id: 'facebook_' + Meteor.user().services.facebook.id,
-                picture: 'http://graph.facebook.com/' + Meteor.user().services.facebook.id + '/picture/?type=large'
-            });
-            Router.go('events');
-        });
-    },
-    'click #google_button': function (e) {
-        Meteor.loginWithGoogle({
-            requestPermissions: ['email']
-        }, function (e) {
-            Meteor.Status.insert({
-                meteor_id: Meteor.userId(),
-                isLogged: true,
-                user_id: 'google_' + Meteor.user().services.google.id,
-                picture: Meteor.user().services.google.picture
-            });
-            Router.go('events');
-        });
-    },
-    'click #twitter_button': function (e) {
-        Meteor.loginWithTwitter(function (e) {
-            Meteor.Status.insert({
-                meteor_id: Meteor.userId(),
-                isLogged: true,
-                user_id: 'twitter_' + Meteor.user().services.twitter.id,
-                picture: 'twitter_' + Meteor.user().services.twitter.profile_image_url
-            });
-            Router.go('events');
-        });
-    }
-});
+/*global Template, Router, Meteor, Session*/
+(function () {
 
-Template.events_page.events({
-    'click #create_button': function (e) {
-        Router.go('create_event');
-    }
-});
+    'use strict';
 
-Template.create_event_page.events({
-    'click #back_button': function (e) {
-        Router.go('events');
-    },
-    'submit form': function (event) {
-        event.preventDefault();
-        var event_name = event.target.event_name.value;
-        Meteor.call('create_event', event_name, function (error, result) {
-            if (error) {
-                Session.set('errorMessage', error);
-                Router.go('error');
-            }
-            Router.go('events');
-        });
-    }
-});
+    console.log('client');
 
-Template.error_page.helpers({
-    errorMessage: function () {
-        return Session.get('errorMessage');
-    }
-});
-
-Template.error_page.events({
-    'click #back_button': function (e) {
-        Router.go('create_event');
-    }
-});
-
-Template.carousel_page.events({
-    'click #go_to_events_button': function () {
-        Router.go('events');
-    }
-});
+}());
