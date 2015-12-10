@@ -1,0 +1,25 @@
+<template name='create_event_page'>
+    <div data-role='content'>
+        <div class='container-fluid'>
+            {{> navbar navbar_title='New Event' show_create_button=false show_delete_button=false}}
+            <div class='v-space-half'></div>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    <form id='create_event_form'>
+                        <div class='form-group'>
+                            <label for='event_title'>
+                                Event Name
+                            </label>
+                            <input class='form-control' id='event_name' placeholder='e.g. Trip to NYC'>
+                            <hr>
+                            <button id='create_event_button' class='btn btn-primary' type='submit'>
+                                <i class='fa fa-magic'></i> Create Event
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <p class="error">{{errorMessage}}</p>
+        </div>
+    </div>
+</template>

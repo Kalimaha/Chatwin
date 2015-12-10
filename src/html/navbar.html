@@ -1,0 +1,33 @@
+<template name='navbar'>
+    <nav class='col-xs-12 navbar navbar-inverse navbar-fixed-top'>
+        <div class='row' style='padding-top: 10px;'>
+            {{#if show_delete_button}}
+                <div class='col-xs-2 text-center' id='delete_button'>
+                    <a>
+                        <i class='fa fa-trash fa-2x pull-left'></i>
+                    </a>
+                </div>
+            {{else}}
+                <div class='col-xs-2 text-center' id='back_button'>
+                    <a>
+                        <i class='fa fa-arrow-left fa-2x pull-left'></i>
+                    </a>
+                </div>
+            {{/if}}
+            <div class='col-xs-8 text-center page_title'>
+                {{navbar_title}}
+            </div>
+            {{#if show_create_button}}
+                <div class='col-xs-2 text-center' id='create_button'>
+                    <a>
+                        <i class='fa fa-plus fa-2x pull-right'></i>
+                    </a>
+                </div>
+            {{else}}
+                <div class='col-xs-2 text-center' id='create_button'>
+                    &nbsp;
+                </div>
+            {{/if}}
+        </div>
+    </nav>
+</template>
