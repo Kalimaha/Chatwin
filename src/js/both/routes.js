@@ -27,13 +27,14 @@
                         Router.go('carousel');
                     });
                 } else {
-                    console.log('exists');
-                    console.log(result);
-                    console.log(result.is_logged);
-                    if (result.is_logged === true) {
-                        Router.go('events');
+                    if (result.first_access) {
+                        Router.go('carousel');
                     } else {
-                        Router.go('login');
+                        if (result.is_logged === true) {
+                            Router.go('events');
+                        } else {
+                            Router.go('login');
+                        }
                     }
                 }
             });
