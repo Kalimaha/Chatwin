@@ -4,6 +4,7 @@ Template.login_page.events({
             requestPermissions: ['email']
         }, function (e) {
             Meteor.Status.insert({
+                meteor_id: Meteor.userId(),
                 isLogged: true,
                 user_id: 'facebook_' + Meteor.user().services.facebook.id,
                 picture: 'http://graph.facebook.com/' + Meteor.user().services.facebook.id + '/picture/?type=large'
@@ -16,6 +17,7 @@ Template.login_page.events({
             requestPermissions: ['email']
         }, function (e) {
             Meteor.Status.insert({
+                meteor_id: Meteor.userId(),
                 isLogged: true,
                 user_id: 'google_' + Meteor.user().services.google.id,
                 picture: Meteor.user().services.google.picture
@@ -26,6 +28,7 @@ Template.login_page.events({
     'click #twitter_button': function (e) {
         Meteor.loginWithTwitter(function (e) {
             Meteor.Status.insert({
+                meteor_id: Meteor.userId(),
                 isLogged: true,
                 user_id: 'twitter_' + Meteor.user().services.twitter.id,
                 picture: 'twitter_' + Meteor.user().services.twitter.profile_image_url
@@ -67,5 +70,11 @@ Template.error_page.helpers({
 Template.error_page.events({
     'click #back_button': function (e) {
         Router.go('create_event');
+    }
+});
+
+Template.carousel_page.events({
+    'click #go_to_events_button': function () {
+        Router.go('events');
     }
 });
