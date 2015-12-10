@@ -1,3 +1,4 @@
+/*global Router, Meteor*/
 Router.configure({
     layoutTemplate: 'footer'
 });
@@ -5,7 +6,6 @@ Router.configure({
 Router.route('/', {
     name: 'home',
     before: function (pause) {
-        var that = this;
         Meteor.call('firstAccess', function (error, firstAccess) {
             if (firstAccess) {
                 Router.go('/carousel');
@@ -45,7 +45,13 @@ Router.route('/carousel', {
 
 Router.route('/events', {
     name: 'events',
-    template: 'events_page'
+    template: 'events_page',
+    waitOn: function () {
+        return Meteor.subscribe('events');
+    },
+    data: {
+        single_events: Meteor.Events.find()
+    }
 });
 
 Router.route('/create/event', {

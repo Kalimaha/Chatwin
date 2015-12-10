@@ -1,3 +1,19 @@
+Meteor.Status.allow({
+    'insert': function (userId, doc) {
+        return true;
+    }
+});
+
+Meteor.Events.allow({
+    'insert': function (userId, doc) {
+        return true;
+    }
+});
+
+Meteor.publish('events', function () {
+    return Meteor.Events.find();
+});
+
 Meteor.methods({
     isLogged: function () {
         return Meteor.isLogged;
@@ -5,14 +21,35 @@ Meteor.methods({
     firstAccess: function () {
         return Meteor.firstAccess;
     },
-    create_event: function (event) {
-        console.log(Meteor.user_id);
-        if (Meteor.user_id === undefined) {
-            console.log('throw error');
+    create_event: function (event_name) {
+        console.log(event_name);
+        var user = Meteor.Status.findOne();
+        if (user === undefined) {
             throw new Meteor.Error(422, 'not-authorized');
+        }
+        if (!user.isLogged) {
+            throw new Meteor.Error(422, 'not-authorized');
+        } else {
+            return Meteor.Events.insert({
+                name: event_name,
+                creation_date: new Date(),
+                owner: user.user_id,
+                activities: [],
+                total: 0,
+                users: [
+                    user.user_id
+                ]
+            }, function (error, result) {
+                if (error) {
+                    throw new Meteor.Error(500, 'Error while creating a new event.');
+                }
+                return result;
+            });
         }
     }
 });
+
+
 
 ServiceConfiguration.configurations.remove({
     service: 'facebook'

@@ -3,8 +3,10 @@ Template.login_page.events({
         Meteor.loginWithFacebook({
             requestPermissions: ['email']
         }, function (e) {
-            Meteor.isLogged = true;
-            Meteor.user_id = 'facebook_' + Meteor.user().services.facebook.id;
+            Meteor.Status.insert({
+                isLogged: true,
+                user_id: 'facebook_' + Meteor.user().services.facebook.id
+            });
             Router.go('events');
         });
     },
@@ -12,15 +14,19 @@ Template.login_page.events({
         Meteor.loginWithGoogle({
             requestPermissions: ['email']
         }, function (e) {
-            Meteor.isLogged = true;
-            Meteor.user_id = 'google_' + Meteor.user().services.google.id;
+            Meteor.Status.insert({
+                isLogged: true,
+                user_id: 'google_' + Meteor.user().services.google.id
+            });
             Router.go('events');
         });
     },
     'click #twitter_button': function (e) {
         Meteor.loginWithTwitter(function (e) {
-            Meteor.isLogged = true;
-            Meteor.user_id = 'twitter_' + Meteor.user().services.twitter.id;
+            Meteor.Status.insert({
+                isLogged: true,
+                user_id: 'twitter_' + Meteor.user().services.twitter.id
+            });
             Router.go('events');
         });
     }
@@ -36,14 +42,16 @@ Template.create_event_page.events({
     'click #back_button': function (e) {
         Router.go('events');
     },
-    'click #create_event_button': function (e) {
-        Meteor.call('create_event', null, function (error, result) {
+    'submit form': function (event) {
+        event.preventDefault();
+        var event_name = event.target.event_name.value;
+        console.log(event_name);
+        Meteor.call('create_event', event_name, function (error, result) {
             if (error) {
-                Session.set('errorMessage', error.message);
+                Session.set('errorMessage', error);
                 Router.go('error');
-            } else {
-                console.log('event created');
             }
+            Router.go('events');
         });
     }
 });
