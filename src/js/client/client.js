@@ -5,7 +5,8 @@ Template.login_page.events({
         }, function (e) {
             Meteor.Status.insert({
                 isLogged: true,
-                user_id: 'facebook_' + Meteor.user().services.facebook.id
+                user_id: 'facebook_' + Meteor.user().services.facebook.id,
+                picture: 'http://graph.facebook.com/' + Meteor.user().services.facebook.id + '/picture/?type=large'
             });
             Router.go('events');
         });
@@ -16,7 +17,8 @@ Template.login_page.events({
         }, function (e) {
             Meteor.Status.insert({
                 isLogged: true,
-                user_id: 'google_' + Meteor.user().services.google.id
+                user_id: 'google_' + Meteor.user().services.google.id,
+                picture: Meteor.user().services.google.picture
             });
             Router.go('events');
         });
@@ -25,7 +27,8 @@ Template.login_page.events({
         Meteor.loginWithTwitter(function (e) {
             Meteor.Status.insert({
                 isLogged: true,
-                user_id: 'twitter_' + Meteor.user().services.twitter.id
+                user_id: 'twitter_' + Meteor.user().services.twitter.id,
+                picture: 'twitter_' + Meteor.user().services.twitter.profile_image_url
             });
             Router.go('events');
         });
@@ -45,7 +48,6 @@ Template.create_event_page.events({
     'submit form': function (event) {
         event.preventDefault();
         var event_name = event.target.event_name.value;
-        console.log(event_name);
         Meteor.call('create_event', event_name, function (error, result) {
             if (error) {
                 Session.set('errorMessage', error);

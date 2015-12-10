@@ -25,7 +25,10 @@ Router.route('/', {
 Router.route('/login', {
     name: 'login',
     template: 'login_page',
-    layoutTemplate: null
+    layoutTemplate: null,
+    waitOn: function () {
+        return Meteor.subscribe('getUserData');
+    }
 });
 
 Router.route('/create/activity', {

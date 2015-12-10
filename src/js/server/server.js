@@ -14,6 +14,11 @@ Meteor.publish('events', function () {
     return Meteor.Events.find();
 });
 
+Meteor.publish('getUserData', function () {
+    console.log(Meteor.users.find());
+    return Meteor.users.find({_id: this.userId});
+});
+
 Meteor.methods({
     isLogged: function () {
         return Meteor.isLogged;
@@ -24,6 +29,8 @@ Meteor.methods({
     create_event: function (event_name) {
         console.log(event_name);
         var user = Meteor.Status.findOne();
+        console.log(user);
+        console.log(user.picture);
         if (user === undefined) {
             throw new Meteor.Error(422, 'not-authorized');
         }
@@ -37,7 +44,7 @@ Meteor.methods({
                 activities: [],
                 total: 0,
                 users: [
-                    user.user_id
+                    user
                 ]
             }, function (error, result) {
                 if (error) {

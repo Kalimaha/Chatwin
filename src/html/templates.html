@@ -64,12 +64,11 @@
                     </span>
                 </div>
                 <div class='panel-footer text-right' style='height: 3em; padding-top: 8px;'>
-                    <span style='float: right;'>
-                        <img class='img-responsive img-circle avatar' src='/images/avatar.png'>
-                    </span>
-                    <span style='float: right;'>
-                        <img class='img-responsive img-circle avatar' src='/images/avatar2.jpg'>
-                    </span>
+                    {{#each users}}
+                        <span style='float: right;'>
+                            <img class='img-responsive img-circle avatar' src='{{picture}}'>
+                        </span>
+                    {{/each}}
                 </div>
             </div>
         </div>
