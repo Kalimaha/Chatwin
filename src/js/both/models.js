@@ -7,4 +7,8 @@
 
     Meteor.Events = new Ground.Collection('events');
 
+    Meteor.Activities = new Ground.Collection('activities');
+
+    Meteor.FacebookFriends = new Ground.Collection('facebook_friends');
+
 }());

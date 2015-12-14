@@ -8,5 +8,8 @@
   "event_name": "Event Name",
   "create_event": "Create Event",
   "create_event_placeholder": "e.g. Trip to NYC",
-  "logout_successful": "Logout Successful"
+  "logout_successful": "Logout Successful",
+  "activity_name": "Activity Name",
+  "create_activity": "Create Activity",
+  "create_activity_placeholder": "e.g. Dinner at Restaurant"
 }

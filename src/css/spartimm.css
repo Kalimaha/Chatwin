@@ -1,7 +1,7 @@
 html, body {
     height: 100%;
-    background: url('/images/tile.png');
-    background-repeat: repeat;
+    /*background: url('/images/tile.png');*/
+    /*background-repeat: repeat;*/
 }
 
 div[data-role='content'] {
@@ -43,4 +43,9 @@ div[data-role='content'] {
 
 button {
     width: 100%;
+}
+
+.friends-list {
+    max-height: 150px;
+    overflow-y: auto;
 }

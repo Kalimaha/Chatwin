@@ -71,11 +71,6 @@
         template: 'logout_page'
     });
 
-    Router.route('/create/activity', {
-        name: 'create_activity',
-        template: 'create_activity_page'
-    });
-
     Router.route('/activities', {
         name: 'activities',
         template: 'activities_page'
@@ -102,6 +97,29 @@
         template: 'create_event_page',
         waitOn: function () {
             return Meteor.subscribe('events');
+        }
+    });
+
+    Router.route('/create/activity', {
+        name: 'create_activity',
+        template: 'create_activity_page',
+        waitOn: function () {
+            Meteor.subscribe('activities');
+            Meteor.subscribe('facebook_friends');
+            Meteor.call('get_facebook_friends', function (error, result) {
+                if (error) {
+                    throw new Meteor.Error(500, 'Error while creating a new event.');
+                }
+                for (var i = 0; i < result.length; i += 1) {
+                    Meteor.FacebookFriends.insert(result[i]);
+                }
+            });
+            //Meteor.FacebookFriends.insert({
+            //    name: 'Giulia S.'
+            //});
+        },
+        data: {
+            single_friends: Meteor.FacebookFriends.find()
         }
     });
 

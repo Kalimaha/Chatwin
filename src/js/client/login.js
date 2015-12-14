@@ -7,7 +7,7 @@
 
         'click #facebook_button': function () {
             Meteor.loginWithFacebook({
-                requestPermissions: ['email']
+                requestPermissions: ['email', 'user_friends']
             }, function () {
                 Meteor.subscribe('status');
                 var user_id = 'facebook_' + Meteor.user().services.facebook.id,

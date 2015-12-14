@@ -6,5 +6,8 @@
   "event_name": "Nome dell'Evento",
   "create_event": "Crea Evento",
   "create_event_placeholder": "e.g. Viaggio a Caserta",
-  "logout_successful": "Logout Eseguito con Successo"
+  "logout_successful": "Logout Eseguito con Successo",
+  "activity_name": "Nome dell'Attivitá",
+  "create_activity": "Crea Attivitá",
+  "create_activity_placeholder": "e.g. Cena al Ristorante"
 }
