@@ -1,40 +1,37 @@
 <template name='events_page'>
-    <div data-role='content'>
-        <div class='container-fluid'>
-            {{> navbar navbar_title='i18n(Events)' show_create_button=true show_delete_button=true}}
-            <br>
+    {{> navbar navbar_title='i18n(Events)' show_create_button=true show_delete_button=true}}
+    <div class='v-space'></div>
+    <div class='v-space-half'></div>
+    <div class='ui container'>
+        <div class='ui cards'>
             {{#each single_events}}
                 {{> single_event}}
             {{/each}}
-            <div class='v-space'></div>
         </div>
     </div>
+    <div class='v-space'></div>
 </template>
 
 <template name='single_event'>
-    <div class='row'>
-        <div class='col-lg-12'>
-            <div class='panel panel-primary'>
-                <div class='panel-heading'>
-                    <h4>
-                        {{name}}
-                    </h4>
-                </div>
-                <div class='panel-body'>
-                    {{activities.length}} attivitá svolte
-                    <span class='badge pull-right'>
-                        {{total}} &euro;
-                    </span>
-                </div>
-                <div class='panel-footer text-right' style='height: 3em; padding-top: 8px;'>
-                    {{#each users}}
-                        <span style='float: right;'>
-                            <img class='img-responsive img-circle avatar' src='{{picture}}'>
-                        </span>
-                    {{/each}}
+    <div class='ui horizontal divider'>
+        12 DEC 2015
+    </div>
+    <a class='ui centered card'>
+        <div class='content'>
+            <div class='header'>
+                {{name}}
+            </div>
+            <div class='description'>
+                {{activities.length}} {{_ 'done_activities'}}
+                <div class='right floated meta'>
+                    {{total}} &euro;
                 </div>
             </div>
         </div>
-    </div>
-    <br>
+        <div class='extra content'>
+            {{#each users}}
+                <img class='right floated ui avatar image' src='{{picture}}'>
+            {{/each}}
+        </div>
+    </a>
 </template>

@@ -3,5 +3,6 @@
   "login_facebook": "Login with Facebook",
   "login_google": "Login with Google",
   "events": "Events",
-  "event": "Event"
+  "event": "Event",
+  "activities_done": "activities done"
 }
