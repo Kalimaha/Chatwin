@@ -7,5 +7,6 @@
   "activities_done": "activities done",
   "event_name": "Event Name",
   "create_event": "Create Event",
-  "create_event_placeholder": "e.g. Trip to NYC"
+  "create_event_placeholder": "e.g. Trip to NYC",
+  "logout_successful": "Logout Successful"
 }
