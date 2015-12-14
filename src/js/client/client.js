@@ -1,10 +1,10 @@
-/*global Template, Router, Meteor, Session, TAPi18n*/
+/*global Template, Router, Meteor, Session, TAPi18n, window*/
 (function () {
 
     'use strict';
 
     var get_language = function () {
-        return 'it';
+        return window.navigator.userLanguage || window.navigator.language;
     };
 
     Meteor.startup(function () {
