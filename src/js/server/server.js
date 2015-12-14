@@ -32,14 +32,4 @@
         secret: 'ffbqLZlXiqWp_TlFPq1ENYvn'
     });
 
-    ServiceConfiguration.configurations.remove({
-        service: 'twitter'
-    });
-
-    ServiceConfiguration.configurations.insert({
-        service: 'twitter',
-        consumerKey: '44Y47H3ORHRNEHHyo91iVr31i',
-        secret: 'TBeMwQxDcccKTLyHPWvLFbmRaoOqUx00Cq4xyVKGekLL4seOrD'
-    });
-
 }());

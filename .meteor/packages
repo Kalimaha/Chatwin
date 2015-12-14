@@ -21,7 +21,6 @@ twbs:bootstrap
 iron:router
 accounts-facebook
 accounts-google
-accounts-twitter
 service-configuration
 http
 email
