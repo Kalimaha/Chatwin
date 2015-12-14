@@ -1,33 +1,25 @@
 <template name='navbar'>
-    <nav class='col-xs-12 navbar navbar-inverse navbar-fixed-top'>
-        <div class='row' style='padding-top: 10px;'>
-            {{#if show_delete_button}}
-                <div class='col-xs-2 text-center' id='delete_button'>
-                    <a>
-                        <i class='fa fa-trash fa-2x pull-left'></i>
-                    </a>
-                </div>
-            {{else}}
-                <div class='col-xs-2 text-center' id='back_button'>
-                    <a>
-                        <i class='fa fa-arrow-left fa-2x pull-left'></i>
-                    </a>
-                </div>
-            {{/if}}
-            <div class='col-xs-8 text-center page_title'>
-                {{navbar_title}}
-            </div>
-            {{#if show_create_button}}
-                <div class='col-xs-2 text-center' id='create_button'>
-                    <a>
-                        <i class='fa fa-plus fa-2x pull-right'></i>
-                    </a>
-                </div>
-            {{else}}
-                <div class='col-xs-2 text-center' id='create_button'>
-                    &nbsp;
-                </div>
-            {{/if}}
+    <div class='ui three item top fixed menu'>
+        {{#if show_delete_button}}
+            <a class='item'>
+                <i class='fa fa-trash'></i>
+            </a>
+        {{else}}
+            <a class='item'>
+                <i class='fa fa-arrow-left'></i>
+            </a>
+        {{/if}}
+        <div class='item'>
+            {{navbar_title}}
         </div>
-    </nav>
+        {{#if show_create_button}}
+            <a class='item'>
+                <i class='fa fa-plus'></i>
+            </a>
+        {{else}}
+            <a class='item'>
+                &nbsp;
+            </a>
+        {{/if}}
+    </div>
 </template>
