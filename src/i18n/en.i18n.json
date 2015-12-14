@@ -4,5 +4,8 @@
   "login_google": "Login with Google",
   "events": "Events",
   "event": "Event",
-  "activities_done": "activities done"
+  "activities_done": "activities done",
+  "event_name": "Event Name",
+  "create_event": "Create Event",
+  "create_event_placeholder": "e.g. Trip to NYC"
 }

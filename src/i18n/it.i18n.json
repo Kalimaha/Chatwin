@@ -2,5 +2,8 @@
   "login": "Accesso",
   "login_facebook": "Accedi con Facebook",
   "login_google": "Accedi con Google",
-  "activities_done": "activities done"
+  "activities_done": "activities done",
+  "event_name": "Nome dell'Evento",
+  "create_event": "Crea Evento",
+  "create_event_placeholder": "e.g. Viaggio a Caserta"
 }
