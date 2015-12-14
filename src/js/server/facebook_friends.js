@@ -1,4 +1,4 @@
-/*global Meteor, Ground*/
+/*global Meteor, Ground, HTTP*/
 (function () {
 
     'use strict';
@@ -15,11 +15,20 @@
 
     Meteor.methods({
         get_facebook_friends: function () {
-            return [
-                {
-                    name: 'Giulia S. from Server'
+            var user = Meteor.users.findOne(this.userId),
+                access_token = user.services.facebook.accessToken;
+            HTTP.get('https://graph.facebook.com/v2.3/me/taggable_friends', {params: {access_token: access_token}}, function (error, result) {
+                if (error) {
+                    throw new Meteor.Error(500, 'Error while fetching Facebook friends.');
                 }
-            ];
+                for (var i = 0; i < result.data.data.length; i += 1) {
+                    Meteor.FacebookFriends.insert({
+                        name: result.data.data[i].name,
+                        id: result.data.data[i].id,
+                        picture:  result.data.data[i].picture.data.url
+                    });
+                }
+            });
         }
     });
 

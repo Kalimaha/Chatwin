@@ -106,17 +106,7 @@
         waitOn: function () {
             Meteor.subscribe('activities');
             Meteor.subscribe('facebook_friends');
-            Meteor.call('get_facebook_friends', function (error, result) {
-                if (error) {
-                    throw new Meteor.Error(500, 'Error while creating a new event.');
-                }
-                for (var i = 0; i < result.length; i += 1) {
-                    Meteor.FacebookFriends.insert(result[i]);
-                }
-            });
-            //Meteor.FacebookFriends.insert({
-            //    name: 'Giulia S.'
-            //});
+            Meteor.call('get_facebook_friends');
         },
         data: {
             single_friends: Meteor.FacebookFriends.find()
