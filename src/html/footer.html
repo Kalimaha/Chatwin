@@ -1,27 +1,17 @@
 <template name='footer'>
     {{> yield}}
-    <nav class='col-xs-12 navbar navbar-inverse navbar-fixed-bottom' style='padding-top: 10px;'>
-        <div class='row'>
-            <div class='col-xs-3 text-center'>
-                <a href="{{pathFor route='home'}}">
-                    <i class='fa fa-home fa-2x'></i>
-                </a>
-            </div>
-            <div class='col-xs-3 text-center'>
-                <a href='#'>
-                    <i class='fa fa-map fa-2x'></i>
-                </a>
-            </div>
-            <div class='col-xs-3 text-center'>
-                <a href='#'>
-                    <i class='fa fa-cog fa-2x'></i>
-                </a>
-            </div>
-            <div class='col-xs-3 text-center'>
-                <a href="{{pathFor route='logout'}}">
-                    <i class='fa fa-sign-out fa-2x'></i>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <div class='ui four item bottom fixed menu'>
+        <a class='item' href="{{pathFor route='home'}}">
+            <i class='fa fa-home'></i>
+        </a>
+        <a class='item'>
+            <i class='fa fa-map'></i>
+        </a>
+        <a class='item'>
+            <i class='fa fa-cog'></i>
+        </a>
+        <a class='item' href="{{pathFor route='logout'}}">
+            <i class='fa fa-sign-out'></i>
+        </a>
+    </div>
 </template>
