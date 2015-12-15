@@ -112,7 +112,7 @@
         }
     });
 
-    Router.route('/create/activity', {
+    Router.route('/create/activity/:event_id', {
         name: 'create_activity',
         template: 'create_activity_page',
         waitOn: function () {
@@ -124,6 +124,7 @@
             single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}})
         },
         onBeforeAction: function () {
+            console.log(this.params.event_id);
             if (Session.get('user') === undefined) {
                 Router.go('login');
             } else {

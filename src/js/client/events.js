@@ -30,6 +30,9 @@
                     return true;
                 }
             }).modal('show');
+        },
+        'click .add_activity': function () {
+            Router.go('create_activity', {event_id: this._id});
         }
     });
 
