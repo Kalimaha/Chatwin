@@ -14,5 +14,9 @@
   "create_activity_placeholder": "e.g. Dinner at Restaurant",
   "welcome": "Welcome",
   "no_events": "You don't have any event yet. Create your first event with the <i class='fa fa-plus'></i> icon in the upper-right side of the screen.",
-  "delete": "Delete"
+  "delete": "Delete",
+  "warning": "Warning",
+  "remove_event_warning": "You are going to delete this event, are you sure?",
+  "no": "No",
+  "yes": "Yes"
 }

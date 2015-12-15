@@ -6,6 +6,9 @@
     Meteor.Events.allow({
         'insert': function () {
             return true;
+        },
+        'remove': function () {
+            return true;
         }
     });
 
@@ -29,6 +32,14 @@
                     user
                 ]
             }, function (error, result) {
+                if (error) {
+                    throw new Meteor.Error(500, 'Error while creating a new event.');
+                }
+                return result;
+            });
+        },
+        remove_event: function (event_id) {
+            return Meteor.Events.remove(event_id, function (error, result) {
                 if (error) {
                     throw new Meteor.Error(500, 'Error while creating a new event.');
                 }
