@@ -14,7 +14,7 @@
     });
 
     Meteor.methods({
-        create_event: function (event_name) {
+        create_event: function (event_name, user_id) {
             var user = Meteor.Status.findOne();
             if (user === undefined) {
                 throw new Meteor.Error(422, 'not-authorized');
@@ -25,7 +25,8 @@
             return Meteor.Events.insert({
                 name: event_name,
                 creation_date: new Date(),
-                owner: user.user_id,
+                date_last_update: new Date(),
+                owner: user_id,
                 activities: [],
                 total: 0,
                 users: [

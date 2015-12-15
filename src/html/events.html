@@ -14,7 +14,7 @@
 
 <template name='single_event'>
     <div class='ui horizontal divider'>
-        12 DEC 2015
+        {{format_date creation_date}}
     </div>
     <a class='ui centered card'>
         <div class='content'>
@@ -22,7 +22,7 @@
                 {{name}}
             </div>
             <div class='description'>
-                {{activities.length}} {{_ 'done_activities'}}
+                {{activities.length}} {{_ 'activities_done'}}
                 <div class='right floated meta'>
                     {{total}} &euro;
                 </div>

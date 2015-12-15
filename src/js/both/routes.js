@@ -24,17 +24,13 @@
                             Session.set('errorMessage', error.reason);
                             Router.go('error');
                         }
-                        Router.go('carousel');
+                        Router.go('login');
                     });
                 } else {
-                    if (result.first_access) {
-                        Router.go('carousel');
+                    if (result.is_logged === true) {
+                        Router.go('events');
                     } else {
-                        if (result.is_logged === true) {
-                            Router.go('events');
-                        } else {
-                            Router.go('login');
-                        }
+                        Router.go('login');
                     }
                 }
             });
@@ -109,7 +105,7 @@
             Meteor.call('get_facebook_friends');
         },
         data: {
-            single_friends: Meteor.FacebookFriends.find()
+            single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}})
         }
     });
 

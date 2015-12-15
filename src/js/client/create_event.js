@@ -11,10 +11,11 @@
 
         'submit form': function (event) {
             event.preventDefault();
-            var event_name = event.target.event_name.value;
-            Meteor.call('create_event', event_name, function (error) {
+            var event_name = event.target.event_name.value,
+                user_id = Session.get('user_id');
+            Meteor.call('create_event', event_name, user_id, function (error) {
                 if (error) {
-                    Session.set('errorMessage', error);
+                    Session.set('errorMessage', error.reason);
                     Router.go('error');
                 }
                 Router.go('events');

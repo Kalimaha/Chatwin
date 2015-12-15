@@ -12,18 +12,32 @@
             </div>
             <div class='field'>
                 <label>Friends</label>
-                <div class='ui celled list friends-list'>
+                <div class='ui comments friends-list'>
                     {{#each single_friends}}
-                        <div class='item'>
-                            <img class='ui avatar image' src='{{picture}}'>
+                        <div class='comment'>
+                            <div class='avatar'>
+                                <img src='{{picture}}'>
+                            </div>
                             <div class='content'>
-                                <div class='header'>
+                                <div class='author'>
                                     {{name}}
+                                </div>
+                                <div class='actions'>
+                                    <a class='reply'>Select Friend</a>
                                 </div>
                             </div>
                         </div>
                     {{/each}}
                 </div>
+                <!--<div class="ui dropdown">-->
+                    <!--<input type="hidden" name="gender">-->
+                    <!--<i class="dropdown icon"></i>-->
+                    <!--<div class="default text">Gender</div>-->
+                    <!--<div class="menu">-->
+                        <!--<div class="item" data-value="male">Male</div>-->
+                        <!--<div class="item" data-value="female">Female</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
             <button class='ui button' type='submit'>
                 <i class='wizard icon'></i> {{_ 'create_activity'}}
