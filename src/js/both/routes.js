@@ -52,7 +52,7 @@
             return Meteor.subscribe('status');
         },
         before: function () {
-            Meteor.call('logout_user', function (error, response) {
+            Meteor.call('logout_user', function (error) {
                 if (error) {
                     Session.set('errorMessage', error.reason);
                     Router.go('error');
@@ -69,12 +69,14 @@
 
     Router.route('/activities', {
         name: 'activities',
-        template: 'activities_page'
-    });
-
-    Router.route('/carousel', {
-        name: 'carousel',
-        template: 'carousel_page'
+        template: 'activities_page',
+        onBeforeAction: function () {
+            if (Session.get('user') === undefined) {
+                Router.go('login');
+            } else {
+                this.next();
+            }
+        }
     });
 
     Router.route('/events', {
@@ -85,6 +87,13 @@
         },
         data: {
             single_events: Meteor.Events.find()
+        },
+        onBeforeAction: function () {
+            if (Session.get('user') === undefined) {
+                Router.go('login');
+            } else {
+                this.next();
+            }
         }
     });
 
@@ -93,6 +102,13 @@
         template: 'create_event_page',
         waitOn: function () {
             return Meteor.subscribe('events');
+        },
+        onBeforeAction: function () {
+            if (Session.get('user') === undefined) {
+                Router.go('login');
+            } else {
+                this.next();
+            }
         }
     });
 
@@ -106,6 +122,13 @@
         },
         data: {
             single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}})
+        },
+        onBeforeAction: function () {
+            if (Session.get('user') === undefined) {
+                Router.go('login');
+            } else {
+                this.next();
+            }
         }
     });
 
