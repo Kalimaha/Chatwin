@@ -3,21 +3,21 @@
 
     'use strict';
 
-    Template.create_event_page.events({
+    Template.create_activity_page.events({
 
         'click #back_button': function () {
             Router.go('events');
         },
 
-        'submit form': function (event) {
-            event.preventDefault();
-            var event_name = event.target.event_name.value;
-            Meteor.call('create_event', event_name, function (error) {
+        'click .add_activity_button': function () {
+            console.log(this);
+            Meteor.subscribe('events');
+            Meteor.call('add_activity', this.event_id, function (error, result) {
                 if (error) {
-                    Session.set('errorMessage', error);
+                    Session.set('errorMessage', error.reason);
                     Router.go('error');
                 }
-                Router.go('events');
+                console.log(result);
             });
         }
 

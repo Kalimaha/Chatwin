@@ -45,6 +45,24 @@
                 }
                 return result;
             });
+        },
+        add_activity: function (event_id) {
+            return Meteor.Events.update(
+                event_id,
+                {
+                    $push: {
+                        activities: {
+                            name: 'Edited'
+                        }
+                    }
+                },
+                function (error, result) {
+                    if (error) {
+                        throw new Meteor.Error(500, 'Error while creating a new event.');
+                    }
+                    return result;
+                }
+            );
         }
     });
 

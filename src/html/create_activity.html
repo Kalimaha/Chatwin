@@ -10,27 +10,29 @@
                 </label>
                 <input class='form-control' id='activity_title' placeholder='{{_ "create_activity_placeholder"}}'>
             </div>
-            <div class='field'>
-                <label>Friends</label>
-                <div class='ui comments friends-list'>
-                    {{#each single_friends}}
-                        <div class='comment'>
-                            <div class='avatar'>
-                                <img src='{{picture}}'>
-                            </div>
-                            <div class='content'>
-                                <div class='author'>
-                                    {{name}}
-                                </div>
-                                <div class='actions'>
-                                    <a class='reply'>Select Friend</a>
-                                </div>
-                            </div>
-                        </div>
-                    {{/each}}
-                </div>
-            </div>
-            <button class='ui button' type='submit'>
+            <!--<div class='field'>-->
+                <!--<label>Friends</label>-->
+                <!--<div class='ui comments friends-list'>-->
+                    <!--{{#each single_friends}}-->
+                        <!--<div class='comment'>-->
+                            <!--<div class='avatar'>-->
+                                <!--<img src='{{picture}}'>-->
+                            <!--</div>-->
+                            <!--<div class='content'>-->
+                                <!--<div class='author'>-->
+                                    <!--{{name}}-->
+                                <!--</div>-->
+                                <!--<div class='actions'>-->
+                                    <!--<a class='reply'>-->
+                                        <!--Select Friend-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--{{/each}}-->
+                <!--</div>-->
+            <!--</div>-->
+            <button class='ui button add_activity_button' id='{{event_id}}'>
                 <i class='wizard icon'></i> {{_ 'create_activity'}}
             </button>
         </form>

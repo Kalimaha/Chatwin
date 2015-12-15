@@ -120,16 +120,19 @@
             Meteor.subscribe('facebook_friends');
             Meteor.call('get_facebook_friends');
         },
-        data: {
-            single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}})
+        data: function () {
+            var params = this.params;
+            return {
+                single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
+                event_id: params.event_id
+            };
         },
         onBeforeAction: function () {
-            console.log(this.params.event_id);
-            if (Session.get('user') === undefined) {
-                Router.go('login');
-            } else {
+            //if (Session.get('user') === undefined) {
+            //    Router.go('login');
+            //} else {
                 this.next();
-            }
+            //}
         }
     });
 
