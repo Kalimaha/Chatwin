@@ -1,5 +1,5 @@
 <template name='events_page'>
-    {{> navbar navbar_title='i18n(Events)' show_create_button=true show_delete_button=true}}
+    {{> navbar navbar_title='Events' show_create_button=true}}
     <div class='v-space'></div>
     <div class='v-space-half'></div>
     <div class='ui container'>
@@ -10,11 +10,12 @@
                 <div class='ui container'>
                     <div class='v-space-half'></div>
                     <h2 class='ui header center aligned'>
-                        {{_ 'welcome'}}{{name}}!
+                        Welcome!
                     </h2>
                     <hr>
                     <h3 class='ui header center aligned'>
-                        {{{_ 'no_events'}}}
+                        You don't have any event yet. Create your first event with the <i class='fa fa-plus'></i>
+                        icon in the upper-right side of the screen.
                     </h3>
                 </div>
             {{/each}}
@@ -34,20 +35,19 @@
                 {{name}}
             </div>
             <div class='description'>
-                {{activities.length}} {{_ 'activities_done'}}
+                {{activities.length}} {{_ 'activities'}}
                 <div class='right floated meta'>
                     {{total}} &euro;
                 </div>
             </div>
         </div>
         <div class='extra content'>
+            <div class='left floated'>
+                <button class='ui tiny red button delete_event_button' id='{{_id}}'>
+                    <i class='trash icon'></i> {{_ 'delete'}}
+                </button>
+            </div>
             {{#each users}}
-                <div class='left floated'>
-                    <button class='ui tiny red button'>
-                        <i class='trash icon'></i>
-                        Delete
-                    </button>
-                </div>
                 <img class='right floated ui avatar image' src='{{picture}}'>
             {{/each}}
         </div>

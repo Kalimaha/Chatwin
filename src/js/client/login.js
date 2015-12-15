@@ -24,7 +24,6 @@
                         Router.go('error');
                     } else {
                         Session.set('user', user);
-                        console.log(Session.get('user'));
                         Router.go('events');
                     }
                 });
@@ -50,7 +49,6 @@
                         Router.go('error');
                     } else {
                         Session.set('user', user);
-                        console.log(Session.get('user'));
                         Router.go('events');
                     }
                 });

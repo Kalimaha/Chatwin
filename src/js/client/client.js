@@ -8,12 +8,12 @@
     };
 
     Meteor.startup(function () {
-        Session.set('showLoadingIndicator', true);
-        TAPi18n.setLanguage(get_language()).done(function () {
-            Session.set('showLoadingIndicator', false);
-        }).fail(function (error) {
-            throw new Meteor.Error(500, error);
-        });
+        //Session.set('showLoadingIndicator', true);
+        //TAPi18n.setLanguage(get_language()).done(function () {
+        //    Session.set('showLoadingIndicator', false);
+        //}).fail(function (error) {
+        //    throw new Meteor.Error(500, error);
+        //});
     });
 
 }());

@@ -6,6 +6,11 @@
     Template.events_page.events({
         'click #create_button': function () {
             Router.go('create_event');
+        },
+        'submit .delete_event_button': function (e) {
+            console.log(this);
+            console.log(e);
+            console.log($(e).data('id'));
         }
     });
 

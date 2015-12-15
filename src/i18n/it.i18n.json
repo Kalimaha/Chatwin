@@ -10,5 +10,6 @@
   "activity_name": "Nome dell'Attivitá",
   "create_activity": "Crea Attivitá",
   "create_activity_placeholder": "e.g. Cena al Ristorante",
-  "no_events": "Non hai ancora nessun evento. Crea il tuo primo evento con l'icona <i class='fa fa-plus'></i> in alto a destra del tuo schermo."
+  "no_events": "Non hai ancora nessun evento. Crea il tuo primo evento con l'icona <i class='fa fa-plus'></i> in alto a destra del tuo schermo.",
+  "delete": "Elimina"
 }

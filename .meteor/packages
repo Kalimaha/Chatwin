@@ -27,5 +27,5 @@ meteorhacks:ssr
 ground:db
 semantic:ui
 flemay:less-autoprefixer
-tap:i18n
 momentjs:moment
+tap:i18n

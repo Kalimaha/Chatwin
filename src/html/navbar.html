@@ -1,12 +1,12 @@
 <template name='navbar'>
     <div class='ui three item top fixed menu'>
-        {{#if show_delete_button}}
-            <a class='item' id='delete_button'>
-                <i class='fa fa-trash'></i>
-            </a>
-        {{else}}
+        {{#if show_back_button}}
             <a class='item' id='back_button'>
                 <i class='fa fa-arrow-left'></i>
+            </a>
+        {{else}}
+            <a class='item'>
+                &nbsp;
             </a>
         {{/if}}
         <div class='item'>

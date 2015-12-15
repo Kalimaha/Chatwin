@@ -1,5 +1,5 @@
 <template name='create_activity_page'>
-    {{> navbar navbar_title='New Activity' show_create_button=false show_delete_button=false}}
+    {{> navbar navbar_title='New Activity' show_create_button=false show_back_button=true}}
     <div class='v-space'></div>
     <div class='v-space-half'></div>
     <div class='ui container'>
@@ -29,15 +29,6 @@
                         </div>
                     {{/each}}
                 </div>
-                <!--<div class="ui dropdown">-->
-                    <!--<input type="hidden" name="gender">-->
-                    <!--<i class="dropdown icon"></i>-->
-                    <!--<div class="default text">Gender</div>-->
-                    <!--<div class="menu">-->
-                        <!--<div class="item" data-value="male">Male</div>-->
-                        <!--<div class="item" data-value="female">Female</div>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
             <button class='ui button' type='submit'>
                 <i class='wizard icon'></i> {{_ 'create_activity'}}
