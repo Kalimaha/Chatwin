@@ -11,5 +11,7 @@
   "logout_successful": "Logout Successful",
   "activity_name": "Activity Name",
   "create_activity": "Create Activity",
-  "create_activity_placeholder": "e.g. Dinner at Restaurant"
+  "create_activity_placeholder": "e.g. Dinner at Restaurant",
+  "welcome": "Welcome",
+  "no_events": "You don't have any event yet. Create your first event with the <i class='fa fa-plus'></i> icon in the upper-right side of the screen."
 }

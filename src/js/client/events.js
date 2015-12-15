@@ -15,4 +15,10 @@
         }
     });
 
+    Template.events_page.helpers({
+        name: function () {
+            return Session.get('user') !== undefined ? ' ' + Session.get('user').name : '';
+        }
+    });
+
 }());

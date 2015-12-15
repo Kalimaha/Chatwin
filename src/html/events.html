@@ -6,6 +6,17 @@
         <div class='ui cards'>
             {{#each single_events}}
                 {{> single_event}}
+            {{else}}
+                <div class='ui container'>
+                    <div class='v-space-half'></div>
+                    <h2 class='ui header center aligned'>
+                        {{_ 'welcome'}}{{name}}!
+                    </h2>
+                    <hr>
+                    <h3 class='ui header center aligned'>
+                        {{{_ 'no_events'}}}
+                    </h3>
+                </div>
             {{/each}}
         </div>
     </div>
@@ -31,6 +42,12 @@
         </div>
         <div class='extra content'>
             {{#each users}}
+                <div class='left floated'>
+                    <button class='ui tiny red button'>
+                        <i class='trash icon'></i>
+                        Delete
+                    </button>
+                </div>
                 <img class='right floated ui avatar image' src='{{picture}}'>
             {{/each}}
         </div>
