@@ -85,8 +85,20 @@
         waitOn: function () {
             return Meteor.subscribe('events');
         },
-        data: {
-            single_events: Meteor.Events.find()
+        data: function () {
+            if (Session.get('user') === undefined) {
+                Router.go('login');
+            } else {
+                return {
+                    single_events: Meteor.Events.find({
+                        "users.user_id": {
+                            $in: [
+                                Session.get('user').user_id
+                            ]
+                        }
+                    })
+                };
+            }
         },
         onBeforeAction: function () {
             if (Session.get('user') === undefined) {
@@ -126,13 +138,6 @@
                 single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
                 event_id: params.event_id
             };
-        },
-        onBeforeAction: function () {
-            //if (Session.get('user') === undefined) {
-            //    Router.go('login');
-            //} else {
-                this.next();
-            //}
         }
     });
 
