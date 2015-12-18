@@ -29,7 +29,7 @@
     <div class='ui horizontal divider'>
         {{format_date creation_date}}
     </div>
-    <a class='ui centered card add_activity' id='add_activity_to_{{_id}}'>
+    <a class='ui centered fluid card' id='add_activity_to_{{_id}}'>
         <div class='content'>
             <div class='header'>
                 {{name}}
@@ -52,28 +52,26 @@
             {{/each}}
         </div>
     </a>
-    <div class='ui basic modal' id='modal_{{_id}}'>
+    <div class='ui modal' id='modal_{{_id}}'>
         <div class='ui header center aligned'>
             {{_ 'warning'}}
         </div>
         <div class='image content'>
-            <div class='image'>
-                <i class='warning sign yellow icon'></i>
-            </div>
+            <!--<div class='image'>-->
+                <!--<i class='warning sign yellow icon'></i>-->
+            <!--</div>-->
             <div class='description'>
                 {{_ 'remove_event_warning'}}
             </div>
         </div>
         <div class='actions'>
-            <div class='two ui buttons'>
-                <div class='ui green cancel basic button'>
-                    <i class='remove icon'></i>
-                    {{_ 'no'}}
-                </div>
-                <div class='ui red ok basic button'>
-                    <i class='checkmark icon'></i>
-                    {{_ 'yes'}}
-                </div>
+            <div class='ui tiny button cancel green'>
+                <i class='remove icon'></i>
+                {{_ 'no'}}
+            </div>
+            <div class='ui tiny button ok red'>
+                <i class='checkmark icon'></i>
+                {{_ 'yes'}}
             </div>
         </div>
     </div>

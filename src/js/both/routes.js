@@ -1,4 +1,4 @@
-/*global Router, Meteor, Session*/
+/*global Router, Meteor, Session, $*/
 (function () {
 
     'use strict';

@@ -11,8 +11,8 @@
             var that = this;
             $('#modal_' + this._id).modal({
                 selector: {
-                    approve  : '.actions .positive, .actions .approve, .actions .ok',
-                    deny     : '.actions .negative, .actions .deny, .actions .cancel'
+                    approve  : '.actions .ok',
+                    deny     : '.actions .cancel'
                 },
                 closable: false,
                 onApprove: function () {
@@ -30,9 +30,6 @@
                     return true;
                 }
             }).modal('show');
-        },
-        'click .add_activity': function () {
-            Router.go('create_activity', {event_id: this._id});
         }
     });
 
