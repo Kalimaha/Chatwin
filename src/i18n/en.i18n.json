@@ -18,5 +18,7 @@
   "warning": "Warning",
   "remove_event_warning": "You are going to delete this event, are you sure?",
   "no": "No",
-  "yes": "Yes"
+  "yes": "Yes",
+  "open": "Open",
+  "or": "or"
 }

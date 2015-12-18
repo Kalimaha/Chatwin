@@ -29,7 +29,7 @@
     <div class='ui horizontal divider'>
         {{format_date creation_date}}
     </div>
-    <a class='ui centered fluid card' id='add_activity_to_{{_id}}'>
+    <div class='ui centered fluid card' id='add_activity_to_{{_id}}'>
         <div class='content'>
             <div class='header'>
                 {{name}}
@@ -42,24 +42,29 @@
             </div>
         </div>
         <div class='extra content'>
+            <div class='left floated' style='margin-right: 1rem;'>
+                <button class='ui mini basic button show_activities_button' id='{{_id}}'>
+                    <i class='folder icon'></i>
+                </button>
+            </div>
+            <!--<div style='margin: 0 1rem 0 1rem;'>-->
+                <!--&nbsp;-->
+            <!--</div>-->
             <div class='left floated'>
-                <button class='ui tiny red button delete_event_button' id='{{_id}}'>
-                    <i class='trash icon'></i> {{_ 'delete'}}
+                <button class='ui mini basic red button delete_event_button' id='{{_id}}'>
+                    <i class='trash icon'></i>
                 </button>
             </div>
             {{#each users}}
                 <img class='right floated ui avatar image' src='{{picture}}'>
             {{/each}}
         </div>
-    </a>
+    </div>
     <div class='ui modal' id='modal_{{_id}}'>
         <div class='ui header center aligned'>
             {{_ 'warning'}}
         </div>
         <div class='image content'>
-            <!--<div class='image'>-->
-                <!--<i class='warning sign yellow icon'></i>-->
-            <!--</div>-->
             <div class='description'>
                 {{_ 'remove_event_warning'}}
             </div>

@@ -15,5 +15,7 @@
   "warning": "Attenzione",
   "remove_event_warning": "Stai per cancellare questo evento, sei sicuro?",
   "no": "No",
-  "yes": "Si"
+  "yes": "Si",
+  "open": "Apri",
+  "or": "o"
 }
