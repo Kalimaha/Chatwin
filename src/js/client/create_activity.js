@@ -25,6 +25,9 @@
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('#activity_date').val((new Date()).toISOString().split('T')[0]);
+        var autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('activity_place')), {types: ['geocode']}
+        );
     };
 
 }());
