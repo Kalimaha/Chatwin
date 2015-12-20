@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session*/
+/*global Template, Router, Meteor, Session, $*/
 (function () {
 
     'use strict';
@@ -22,5 +22,9 @@
         }
 
     });
+
+    Template.create_activity_page.rendered = function () {
+        $('.ui.dropdown').dropdown();
+    };
 
 }());

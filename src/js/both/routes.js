@@ -146,6 +146,10 @@
                 single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
                 event_id: params.event_id
             };
+        },
+        onAfterAction: function () {
+            console.log('rendered');
+            $('.ui.dropdown').dropdown();
         }
     });
 
