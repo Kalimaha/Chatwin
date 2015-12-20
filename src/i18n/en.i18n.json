@@ -21,5 +21,17 @@
   "yes": "Yes",
   "open": "Open",
   "or": "or",
-  "show_activities": "Show Activities"
+  "show_activities": "Show Activities",
+  "activity_value": "Cost of this Activity",
+  "activity_value_placeholder": "How much does it cost?",
+  "activity_currency": "Currency",
+  "activity_date": "Date",
+  "activity_date_placeholder": "What is the date?",
+  "activity_place": "Place",
+  "activity_place_placeholder": "Where are you?",
+  "activity_friends": "Who paid?",
+  "select_friend": "Please select a friend",
+  "activity_email": "Email Address",
+  "activity_email_placeholder": "e.g. name.surname@example.com",
+  "i_paid": "I paid!"
 }

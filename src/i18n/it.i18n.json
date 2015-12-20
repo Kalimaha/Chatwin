@@ -18,5 +18,17 @@
   "yes": "Si",
   "open": "Apri",
   "or": "o",
-  "show_activities": "Mostra Attivitá"
+  "show_activities": "Mostra Attivitá",
+  "activity_value": "Costo di Questa Attivitá",
+  "activity_value_placeholder": "Quanto costa?",
+  "activity_currency": "Valuta",
+  "activity_date": "Data",
+  "activity_date_placeholder": "Che giorno é?",
+  "activity_place": "Luogo",
+  "activity_place_placeholder": "Dove sei?",
+  "activity_friends": "Chi ha pagato?",
+  "select_friend": "Seleziona un amico",
+  "activity_email": "Indirizzo Email",
+  "activity_email_placeholder": "e.g. nome.cognome@example.com",
+  "i_paid": "E io pago!"
 }

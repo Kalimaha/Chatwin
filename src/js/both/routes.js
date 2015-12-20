@@ -144,7 +144,8 @@
             var params = this.params;
             return {
                 single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
-                event_id: params.event_id
+                event_id: params.event_id,
+                user: Session.get('user')
             };
         },
         onAfterAction: function () {
