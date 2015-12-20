@@ -25,6 +25,7 @@
 
     Template.create_activity_page.rendered = function () {
         $('.ui.dropdown').dropdown();
+        $('.menu .item').tab();
     };
 
 }());
