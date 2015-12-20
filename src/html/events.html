@@ -33,6 +33,9 @@
         <div class='content'>
             <div class='header'>
                 {{name}}
+                <div class='right floated'>
+                    <i class='trash red icon delete_event_button' id='{{_id}}'></i>
+                </div>
             </div>
             <div class='description'>
                 {{activities.length}} {{_ 'activities'}}
@@ -44,15 +47,7 @@
         <div class='extra content'>
             <div class='left floated' style='margin-right: 1rem;'>
                 <button class='ui mini basic button show_activities_button' id='{{_id}}'>
-                    <i class='folder icon'></i>
-                </button>
-            </div>
-            <!--<div style='margin: 0 1rem 0 1rem;'>-->
-                <!--&nbsp;-->
-            <!--</div>-->
-            <div class='left floated'>
-                <button class='ui mini basic red button delete_event_button' id='{{_id}}'>
-                    <i class='trash icon'></i>
+                    <i class='folder icon'></i> {{_ 'show_activities'}}
                 </button>
             </div>
             {{#each users}}

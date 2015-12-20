@@ -67,18 +67,6 @@
         template: 'logout_page'
     });
 
-    Router.route('/activities', {
-        name: 'activities',
-        template: 'activities_page',
-        onBeforeAction: function () {
-            if (Session.get('user') === undefined) {
-                Router.go('login');
-            } else {
-                this.next();
-            }
-        }
-    });
-
     Router.route('/events', {
         name: 'events',
         template: 'events_page',
@@ -120,6 +108,23 @@
                 Router.go('login');
             } else {
                 this.next();
+            }
+        }
+    });
+
+    Router.route('/activities/:event_id', {
+        name: 'activities',
+        template: 'activities_page',
+        waitOn: function () {
+            Meteor.subscribe('events');
+        },
+        data: function () {
+            if (Session.get('user') === undefined) {
+                Router.go('login');
+            } else {
+                return {
+                    single_activities: Meteor.Events.find({}, {_id: 0, activities: 1})
+                };
             }
         }
     });

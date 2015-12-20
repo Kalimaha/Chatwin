@@ -7,7 +7,7 @@
         'click #create_button': function () {
             Router.go('create_event');
         },
-        'click .delete_event_button': function (e) {
+        'click .delete_event_button': function () {
             var that = this;
             $('#modal_' + this._id).modal({
                 selector: {
@@ -30,6 +30,10 @@
                     return true;
                 }
             }).modal('show');
+        },
+        'click .show_activities_button': function () {
+            console.log(this);
+            Router.go('activities', {event_id: this._id});
         }
     });
 

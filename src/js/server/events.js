@@ -46,6 +46,9 @@
                 return result;
             });
         },
+        show_activities: function (event_id) {
+            alert(event_id);
+        },
         add_activity: function (event_id) {
             return Meteor.Events.update(
                 event_id,
