@@ -43,20 +43,37 @@
                 <label for='activity_friends'>
                     {{_ 'activity_friends'}}
                 </label>
-                <div class='ui fluid multiple search selection dropdown'>
-                    <input type='hidden' name='user'>
-                    <i class='dropdown icon'></i>
-                    <div class='default text'>Select Friend</div>
-                    <div class='menu'>
-                        <div class='item' data-value='jenny'>
-                            <!--<img class="ui mini avatar image" src="/images/avatar/small/jenny.jpg">-->
-                            Jenny Hess
-                        </div>
-                        <div class='item' data-value='pippo'>
-                            <!--<img class="ui mini avatar image" src="/images/avatar/small/jenny.jpg">-->
-                            Pippo
+                <div class='ui top attached tabular menu'>
+                    <a class='active item'>
+                        <i class='facebook icon'></i>
+                    </a>
+                    <a class='item'>
+                        <i class='google plus icon'></i>
+                    </a>
+                    <a class='item'>
+                        <i class='mail icon'></i>
+                    </a>
+                </div>
+                <div class='ui bottom attached active tab segment' data-tab='first'>
+                    <div class='ui fluid multiple search selection dropdown'>
+                        <input type='hidden' name='user'>
+                        <i class='dropdown icon'></i>
+                        <div class='default text'>Select Friend</div>
+                        <div class='menu'>
+                            {{#each single_friends}}
+                                <div class='item' data-value='{{_id}}'>
+                                    <img class='ui mini avatar image' src='{{picture}}'>
+                                    {{name}}
+                                </div>
+                            {{/each}}
                         </div>
                     </div>
+                </div>
+                <div class='ui bottom attached tab segment' data-tab='second'>
+                    Google
+                </div>
+                <div class='ui bottom attached tab segment' data-tab='third'>
+                    Mail
                 </div>
             </div>
             <!--<div class='field'>-->
