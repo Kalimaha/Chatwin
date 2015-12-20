@@ -112,7 +112,7 @@
         }
     });
 
-    Router.route('/activities/:event_id', {
+    Router.route('/activities', {
         name: 'activities',
         template: 'activities_page',
         waitOn: function () {
@@ -121,9 +121,12 @@
         data: function () {
             if (Session.get('user') === undefined) {
                 Router.go('login');
+            } else if (Session.get('event_id') === undefined) {
+                Session.set('errorMessage', 'Event ID is undefined');
+                Router.go('error');
             } else {
                 return {
-                    single_activities: Meteor.Events.find({}, {_id: 0, activities: 1})
+                    single_activities: Meteor.Events.find({_id: Session.get('event_id')}, {_id: 0, activities: 1})
                 };
             }
         }
