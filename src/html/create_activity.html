@@ -10,36 +10,29 @@
                 </label>
                 <input class='form-control' id='activity_title' placeholder='{{_ "create_activity_placeholder"}}'>
             </div>
-            <div class='two fields'>
-                <div class='field'>
-                    <label for='activity_value'>
-                        {{_ 'activity_value'}}
-                    </label>
+            <div class='field'>
+                <label for='activity_value'>
+                    {{_ 'activity_value'}}
+                </label>
+                <div class='ui action input'>
                     <input class='form-control' id='activity_value' type='number' placeholder='{{_ "activity_value_placeholder"}}'>
-                </div>
-                <div class='field'>
-                    <label for='activity_currency'>
-                        {{_ 'activity_currency'}}
-                    </label>
-                    <select class='ui fluid dropdown' id='activity_currency'>
+                    <select class='ui compact selection dropdown' id='activity_currency'>
                         <option value='EUR'>&euro;</option>
                         <option value='USD'>&dollar;</option>
                     </select>
                 </div>
             </div>
-            <div class='two fields'>
-                <div class='field'>
-                    <label for='activity_date'>
-                        {{_ 'activity_date'}}
-                    </label>
-                    <input class='form-control' id='activity_date' type='date' placeholder='{{_ "activity_date_placeholder"}}'>
-                </div>
-                <div class='field'>
-                    <label for='activity_place'>
-                        {{_ 'activity_place'}}
-                    </label>
-                    <input class='form-control' id='activity_place' placeholder='{{_ "activity_place_placeholder"}}'>
-                </div>
+            <div class='field'>
+                <label for='activity_date'>
+                    {{_ 'activity_date'}}
+                </label>
+                <input class='form-control' id='activity_date' type='date' placeholder='{{_ "activity_date_placeholder"}}'>
+            </div>
+            <div class='field'>
+                <label for='activity_place'>
+                    {{_ 'activity_place'}}
+                </label>
+                <input class='form-control' id='activity_place' placeholder='{{_ "activity_place_placeholder"}}'>
             </div>
             <div class='field'>
                 <label for='activity_friends'>
@@ -100,10 +93,11 @@
                     </div>
                 </div>
             </div>
-            <button class='ui green button add_activity_button' id='{{event_id}}'>
-                <i class='wizard icon'></i> {{_ 'create_activity'}}
-            </button>
         </form>
+        <div class='v-space'></div>
+        <button class='ui green button add_activity_button' id='{{event_id}}'>
+            <i class='wizard icon'></i> {{_ 'create_activity'}}
+        </button>
         <div class='v-space'></div>
         <div class='v-space-half'></div>
     </div>
