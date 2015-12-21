@@ -33,5 +33,7 @@
   "select_friend": "Please select a friend",
   "activity_email": "Email Address",
   "activity_email_placeholder": "e.g. name.surname@example.com",
-  "i_paid": "I paid!"
+  "i_paid": "I paid!",
+  "ok": "OK",
+  "please_insert_name_event": "Please insert a name for your event. What about 'Trip to London'?"
 }

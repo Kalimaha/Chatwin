@@ -4,12 +4,15 @@
     'use strict';
 
     Meteor.Events.allow({
+
         'insert': function () {
             return true;
         },
+
         'remove': function () {
             return true;
         }
+
     });
 
     Meteor.publish('events', function () {
@@ -17,19 +20,17 @@
     });
 
     Meteor.methods({
-        create_event: function (event_name, user) {
-            if (user === undefined || user.is_logged === false) {
-                throw new Meteor.Error(500, 'Undefined user.');
-            }
+
+        create_event: function (event_name) {
             return Meteor.Events.insert({
                 name: event_name,
                 creation_date: new Date(),
                 date_last_update: new Date(),
-                owner: user.user_id,
+                owner: Meteor.userId(),
                 activities: [],
                 total: 0,
                 users: [
-                    user
+                    Meteor.user()
                 ]
             }, function (error, result) {
                 if (error) {
@@ -38,6 +39,7 @@
                 return result;
             });
         },
+
         remove_event: function (event_id) {
             return Meteor.Events.remove(event_id, function (error, result) {
                 if (error) {
@@ -46,9 +48,11 @@
                 return result;
             });
         },
+
         show_activities: function (event_id) {
             alert(event_id);
         },
+
         add_activity: function (event_id) {
             return Meteor.Events.update(
                 event_id,
@@ -67,6 +71,7 @@
                 }
             );
         }
+
     });
 
 }());

@@ -46,7 +46,7 @@
         data: function () {
             return {
                 single_events: Meteor.Events.find({
-                    "users.user_id": {
+                    "users._id": {
                         $in: [
                             Meteor.userId()
                         ]
@@ -70,9 +70,10 @@
             return Meteor.subscribe('events');
         },
         onBeforeAction: function () {
-            if (Session.get('user') === undefined) {
+            if (Meteor.loggingIn() || Meteor.userId() === undefined) {
                 Router.go('login');
             } else {
+                console.log('routing to next');
                 this.next();
             }
         }

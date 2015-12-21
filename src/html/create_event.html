@@ -10,9 +10,16 @@
                 </label>
                 <input class='form-control' id='event_name' placeholder='{{_ "create_event_placeholder"}}'>
             </div>
-            <button class='ui button' id='create_event_button'>
-                <i class='wizard icon'></i> {{_ 'create_event'}}
-            </button>
+            <div class="ui warning message">
+                <div class="header">Could you check something!</div>
+                <ul class="list">
+                    <li>That e-mail has been subscribed, but you have not yet clicked the verification link in your e-mail.</li>
+                </ul>
+            </div>
         </form>
+        <div class='v-space-half'></div>
+        <button class='ui green button' id='create_event_button'>
+            <i class='wizard icon'></i> {{_ 'create_event'}}
+        </button>
     </div>
 </template>

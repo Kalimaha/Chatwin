@@ -9,10 +9,4 @@
         }
     });
 
-    Template.error_page.events({
-        'click #back_button': function () {
-            Router.go('create_event');
-        }
-    });
-
 }());
