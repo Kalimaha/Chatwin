@@ -26,9 +26,6 @@
 
     Router.route('/logout', {
         name: 'logout',
-        //waitOn: function () {
-        //    return Meteor.subscribe('status');
-        //},
         before: function () {
             Meteor.logout();
             Router.go('login');
