@@ -9,56 +9,29 @@
 
     Router.route('/', {
         name: 'home',
-        waitOn: function () {
-            return Meteor.subscribe('status');
-        },
         before: function () {
-            Meteor.call('find_meteor_user', function (error, result) {
-                if (error) {
-                    Session.set('errorMessage', error.reason);
-                    Router.go('error');
-                }
-                if (result === undefined) {
-                    Meteor.call('create_meteor_user', function (error, result) {
-                        if (error) {
-                            Session.set('errorMessage', error.reason);
-                            Router.go('error');
-                        }
-                        Router.go('login');
-                    });
-                } else {
-                    if (result.is_logged === true) {
-                        Router.go('events');
-                    } else {
-                        Router.go('login');
-                    }
-                }
-            });
+            if (Meteor.loggingIn() || Meteor.userId() === undefined) {
+                Router.go('login');
+            } else {
+                Router.go('events');
+            }
         }
     });
 
     Router.route('/login', {
         name: 'login',
         template: 'login_page',
-        layoutTemplate: null,
-        waitOn: function () {
-            return Meteor.subscribe('getUserData');
-        }
+        layoutTemplate: null
     });
 
     Router.route('/logout', {
         name: 'logout',
-        waitOn: function () {
-            return Meteor.subscribe('status');
-        },
+        //waitOn: function () {
+        //    return Meteor.subscribe('status');
+        //},
         before: function () {
-            Meteor.call('logout_user', function (error) {
-                if (error) {
-                    Session.set('errorMessage', error.reason);
-                    Router.go('error');
-                }
-            });
-            Router.go('logout_success');
+            Meteor.logout();
+            Router.go('login');
         }
     });
 
@@ -74,22 +47,18 @@
             return Meteor.subscribe('events');
         },
         data: function () {
-            if (Session.get('user') === undefined) {
-                Router.go('login');
-            } else {
-                return {
-                    single_events: Meteor.Events.find({
-                        "users.user_id": {
-                            $in: [
-                                Session.get('user').user_id
-                            ]
-                        }
-                    })
-                };
-            }
+            return {
+                single_events: Meteor.Events.find({
+                    "users.user_id": {
+                        $in: [
+                            Meteor.userId()
+                        ]
+                    }
+                })
+            };
         },
         onBeforeAction: function () {
-            if (Session.get('user') === undefined) {
+            if (Meteor.loggingIn() || Meteor.userId() === undefined) {
                 Router.go('login');
             } else {
                 this.next();
