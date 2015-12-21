@@ -4,12 +4,19 @@
     'use strict';
 
     Router.configure({
-        layoutTemplate: 'footer'
+        layoutTemplate: 'footer',
+        onBeforeAction: function () {
+            if (Meteor.loggingIn() || Meteor.userId() === undefined) {
+                Router.go('login');
+            } else {
+                this.next();
+            }
+        }
     });
 
     Router.route('/', {
         name: 'home',
-        before: function () {
+        onBeforeAction: function () {
             if (Meteor.loggingIn() || Meteor.userId() === undefined) {
                 Router.go('login');
             } else {
@@ -26,7 +33,7 @@
 
     Router.route('/logout', {
         name: 'logout',
-        before: function () {
+        onBeforeAction: function () {
             Meteor.logout();
             Router.go('login');
         }
@@ -68,14 +75,6 @@
         template: 'create_event_page',
         waitOn: function () {
             return Meteor.subscribe('events');
-        },
-        onBeforeAction: function () {
-            if (Meteor.loggingIn() || Meteor.userId() === undefined) {
-                Router.go('login');
-            } else {
-                console.log('routing to next');
-                this.next();
-            }
         }
     });
 
@@ -114,10 +113,6 @@
                 event_id: params.event_id,
                 user: Session.get('user')
             };
-        },
-        onAfterAction: function () {
-            $('.ui.dropdown').dropdown();
-            $('.tabular.menu .item').tab();
         }
     });
 
