@@ -10,11 +10,11 @@
                 </label>
                 <input class='form-control' id='event_name' placeholder='{{_ "create_event_placeholder"}}'>
             </div>
-            <div class="ui warning message">
-                <div class="header">Could you check something!</div>
-                <ul class="list">
-                    <li>That e-mail has been subscribed, but you have not yet clicked the verification link in your e-mail.</li>
-                </ul>
+            <div class='ui warning message'>
+                <div class='header'>
+                    {{_ 'warning'}}
+                </div>
+                {{_ 'please_insert_name_event'}}
             </div>
         </form>
         <div class='v-space-half'></div>
