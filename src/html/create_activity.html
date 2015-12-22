@@ -1,5 +1,5 @@
 <template name='create_activity_page'>
-    {{> navbar navbar_title='New Activity' show_create_button=false show_back_button=true}}
+    {{> navbar navbar_title='Create New Activity' show_create_button=false show_back_button=true}}
     <div class='v-space'></div>
     <div class='v-space-half'></div>
     <div class='ui container'>
@@ -8,19 +8,36 @@
                 <label for='activity_title'>
                     {{_ 'activity_name'}}
                 </label>
-                <input class='form-control' id='activity_title' placeholder='{{_ "create_activity_placeholder"}}'>
+                <input class='form-control activity_form' id='activity_title' placeholder='{{_ "create_activity_placeholder"}}'>
+            </div>
+            <div class='ui warning message'>
+                <div class='header'>
+                    {{_ 'warning'}}
+                </div>
+                <ul class='list'>
+                    <li>Please insert activity name</li>
+                </ul>
             </div>
             <div class='field'>
                 <label for='activity_value'>
                     {{_ 'activity_value'}}
                 </label>
                 <div class='ui action input'>
-                    <input class='form-control' id='activity_value' type='number' placeholder='{{_ "activity_value_placeholder"}}'>
+                    <input class='form-control activity_form' id='activity_value' type='number' placeholder='{{_ "activity_value_placeholder"}}'>
                     <select class='ui compact selection dropdown' id='activity_currency'>
                         <option value='EUR'>&euro;</option>
                         <option value='USD'>&dollar;</option>
                     </select>
                 </div>
+            </div>
+            <div class='ui warning message'>
+                <div class='header'>
+                    {{_ 'warning'}}
+                </div>
+                <ul class='list'>
+                    <li>Please insert activity value</li>
+                    <li>Please make sure that you inserted a number</li>
+                </ul>
             </div>
             <div class='field'>
                 <label for='activity_date'>
@@ -32,7 +49,24 @@
                 <label for='activity_place'>
                     {{_ 'activity_place'}}
                 </label>
-                <input class='form-control' id='activity_place' placeholder='{{_ "activity_place_placeholder"}}'>
+                <div class='ui top attached tabular menu'>
+                    <a class='active item' data-tab='facebook-maps'>
+                        <i class='facebook icon'></i>
+                    </a>
+                    <a class='item' data-tab='google-maps'>
+                        <i class='fa fa-map'></i>
+                    </a>
+                </div>
+                <div class='ui bottom attached active tab segment' data-tab='facebook-maps'>
+                    <div class='field'>
+                        <input class='form-control' id='activity_place_facebook' placeholder='{{_ "activity_place_placeholder"}}'>
+                    </div>
+                </div>
+                <div class='ui bottom attached tab segment' data-tab='google-maps'>
+                    <div class='field'>
+                        <input class='form-control' id='activity_place_google' placeholder='{{_ "activity_place_placeholder"}}'>
+                    </div>
+                </div>
             </div>
             <div class='field'>
                 <label for='activity_friends'>
@@ -52,7 +86,7 @@
                 <div class='ui bottom attached active tab segment' data-tab='user'>
                     <div class='field'>
                         <div class='ui checkbox'>
-                            <input type='checkbox' tabindex='0' class='hidden'>
+                            <input type='checkbox' tabindex='0' class='hidden activity_form'>
                             <label>
                                 {{_ 'i_paid'}} <i class='frown icon'></i>
                             </label>
@@ -60,11 +94,8 @@
                     </div>
                 </div>
                 <div class='ui bottom attached tab segment' data-tab='friends'>
-                    <label>
-                        Select one of your friends
-                    </label>
                     <div class='ui fluid search selection dropdown'>
-                        <input type='hidden' name='user'>
+                        <input type='hidden' name='user' class='activity_form'>
                         <i class='dropdown icon'></i>
                         <div class='default text'>
                             {{_ 'select_friend'}}
@@ -81,10 +112,7 @@
                 </div>
                 <div class='ui bottom attached tab segment' data-tab='email'>
                     <div class='field'>
-                        <label for='activity_email'>
-                            {{_ 'activity_email'}}
-                        </label>
-                        <input class='form-control' id='activity_email' placeholder='{{_ "activity_email_placeholder"}}'>
+                        <input class='form-control activity_form' id='activity_email' placeholder='{{_ "activity_email_placeholder"}}'>
                     </div>
                 </div>
             </div>
@@ -95,5 +123,41 @@
         </button>
         <div class='v-space'></div>
         <div class='v-space-half'></div>
+    </div>
+    <div class='ui modal' id='modal_warning_{{event_id}}'>
+        <div class='ui header center aligned'>
+            {{_ 'warning'}}
+        </div>
+        <div class='image content'>
+            <div class='description'>
+                {{_ 'please_check_your_form'}}
+            </div>
+        </div>
+        <div class='actions'>
+            <div class='ui tiny button ok green'>
+                <i class='remove icon'></i>
+                {{_ 'ok'}}
+            </div>
+        </div>
+    </div>
+    <div class='ui modal' id='modal_summary_{{event_id}}'>
+        <div class='ui header center aligned'>
+            {{_ 'warning'}}
+        </div>
+        <div class='image content'>
+            <div class='description'>
+                {{_ 'summary'}}
+            </div>
+        </div>
+        <div class='actions'>
+            <div class='ui tiny button cancel red'>
+                <i class='remove icon'></i>
+                {{_ 'no'}}
+            </div>
+            <div class='ui tiny button ok green'>
+                <i class='checkmark icon'></i>
+                {{_ 'yes'}}
+            </div>
+        </div>
     </div>
 </template>

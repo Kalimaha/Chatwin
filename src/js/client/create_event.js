@@ -21,7 +21,7 @@
                     }
                 });
             } else {
-                $('.field').addClass('warning');
+                $('.field').addClass('error');
                 $('.form').addClass('warning');
             }
         },
@@ -29,10 +29,10 @@
         'keyup #event_name': function () {
             if ($('#event_name').val().length > 0) {
                 $('.form').removeClass('warning');
-                $('.field').removeClass('warning');
+                $('.field').removeClass('error');
             } else {
                 $('.form').addClass('warning');
-                $('.field').addClass('warning');
+                $('.field').addClass('error');
             }
         }
 

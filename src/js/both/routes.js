@@ -108,7 +108,6 @@
         },
         data: function () {
             var params = this.params;
-            console.log(Meteor.user());
             return {
                 single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
                 event_id: params.event_id,
