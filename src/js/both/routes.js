@@ -25,6 +25,12 @@
         }
     });
 
+    Router.route('/info', {
+        name: 'info',
+        template: 'info_page',
+        onBeforeAction: null
+    });
+
     Router.route('/login', {
         name: 'login',
         template: 'login_page',
@@ -104,7 +110,7 @@
             return {
                 single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
                 event_id: params.event_id,
-                user: Session.get('user')
+                user: Meteor.user()
             };
         }
     });

@@ -11,4 +11,6 @@
 
     Meteor.FacebookFriends = new Ground.Collection('facebook_friends');
 
+    Ground.Collection(Meteor.users);
+
 }());

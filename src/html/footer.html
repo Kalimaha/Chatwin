@@ -1,6 +1,6 @@
 <template name='footer'>
     {{> yield}}
-    <div class='ui four item bottom fixed menu'>
+    <div class='ui five item bottom fixed menu'>
         <a class='item' href="{{pathFor route='home'}}">
             <i class='fa fa-home'></i>
         </a>
@@ -9,6 +9,9 @@
         </a>
         <a class='item'>
             <i class='fa fa-cog'></i>
+        </a>
+        <a class='item' href="{{pathFor route='info'}}">
+            <i class='info icon'></i>
         </a>
         <a class='item' href="{{pathFor route='logout'}}">
             <i class='fa fa-sign-out'></i>

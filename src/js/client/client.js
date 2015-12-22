@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session, TAPi18n, window*/
+/*global Template, Router, Meteor, Session, TAPi18n, window, Ground*/
 (function () {
 
     'use strict';

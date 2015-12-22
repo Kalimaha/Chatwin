@@ -31,5 +31,6 @@
   "activity_email": "Indirizzo Email",
   "activity_email_placeholder": "e.g. nome.cognome@example.com",
   "i_paid": "E io pago!",
-  "please_insert_name_event": "Per favore seleziona un nome per il tuo evento. Che ne pensi di 'Viaggio a Caserta'?"
+  "please_insert_name_event": "Per favore seleziona un nome per il tuo evento. Che ne pensi di <i>Viaggio a Caserta</i>?",
+  "chatwin": "Chatwin"
 }
