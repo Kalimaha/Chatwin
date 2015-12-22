@@ -4,7 +4,10 @@
     <div class='v-space-half'></div>
     <div class='ui container'>
         <form class='ui form'>
-            <div class='field'>
+            <div class='ui horizontal divider'>
+                Required Fields
+            </div>
+            <div class='required field'>
                 <label for='activity_title'>
                     {{_ 'activity_name'}}
                 </label>
@@ -18,7 +21,7 @@
                     <li>Please insert activity name</li>
                 </ul>
             </div>
-            <div class='field'>
+            <div class='required field'>
                 <label for='activity_value'>
                     {{_ 'activity_value'}}
                 </label>
@@ -38,6 +41,71 @@
                     <li>Please insert activity value</li>
                     <li>Please make sure that you inserted a number</li>
                 </ul>
+            </div>
+            <div class='required field' id='who_paid_tab'>
+                <label for='activity_friends'>
+                    {{_ 'activity_friends'}}
+                </label>
+                <div class='ui top attached tabular menu'>
+                    <a class='active item' data-tab='user'>
+                        <i class='user icon'></i>
+                    </a>
+                    <a class='item' data-tab='friends'>
+                        <i class='users icon'></i>
+                    </a>
+                    <a class='item' data-tab='email'>
+                        <i class='mail icon'></i>
+                    </a>
+                </div>
+                <div class='ui bottom attached active tab segment' data-tab='user'>
+                    <div class='inline field'>
+                        <div class='ui toggle checkbox'>
+                            <input id='i_paid' type='checkbox' tabindex='0' class='hidden activity_form'>
+                            <label>
+                                {{_ 'i_paid'}} <i class='frown icon'></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class='ui bottom attached tab segment' data-tab='friends'>
+                    <div class='ui fluid search selection dropdown'>
+                        <input id='friend_paid' type='hidden' name='user' class='activity_form'>
+                        <i class='dropdown icon'></i>
+                        <div class='default text'>
+                            {{_ 'select_friend'}}
+                        </div>
+                        <div class='menu'>
+                            <div class='item' data-value=''>
+                                <i class='user icon'></i>
+                                Please select a friend...
+                            </div>
+                            {{#each single_friends}}
+                                <div class='item' data-value='{{_id}}'>
+                                    <img class='ui mini avatar image' src='{{picture}}'>
+                                    {{name}}
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                <div class='ui bottom attached tab segment' data-tab='email'>
+                    <div class='field'>
+                        <input class='form-control activity_form' id='email_paid' placeholder='{{_ "activity_email_placeholder"}}'>
+                    </div>
+                </div>
+            </div>
+            <div class='ui warning message'>
+                <div class='header'>
+                    {{_ 'warning'}}
+                </div>
+                <ul class='list'>
+                    <li>Check the {{_ 'i_paid'}} box, or</li>
+                    <li>Select a friend from the list, or</li>
+                    <li>Add a friend's email address</li>
+                </ul>
+            </div>
+            <div class='ui horizontal divider'>
+                Optional Fields
             </div>
             <div class='field'>
                 <label for='activity_date'>
@@ -68,54 +136,6 @@
                     </div>
                 </div>
             </div>
-            <div class='field'>
-                <label for='activity_friends'>
-                    {{_ 'activity_friends'}}
-                </label>
-                <div class='ui top attached tabular menu'>
-                    <a class='active item' data-tab='user'>
-                        <i class='user icon'></i>
-                    </a>
-                    <a class='item' data-tab='friends'>
-                        <i class='users icon'></i>
-                    </a>
-                    <a class='item' data-tab='email'>
-                        <i class='mail icon'></i>
-                    </a>
-                </div>
-                <div class='ui bottom attached active tab segment' data-tab='user'>
-                    <div class='field'>
-                        <div class='ui checkbox'>
-                            <input type='checkbox' tabindex='0' class='hidden activity_form'>
-                            <label>
-                                {{_ 'i_paid'}} <i class='frown icon'></i>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class='ui bottom attached tab segment' data-tab='friends'>
-                    <div class='ui fluid search selection dropdown'>
-                        <input type='hidden' name='user' class='activity_form'>
-                        <i class='dropdown icon'></i>
-                        <div class='default text'>
-                            {{_ 'select_friend'}}
-                        </div>
-                        <div class='menu'>
-                            {{#each single_friends}}
-                                <div class='item' data-value='{{_id}}'>
-                                    <img class='ui mini avatar image' src='{{picture}}'>
-                                    {{name}}
-                                </div>
-                            {{/each}}
-                        </div>
-                    </div>
-                </div>
-                <div class='ui bottom attached tab segment' data-tab='email'>
-                    <div class='field'>
-                        <input class='form-control activity_form' id='activity_email' placeholder='{{_ "activity_email_placeholder"}}'>
-                    </div>
-                </div>
-            </div>
         </form>
         <div class='v-space'></div>
         <button class='ui green button add_activity_button' id='{{event_id}}'>
@@ -142,11 +162,11 @@
     </div>
     <div class='ui modal' id='modal_summary_{{event_id}}'>
         <div class='ui header center aligned'>
-            {{_ 'warning'}}
+            {{_ 'summary'}}
         </div>
         <div class='image content'>
             <div class='description'>
-                {{_ 'summary'}}
+                <span id='summary'></span>
             </div>
         </div>
         <div class='actions'>
