@@ -3,6 +3,10 @@
 
     'use strict';
 
+    Meteor.publish('getUserData', function () {
+        return Meteor.users.find({_id: this.userId});
+    });
+
     ServiceConfiguration.configurations.remove({
         service: 'facebook'
     });

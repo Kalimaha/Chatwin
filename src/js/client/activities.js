@@ -5,7 +5,6 @@
 
     Template.activities_page.events({
         'click #create_button': function () {
-            console.log(this);
             if (Session.get('event_id') === undefined) {
                 Session.set('errorMessage', 'Event ID is undefined');
                 Router.go('error');

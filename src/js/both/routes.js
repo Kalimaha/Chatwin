@@ -103,10 +103,12 @@
         waitOn: function () {
             Meteor.subscribe('activities');
             Meteor.subscribe('facebook_friends');
-            Meteor.call('get_facebook_friends');
+            Meteor.subscribe('getUserData');
+            Meteor.subscribe('events');
         },
         data: function () {
             var params = this.params;
+            console.log(Meteor.user());
             return {
                 single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
                 event_id: params.event_id,

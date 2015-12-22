@@ -16,7 +16,6 @@
                     Session.set('errorMessage', 'Facebook login failed.');
                     Router.go('error');
                 }
-                /* picture = 'http://graph.facebook.com/' + Meteor.user().services.facebook.id + '/picture/?type=large' */
             });
         },
 
@@ -31,7 +30,6 @@
                     Session.set('errorMessage', 'Google login failed.');
                     Router.go('error');
                 }
-                /*picture = Meteor.user().services.google.picture*/
             });
         }
 

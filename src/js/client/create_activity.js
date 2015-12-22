@@ -22,12 +22,17 @@
     });
 
     Template.create_activity_page.rendered = function () {
+        var autocomplete;
+        $('#activity_date').val((new Date()).toISOString().split('T')[0]);
+        try {
+            autocomplete = new google.maps.places.Autocomplete(
+                (document.getElementById('activity_place')), {types: ['geocode']}
+            );
+        } catch (e) {
+            console.log(e);
+        }
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
-        $('#activity_date').val((new Date()).toISOString().split('T')[0]);
-        var autocomplete = new google.maps.places.Autocomplete(
-            (document.getElementById('activity_place')), {types: ['geocode']}
-        );
     };
 
 }());
