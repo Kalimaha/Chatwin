@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session, $*/
+/*global Template, Router, Meteor, Session, $, moment*/
 (function () {
 
     'use strict';
@@ -69,7 +69,15 @@
         },
 
         'change #activity_title': function () {
-            $('#summary_name').html($('#activity_title').val());
+            $('#summary_name').html($('#activity_title').val().toLowerCase());
+        },
+
+        'change #activity_place_google': function () {
+            $('#summary_place').html($('#activity_place_google').val());
+        },
+
+        'change #activity_date': function () {
+            $('#summary_date').html($('#activity_date').val());
         },
 
         'keyup #email_paid': function () {
@@ -151,11 +159,13 @@
                 valid: false
             };
         }
-        if (!Meteor.isValidEmailAddress()) {
-            return {
-                id: 'email_paid',
-                valid: false
-            };
+        if ($('#who_paid_tab').find('a.active').data('tab') === 'email') {
+            if (!Meteor.isValidEmailAddress()) {
+                return {
+                    id: 'email_paid',
+                    valid: false
+                };
+            }
         }
         return true;
     };
@@ -163,6 +173,7 @@
     Template.create_activity_page.rendered = function () {
         var autocomplete;
         $('#activity_date').val((new Date()).toISOString().split('T')[0]);
+        $('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
         autocomplete = new google.maps.places.Autocomplete(
             (document.getElementById('activity_place_google')), {types: ['geocode']}
         );
