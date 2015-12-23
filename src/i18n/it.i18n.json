@@ -43,5 +43,7 @@
   "add_friend_email": "Aggiungere l'indirizzo email di un amico",
   "paid": "ha pagato",
   "for": "per",
-  "is_it_correct": "É giusto?"
+  "is_it_correct": "É giusto?",
+  "summary": "Riepilogo",
+  "insert_valid_email": "<i>inserire un indirizzo email valido</i>"
 }

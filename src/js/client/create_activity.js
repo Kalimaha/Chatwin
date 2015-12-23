@@ -65,18 +65,26 @@
         },
 
         'change #activity_value': function () {
-            $('#summary_value').html($('#activity_value').val().toFixed(2));
+            $('#summary_value').html(parseFloat($('#activity_value').val()).toFixed(2));
         },
 
         'change #activity_title': function () {
             $('#summary_name').html($('#activity_title').val());
+        },
+
+        'keyup #email_paid': function () {
+            if (Meteor.isValidEmailAddress()) {
+                $('#email_paid').parent().removeClass('error');
+            } else {
+                $('#email_paid').parent().addClass('error');
+            }
         }
 
     });
 
     Meteor.who_paid = function () {
         var who;
-        switch ($('#who_paid_tab a.active').data('tab')) {
+        switch ($('#who_paid_tab').find('a.active').data('tab')) {
         case 'user':
             who = Meteor.user().profile.name;
             break;
@@ -108,6 +116,11 @@
         }
     };
 
+    Meteor.isValidEmailAddress = function () {
+        var pattern = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+        return pattern.test($('#email_paid').val());
+    };
+
     Meteor.isValidActivityForm = function () {
         var t = $('#activity_title'),
             v = $('#activity_value'),
@@ -135,6 +148,12 @@
         if (p1.is(':checked') === false && (p2.val() === undefined || p2.val().length < 1) && (p3.val() === undefined || p3.val().length < 1)) {
             return {
                 id: ['i_paid', 'friend_paid', 'email_paid'],
+                valid: false
+            };
+        }
+        if (!Meteor.isValidEmailAddress()) {
+            return {
+                id: 'email_paid',
                 valid: false
             };
         }

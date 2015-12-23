@@ -47,5 +47,7 @@
   "add_friend_email": "Add a friend's email address",
   "paid": "paid",
   "for": "for",
-  "is_it_correct": "Is it correct?"
+  "is_it_correct": "Is it correct?",
+  "summary": "Summary",
+  "insert_valid_email": "<i>insert a valid email address</i>"
 }
