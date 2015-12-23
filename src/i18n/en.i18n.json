@@ -35,5 +35,17 @@
   "activity_email_placeholder": "e.g. name.surname@example.com",
   "i_paid": "I paid!",
   "ok": "OK",
-  "please_insert_name_event": "Please insert a name for your event. What about 'Trip to London'?"
+  "please_insert_name_event": "Please insert a name for your event. What about <i>Trip to London</i>?",
+  "chatwin": "Chatwin",
+  "required_fields": "Required Fields",
+  "optional_fields": "Optional Fields",
+  "please_insert_activity_name": "Please insert activity name",
+  "please_insert_activity_value": "Please insert activity value",
+  "please_select_a_friend": "Please select a friend...",
+  "please_check_the_i_paid_box": "Check the <i>I paid!</i> box, or",
+  "select_friend_from_list": "Select a friend from the list, or",
+  "add_friend_email": "Add a friend's email address",
+  "paid": "paid",
+  "for": "for",
+  "is_it_correct": "Is it correct?"
 }

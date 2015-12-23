@@ -5,7 +5,7 @@
     <div class='ui container'>
         <form class='ui form'>
             <div class='ui horizontal divider'>
-                Required Fields
+                {{_ 'required_fields'}}
             </div>
             <div class='required field'>
                 <label for='activity_title'>
@@ -18,7 +18,9 @@
                     {{_ 'warning'}}
                 </div>
                 <ul class='list'>
-                    <li>Please insert activity name</li>
+                    <li>
+                        {{_ 'please_insert_activity_name'}}
+                    </li>
                 </ul>
             </div>
             <div class='required field'>
@@ -38,8 +40,9 @@
                     {{_ 'warning'}}
                 </div>
                 <ul class='list'>
-                    <li>Please insert activity value</li>
-                    <li>Please make sure that you inserted a number</li>
+                    <li>
+                        {{_ 'please_insert_activity_value'}}
+                    </li>
                 </ul>
             </div>
             <div class='required field' id='who_paid_tab'>
@@ -77,7 +80,7 @@
                         <div class='menu'>
                             <div class='item' data-value=''>
                                 <i class='user icon'></i>
-                                Please select a friend...
+                                {{_ 'please_select_a_friend'}}
                             </div>
                             {{#each single_friends}}
                                 <div class='item' data-value='{{_id}}'>
@@ -99,13 +102,19 @@
                     {{_ 'warning'}}
                 </div>
                 <ul class='list'>
-                    <li>Check the {{_ 'i_paid'}} box, or</li>
-                    <li>Select a friend from the list, or</li>
-                    <li>Add a friend's email address</li>
+                    <li>
+                        {{_ 'please_check_the_i_paid_box'}}
+                    </li>
+                    <li>
+                        {{_ 'select_friend_from_list'}}
+                    </li>
+                    <li>
+                        {{_ 'add_friend_email'}}
+                    </li>
                 </ul>
             </div>
             <div class='ui horizontal divider'>
-                Optional Fields
+                {{_ 'optional_fields'}}
             </div>
             <div class='field'>
                 <label for='activity_date'>
@@ -166,7 +175,9 @@
         </div>
         <div class='image content'>
             <div class='description'>
-                <span id='summary'></span>
+                <span id='summary_user'></span> {{_ 'paid'}} <span id='summary_currency'>$</span>
+                <span id='summary_value'></span> {{_ 'for'}} <span id='summary_name'></span>.
+                {{_ 'is_it_correct'}}
             </div>
         </div>
         <div class='actions'>

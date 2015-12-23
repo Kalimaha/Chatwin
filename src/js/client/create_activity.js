@@ -24,7 +24,6 @@
                     }
                 }).modal('show');
             } else {
-                Meteor.create_summary();
                 $('#modal_summary_' + this.event_id).modal({
                     selector: {
                         approve  : '.actions .ok',
@@ -47,29 +46,48 @@
 
         'change .activity_form': function () {
             Meteor.validate_form();
+        },
+
+        'change #activity_currency': function () {
+            $('#summary_currency').html($('#activity_currency').find('option:selected').text());
+        },
+
+        'change #i_paid': function () {
+            $('#summary_user').html(Meteor.who_paid());
+        },
+
+        'change #friend_paid': function () {
+            $('#summary_user').html(Meteor.who_paid());
+        },
+
+        'change #email_paid': function () {
+            $('#summary_user').html(Meteor.who_paid());
+        },
+
+        'change #activity_value': function () {
+            $('#summary_value').html($('#activity_value').val().toFixed(2));
+        },
+
+        'change #activity_title': function () {
+            $('#summary_name').html($('#activity_title').val());
         }
 
     });
 
-    Meteor.create_summary = function () {
-        var s = '',
-            who;
-        console.log($('#who_paid_tab a.active').data('tab'));
+    Meteor.who_paid = function () {
+        var who;
         switch ($('#who_paid_tab a.active').data('tab')) {
-            case 'user':
-                who = Meteor.user().profile.name;
-                break;
-            case 'friends':
-                who = $('.tab.active .selection .text').text().trim();
-                break;
-            case 'email':
-                who = $('#email_paid').val();
-                break;
+        case 'user':
+            who = Meteor.user().profile.name;
+            break;
+        case 'friends':
+            who = $('.tab.active .selection .text').text().trim();
+            break;
+        case 'email':
+            who = $('#email_paid').val();
+            break;
         }
-        s += who + ' paid ' + $('#activity_currency option:selected').text() + ' ' +
-            parseFloat($('#activity_value').val()).toFixed(2) + ' for ' + $('#activity_title').val() +
-            '. Is it correct?';
-        $('#summary').html(s);
+        return who;
     };
 
     Meteor.validate_form = function () {

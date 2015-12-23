@@ -32,5 +32,16 @@
   "activity_email_placeholder": "e.g. nome.cognome@example.com",
   "i_paid": "E io pago!",
   "please_insert_name_event": "Per favore seleziona un nome per il tuo evento. Che ne pensi di <i>Viaggio a Caserta</i>?",
-  "chatwin": "Chatwin"
+  "chatwin": "Chatwin",
+  "required_fields": "Cambi Obbligatori",
+  "optional_fields": "Campi Opzionali",
+  "please_insert_activity_name": "Si prega di inserire il nome dell'attivitá",
+  "please_insert_activity_value": "Si prega di inserire il costo dell'attivitá",
+  "please_select_a_friend": "Si prega di selezionare un amico...",
+  "please_check_the_i_paid_box": "Si prega di selezionare il box <i>E io pago!</i>, oppure",
+  "select_friend_from_list": "Selezionare un amico dalla lista, oppure",
+  "add_friend_email": "Aggiungere l'indirizzo email di un amico",
+  "paid": "ha pagato",
+  "for": "per",
+  "is_it_correct": "É giusto?"
 }
