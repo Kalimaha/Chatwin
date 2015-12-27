@@ -60,12 +60,19 @@
         data: function () {
             var user,
                 email,
-                isFacebook,
-                isGoogle,
-                events;
+                isFacebook = false,
+                isGoogle = false;
             user = Meteor.user();
-            isFacebook = user.services.facebook !== undefined;
-            isGoogle = user.services.google !== undefined;
+            try {
+                isFacebook = user.services.facebook !== undefined;
+            } catch (ignore) {
+
+            }
+            try {
+                isGoogle = user.services.google !== undefined;
+            } catch (ignore) {
+
+            }
             if (isFacebook) {
                 email = user.services.facebook.email;
             }
