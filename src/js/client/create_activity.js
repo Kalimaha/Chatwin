@@ -30,14 +30,34 @@
                     },
                     closable: false,
                     onApprove: function () {
-                        var activity = {
-                            name: $('#activity_title').val(),
-                            cost: parseFloat($('#activity_value').val()).toFixed(2),
-                            currency: $('#activity_currency').find('option:selected').text(),
-                            who_paid: Meteor.who_paid()
-                        };
+                        var who_paid = Meteor.who_paid(),
+                            activity = {
+                                name: $('#activity_title').val(),
+                                cost: parseFloat($('#activity_value').val()).toFixed(2),
+                                currency: $('#activity_currency').find('option:selected').text(),
+                                who_paid: who_paid
+                            };
                         console.log(activity);
                         console.log(that.event_id);
+                        Meteor.Events.update(
+                            that.event_id,
+                            {
+                                $push: {
+                                    activities: activity
+                                }
+                            }, function (error, response) {
+                                console.log(error);
+                                if (error) {
+                                    Session.set('errorMessage', error.reason);
+                                    Router.go('error');
+                                } else {
+                                    console.log(response);
+                                    Meteor.call('add_user_to_event', that.event_id, who_paid, function (error, response) {
+                                        console.log(error);
+                                        console.log(response);
+                                    });
+                                }
+                            });
                         return true;
                     },
                     onDeny: function () {
@@ -60,15 +80,15 @@
         },
 
         'change #i_paid': function () {
-            $('#summary_user').html(Meteor.who_paid().name);
+            $('#summary_user').html(Meteor.who_paid().first_name);
         },
 
         'change #friend_paid': function () {
-            $('#summary_user').html(Meteor.who_paid().name);
+            $('#summary_user').html(Meteor.who_paid().first_name);
         },
 
         'change #email_paid': function () {
-            $('#summary_user').html(Meteor.who_paid().name);
+            $('#summary_user').html(Meteor.who_paid().first_name);
         },
 
         'change #activity_value': function () {
@@ -99,19 +119,29 @@
 
     Meteor.who_paid = function () {
         var who,
-            email;
+            email,
+            picture,
+            name,
+            first_name,
+            last_name,
+            user;
         switch ($('#who_paid_tab').find('a.active').data('tab')) {
         case 'user':
-            if (Meteor.user().services.facebook !== undefined) {
-                email = Meteor.user().services.facebook.email;
+            user = Meteor.user();
+            if (user.services.facebook !== undefined) {
+                email = user.services.facebook.email;
+                name = user.services.facebook.name;
+                first_name = user.services.facebook.first_name;
+                last_name = user.services.facebook.last_name;
+                picture = 'http://graph.facebook.com/' + user.services.facebook.id + '/picture/?type=large';
             }
             if (Meteor.user().services.google !== undefined) {
-                email = Meteor.user().services.google.email;
+                email = user.services.google.email;
+                name = user.services.google.name;
+                first_name = user.services.google.given_name;
+                last_name = user.services.google.family_name;
+                picture = user.services.google.picture;
             }
-            who = {
-                name: Meteor.user().profile.name,
-                email: email
-            };
             break;
         case 'friends':
             who = {
@@ -126,6 +156,13 @@
             };
             break;
         }
+        who = {
+            name: name,
+            first_name: first_name,
+            last_name: last_name,
+            picture: picture,
+            email: email
+        };
         return who;
     };
 

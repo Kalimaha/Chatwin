@@ -11,6 +11,10 @@
 
         'remove': function () {
             return true;
+        },
+
+        'update': function () {
+            return true;
         }
 
     });
@@ -61,6 +65,31 @@
                         activities: {
                             name: 'Edited'
                         }
+                    }
+                },
+                function (error, result) {
+                    if (error) {
+                        throw new Meteor.Error(500, 'Error while creating a new event.');
+                    }
+                    return result;
+                }
+            );
+        },
+
+        add_user_to_event: function (event_id, user) {
+            return Meteor.Events.update(
+                {
+                    users: {
+                        $not: {
+                            $elemMatch: {
+                                email: user.email
+                            }
+                        }
+                    }
+                },
+                {
+                    $addToSet: {
+                        users: user
                     }
                 },
                 function (error, result) {

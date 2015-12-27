@@ -43,10 +43,12 @@
   "add_friend_email": "Aggiungere l'indirizzo email di un amico",
   "paid": "ha pagato",
   "for": "per",
-  "is_it_correct": "É giusto?",
+  "is_it_correct": "Vuoi salvare queste informazioni?",
   "summary": "Riepilogo",
   "insert_valid_email": "'inserire un indirizzo email valido'",
   "on": "il",
   "at": "presso",
-  "an_unknown_place": "un posto sconosciuto"
+  "an_unknown_place": "un posto sconosciuto",
+  "yes_save": "Si, salvale",
+  "no_edit": "No, voglio fare dei cambiamenti"
 }

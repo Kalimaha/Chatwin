@@ -47,10 +47,12 @@
   "add_friend_email": "Add a friend's email address",
   "paid": "paid",
   "for": "for",
-  "is_it_correct": "Is it correct?",
+  "is_it_correct": "Do you want to save this information?",
   "summary": "Summary",
   "insert_valid_email": "'insert a valid email address'",
   "on": "on",
   "at": "at",
-  "an_unknown_place": "an unknown place"
+  "an_unknown_place": "an unknown place",
+  "yes_save": "Yes, save it",
+  "no_edit": "No, I want to make some changes"
 }
