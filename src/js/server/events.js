@@ -30,7 +30,7 @@
                 activities: [],
                 total: 0,
                 users: [
-                    Meteor.user()
+                    Meteor.create_event_user()
                 ]
             }, function (error, result) {
                 if (error) {
@@ -73,5 +73,34 @@
         }
 
     });
+
+    Meteor.create_event_user = function () {
+        var user,
+            isFacebook,
+            isGoogle,
+            event_user;
+        user = Meteor.users.findOne(this.userId);
+        isFacebook = user.services.facebook !== undefined;
+        isGoogle = user.services.google !== undefined;
+        if (isFacebook) {
+            event_user = {
+                email: user.services.facebook.email,
+                name: user.services.facebook.name,
+                first_name: user.services.facebook.first_name,
+                last_name: user.services.facebook.last_name,
+                picture: 'http://graph.facebook.com/' + user.services.facebook.id + '/picture/?type=large'
+            };
+        }
+        if (isGoogle) {
+            event_user = {
+                email: user.services.google.email,
+                name: user.services.google.name,
+                first_name: user.services.google.given_name,
+                last_name: user.services.google.family_name,
+                picture: user.services.google.picture
+            };
+        }
+        return event_user;
+    };
 
 }());

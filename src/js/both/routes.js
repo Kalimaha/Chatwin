@@ -54,25 +54,33 @@
         name: 'events',
         template: 'events_page',
         waitOn: function () {
-            return Meteor.subscribe('events');
+            Meteor.subscribe('events');
+            return Meteor.subscribe('getUserData');
         },
         data: function () {
+            var user,
+                email,
+                isFacebook,
+                isGoogle,
+                events;
+            user = Meteor.user();
+            isFacebook = user.services.facebook !== undefined;
+            isGoogle = user.services.google !== undefined;
+            if (isFacebook) {
+                email = user.services.facebook.email;
+            }
+            if (isGoogle) {
+                email = user.services.google.email;
+            }
             return {
                 single_events: Meteor.Events.find({
-                    "users._id": {
-                        $in: [
-                            Meteor.userId()
-                        ]
+                    'users': {
+                        $elemMatch: {
+                            email: email
+                        }
                     }
                 })
             };
-        },
-        onBeforeAction: function () {
-            if (Meteor.loggingIn() || Meteor.userId() === undefined) {
-                Router.go('login');
-            } else {
-                this.next();
-            }
         }
     });
 

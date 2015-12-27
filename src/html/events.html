@@ -51,12 +51,7 @@
                 </button>
             </div>
             {{#each users}}
-                {{#if services.facebook}}
-                    <img class='right floated ui avatar image' src='http://graph.facebook.com/{{services.facebook.id}}/picture/?type=large'>
-                {{/if}}
-                {{#if services.google}}
-                    <img class='right floated ui avatar image' src='{{services.google.picture}}'>
-                {{/if}}
+                <img class='right floated ui avatar image' src='{{picture}}'>
             {{/each}}
         </div>
     </div>
