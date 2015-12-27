@@ -10,8 +10,7 @@
         },
 
         'click .add_activity_button': function () {
-            console.log(typeof Meteor.isValidActivityForm());
-            console.log(Meteor.isValidActivityForm());
+            var that = this;
             if (typeof Meteor.isValidActivityForm() === 'object') {
                 Meteor.validate_form();
                 $('#modal_warning_' + this.event_id).modal({
@@ -31,6 +30,14 @@
                     },
                     closable: false,
                     onApprove: function () {
+                        var activity = {
+                            name: $('#activity_title').val(),
+                            cost: parseFloat($('#activity_value').val()).toFixed(2),
+                            currency: $('#activity_currency').find('option:selected').text(),
+                            who_paid: Meteor.who_paid()
+                        };
+                        console.log(activity);
+                        console.log(that.event_id);
                         return true;
                     },
                     onDeny: function () {
@@ -53,15 +60,15 @@
         },
 
         'change #i_paid': function () {
-            $('#summary_user').html(Meteor.who_paid());
+            $('#summary_user').html(Meteor.who_paid().name);
         },
 
         'change #friend_paid': function () {
-            $('#summary_user').html(Meteor.who_paid());
+            $('#summary_user').html(Meteor.who_paid().name);
         },
 
         'change #email_paid': function () {
-            $('#summary_user').html(Meteor.who_paid());
+            $('#summary_user').html(Meteor.who_paid().name);
         },
 
         'change #activity_value': function () {
@@ -91,16 +98,32 @@
     });
 
     Meteor.who_paid = function () {
-        var who;
+        var who,
+            email;
         switch ($('#who_paid_tab').find('a.active').data('tab')) {
         case 'user':
-            who = Meteor.user().profile.name;
+            if (Meteor.user().services.facebook !== undefined) {
+                email = Meteor.user().services.facebook.email;
+            }
+            if (Meteor.user().services.google !== undefined) {
+                email = Meteor.user().services.google.email;
+            }
+            who = {
+                name: Meteor.user().profile.name,
+                email: email
+            };
             break;
         case 'friends':
-            who = $('.tab.active .selection .text').text().trim();
+            who = {
+                name: $('.tab.active .selection .text').text().trim(),
+                email: $('.tab.active .selection .text').text().trim()
+            };
             break;
         case 'email':
-            who = $('#email_paid').val();
+            who = {
+                name: $('#email_paid').val(),
+                email: $('#email_paid').val()
+            };
             break;
         }
         return who;

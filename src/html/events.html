@@ -46,9 +46,15 @@
         </div>
         <div class='extra content'>
             <div class='left floated' style='margin-right: 1rem;'>
+            {{#if activities.length}}
                 <button class='ui mini basic button show_activities_button' id='{{_id}}'>
                     <i class='folder icon'></i> {{_ 'show_activities'}}
                 </button>
+            {{else}}
+                <button class='ui mini basic button create_activity_button' id='{{_id}}'>
+                    <i class='icon magic'></i> Create the first activity
+                </button>
+            {{/if}}
             </div>
             {{#each users}}
                 <img class='right floated ui avatar image' src='{{picture}}'>

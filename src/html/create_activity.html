@@ -1,5 +1,5 @@
 <template name='create_activity_page'>
-    {{> navbar navbar_title='Create New Activity' show_create_button=false show_back_button=true}}
+    {{> navbar navbar_title='New Activity' show_create_button=false show_back_button=true}}
     <div class='v-space'></div>
     <div class='v-space-half'></div>
     <div class='ui container'>
@@ -182,13 +182,13 @@
             </div>
         </div>
         <div class='actions'>
-            <div class='ui tiny button cancel red'>
-                <i class='remove icon'></i>
-                {{_ 'no'}}
-            </div>
             <div class='ui tiny button ok green'>
                 <i class='checkmark icon'></i>
                 {{_ 'yes'}}
+            </div>
+            <div class='ui tiny button cancel red'>
+                <i class='remove icon'></i>
+                {{_ 'no'}}
             </div>
         </div>
     </div>
