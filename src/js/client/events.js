@@ -32,8 +32,7 @@
             }).modal('show');
         },
         'click .show_activities_button': function () {
-            Session.set('event_id', this._id);
-            Router.go('activities');
+            Router.go('activities', {event_id: this._id});
         },
         'click .create_activity_button': function () {
             Router.go('create_activity', {event_id: this._id});

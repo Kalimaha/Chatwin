@@ -101,6 +101,7 @@
                 cost: parseFloat($('#activity_value').val()).toFixed(2),
                 currency: $('#activity_currency').find('option:selected').text(),
                 who_paid: who_paid,
+                date: $('#activity_date').val(),
                 place: {
                     name: place.name,
                     address: place.formatted_address,

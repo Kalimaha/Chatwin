@@ -3,15 +3,19 @@
 
     'use strict';
 
-    Router.route('/activities', {
+    Router.route('/activities/:event_id', {
         name: 'activities',
         template: 'activities_page',
         waitOn: function () {
             Meteor.subscribe('events');
         },
         data: function () {
+            var params = this.params;
+            console.log(params.event_id);
+            console.log(Meteor.Events.find({_id: params.event_id}, {_id: 0, activities: 1}).count());
+            console.log(Meteor.Events.find({_id: params.event_id}, {_id: 0, activities: 1}).activities);
             return {
-                single_activities: Meteor.Events.find({_id: Session.get('event_id')}, {_id: 0, activities: 1})
+                event: Meteor.Events.findOne(params.event_id)
             };
         }
     });
