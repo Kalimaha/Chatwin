@@ -31,14 +31,20 @@
                     closable: false,
                     onApprove: function () {
                         var who_paid = Meteor.who_paid(),
+                            place = Meteor.autocomplete.getPlace(),
                             activity = {
                                 name: $('#activity_title').val(),
                                 cost: parseFloat($('#activity_value').val()).toFixed(2),
                                 currency: $('#activity_currency').find('option:selected').text(),
-                                who_paid: who_paid
+                                who_paid: who_paid,
+                                place: {
+                                    name: place.name,
+                                    address: place.formatted_address,
+                                    lat: place.geometry.location.lat(),
+                                    lon: place.geometry.location.lng(),
+                                    icon: place.icon
+                                }
                             };
-                        console.log(activity);
-                        console.log(that.event_id);
                         Meteor.Events.update(
                             that.event_id,
                             {
@@ -46,12 +52,10 @@
                                     activities: activity
                                 }
                             }, function (error, response) {
-                                console.log(error);
                                 if (error) {
                                     Session.set('errorMessage', error.reason);
                                     Router.go('error');
                                 } else {
-                                    console.log(response);
                                     Meteor.call('add_user_to_event', that.event_id, who_paid, function (error, response) {
                                         console.log(error);
                                         console.log(response);
@@ -97,10 +101,6 @@
 
         'change #activity_title': function () {
             $('#summary_name').html($('#activity_title').val().toLowerCase());
-        },
-
-        'change #activity_place_google': function () {
-            $('#summary_place').html($('#activity_place_google').val());
         },
 
         'change #activity_date': function () {
@@ -231,12 +231,14 @@
     };
 
     Template.create_activity_page.rendered = function () {
-        var autocomplete;
         $('#activity_date').val((new Date()).toISOString().split('T')[0]);
         $('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
-        autocomplete = new google.maps.places.Autocomplete(
+        Meteor.autocomplete = new google.maps.places.Autocomplete(
             document.getElementById('activity_place_google')
         );
+        google.maps.event.addListener(Meteor.autocomplete, 'place_changed', function () {
+            $('#summary_place').html(Meteor.autocomplete.getPlace().name);
+        });
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('.ui.checkbox').checkbox();
