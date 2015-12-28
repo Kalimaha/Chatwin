@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session, $, moment*/
+/*global Template, Router, Meteor, Session, $, moment, document*/
 (function () {
 
     'use strict';
@@ -235,7 +235,7 @@
         $('#activity_date').val((new Date()).toISOString().split('T')[0]);
         $('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
         autocomplete = new google.maps.places.Autocomplete(
-            (document.getElementById('activity_place_google')), {types: ['geocode']}
+            document.getElementById('activity_place_google')
         );
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
