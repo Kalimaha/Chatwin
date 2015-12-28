@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session, $, moment, document*/
+/*global Template, Router, Meteor, Session, $, moment, document, google*/
 (function () {
 
     'use strict';
@@ -10,64 +10,10 @@
         },
 
         'click .add_activity_button': function () {
-            var that = this;
             if (typeof Meteor.isValidActivityForm() === 'object') {
-                Meteor.validate_form();
-                $('#modal_warning_' + this.event_id).modal({
-                    selector: {
-                        approve: '.actions .ok'
-                    },
-                    closable: false,
-                    onApprove: function () {
-                        return true;
-                    }
-                }).modal('show');
+                Meteor.show_warning(this.event_id);
             } else {
-                $('#modal_summary_' + this.event_id).modal({
-                    selector: {
-                        approve  : '.actions .ok',
-                        deny     : '.actions .cancel'
-                    },
-                    closable: false,
-                    onApprove: function () {
-                        var who_paid = Meteor.who_paid(),
-                            place = Meteor.autocomplete.getPlace(),
-                            activity = {
-                                name: $('#activity_title').val(),
-                                cost: parseFloat($('#activity_value').val()).toFixed(2),
-                                currency: $('#activity_currency').find('option:selected').text(),
-                                who_paid: who_paid,
-                                place: {
-                                    name: place.name,
-                                    address: place.formatted_address,
-                                    lat: place.geometry.location.lat(),
-                                    lon: place.geometry.location.lng(),
-                                    icon: place.icon
-                                }
-                            };
-                        Meteor.Events.update(
-                            that.event_id,
-                            {
-                                $push: {
-                                    activities: activity
-                                }
-                            }, function (error, response) {
-                                if (error) {
-                                    Session.set('errorMessage', error.reason);
-                                    Router.go('error');
-                                } else {
-                                    Meteor.call('add_user_to_event', that.event_id, who_paid, function (error, response) {
-                                        console.log(error);
-                                        console.log(response);
-                                    });
-                                }
-                            });
-                        return true;
-                    },
-                    onDeny: function () {
-                        return true;
-                    }
-                }).modal('show');
+                Meteor.show_summary(this.event_id);
             }
         },
 
@@ -116,6 +62,77 @@
         }
 
     });
+
+    Meteor.show_warning = function (event_id) {
+        Meteor.validate_form();
+        $('#modal_warning_' + event_id).modal({
+            selector: {
+                approve: '.actions .ok'
+            },
+            closable: false,
+            onApprove: function () {
+                return true;
+            }
+        }).modal('show');
+    };
+
+    Meteor.show_summary = function (event_id) {
+        $('#modal_summary_' + event_id).modal({
+            selector: {
+                approve  : '.actions .ok',
+                deny     : '.actions .cancel'
+            },
+            closable: false,
+            onApprove: function () {
+                Meteor.save_activity(event_id);
+                return true;
+            },
+            onDeny: function () {
+                return true;
+            }
+        }).modal('show');
+    };
+
+    Meteor.save_activity = function (event_id) {
+        var who_paid = Meteor.who_paid(),
+            place = Meteor.autocomplete.getPlace(),
+            activity = {
+                name: $('#activity_title').val(),
+                cost: parseFloat($('#activity_value').val()).toFixed(2),
+                currency: $('#activity_currency').find('option:selected').text(),
+                who_paid: who_paid,
+                place: {
+                    name: place.name,
+                    address: place.formatted_address,
+                    lat: place.geometry.location.lat(),
+                    lon: place.geometry.location.lng(),
+                    icon: place.icon
+                }
+            };
+        Meteor.Events.update(
+            event_id,
+            {
+                $push: {
+                    activities: activity
+                }
+            },
+            function (error) {
+                if (error) {
+                    Session.set('errorMessage', error.reason);
+                    Router.go('error');
+                } else {
+                    Meteor.call('add_user_to_event', event_id, who_paid, function (error) {
+                        if (error) {
+                            Session.set('errorMessage', error.reason);
+                            Router.go('error');
+                        } else {
+                            Router.go('events');
+                        }
+                    });
+                }
+            }
+        );
+    };
 
     Meteor.who_paid = function () {
         var who,

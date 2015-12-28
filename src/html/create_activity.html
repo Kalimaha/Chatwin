@@ -137,9 +137,9 @@
         </button>
         <div class='v-space'></div>
         <div class='v-space-half'></div>
+        {{> modal_warning}}
+        {{> modal_summary}}
     </div>
-    {{> modal_warning}}
-    {{> modal_summary}}
 </template>
 
 <template name='modal_summary'>
@@ -159,11 +159,11 @@
             <div class='two ui buttons'>
                 <div class='ui tiny inverted button ok green'>
                     <i class='checkmark icon'></i>
-                    {{_ 'yes_save'}}
+                    {{_ 'yes'}}
                 </div>
                 <div class='ui tiny inverted button cancel red'>
                     <i class='remove icon'></i>
-                    {{_ 'no_edit'}}
+                    {{_ 'no'}}
                 </div>
             </div>
         </div>
