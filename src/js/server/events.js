@@ -25,14 +25,15 @@
 
     Meteor.methods({
 
-        create_event: function (event_name) {
+        create_event: function (event_name, currency) {
             return Meteor.Events.insert({
                 name: event_name,
+                currency: currency,
                 creation_date: new Date(),
                 date_last_update: new Date(),
                 owner: Meteor.userId(),
                 activities: [],
-                total: 0,
+                total: parseFloat(0).toFixed(2),
                 users: [
                     Meteor.create_event_user()
                 ]

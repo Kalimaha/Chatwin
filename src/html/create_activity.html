@@ -29,10 +29,10 @@
                 </label>
                 <div class='ui action input'>
                     <input class='form-control activity_form' id='activity_value' type='number' placeholder='{{_ "activity_value_placeholder"}}'>
-                    <select class='ui compact selection dropdown' id='activity_currency'>
-                        <option value='EUR'>&euro;</option>
-                        <option value='USD'>&dollar;</option>
-                    </select>
+                    <!--<select class='ui compact selection dropdown' id='activity_currency'>-->
+                        <!--<option value='EUR'>&euro;</option>-->
+                        <!--<option value='USD'>&dollar;</option>-->
+                    <!--</select>-->
                 </div>
             </div>
             <div class='ui warning message'>
@@ -115,6 +115,12 @@
             </div>
             <div class='ui horizontal divider'>
                 {{_ 'optional_fields'}}
+            </div>
+            <div class='field'>
+                <label for='currency'>
+                    {{_ 'activity_currency'}}
+                </label>
+                {{> flag_currencies}}
             </div>
             <div class='field'>
                 <label for='activity_date'>

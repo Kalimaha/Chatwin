@@ -16,6 +16,15 @@
                 </div>
                 {{{_ 'please_insert_name_event'}}}
             </div>
+            <div class='field'>
+                <label for='currency'>
+                    {{_ 'activity_currency'}}
+                </label>
+                {{> flag_currencies}}
+            </div>
+            <div class='ui info message'>
+                All the activity costs will be converted in the default currency.
+            </div>
         </form>
         <div class='v-space-half'></div>
         <button class='ui green button' id='create_event_button'>
