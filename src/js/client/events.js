@@ -42,6 +42,18 @@
     Template.single_event.helpers({
         format_date: function (date) {
             return moment(date).format('DD MMM YYYY');
+        },
+        format_currency: function (currency) {
+            switch (currency.toUpperCase()) {
+            case 'EUR':
+                return '&euro;';
+            case 'USD':
+                return '&dollar;';
+            case 'GBP':
+                return '&pound;';
+            default:
+                return currency;
+            }
         }
     });
 
