@@ -54,6 +54,9 @@
             default:
                 return currency;
             }
+        },
+        format_total: function (total) {
+            return parseFloat(total).toFixed(2);
         }
     });
 

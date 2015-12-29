@@ -28,7 +28,7 @@
 <template name='single_activity'>
     <div class='ui horizontal divider'>
         {{#if this.date}}
-            {{this.date}}
+            {{format_date this.date}}
         {{else}}
             <i class='calendar icon'></i>
         {{/if}}
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class='description'>
-                {{this.who_paid.first_name}} paid {{this.currency}} {{this.cost}}.
+                {{this.who_paid.first_name}} paid {{{format_currency this.currency}}} {{format_total this.cost}}.
             </div>
         </div>
         <div class='extra content'>
