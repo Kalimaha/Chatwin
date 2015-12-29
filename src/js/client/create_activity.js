@@ -10,10 +10,11 @@
         },
 
         'click .add_activity_button': function () {
+            console.log(this);
             if (typeof Meteor.isValidActivityForm() === 'object') {
                 Meteor.show_warning(this.event_id);
             } else {
-                Meteor.show_summary(this.event_id, this.currency);
+                Meteor.show_summary(this.event_id, this.default_currency);
             }
         },
 
@@ -25,8 +26,8 @@
             Meteor.validate_form();
         },
 
-        'change #activity_currency': function () {
-            $('#summary_currency').html($('#activity_currency').find('option:selected').text());
+        'change .ui.dropdown': function () {
+            $('#summary_currency').html($('.ui.dropdown').dropdown('get value'));
         },
 
         'change #i_paid': function () {
@@ -100,7 +101,7 @@
             activity = {
                 name: $('#activity_title').val(),
                 cost: parseFloat($('#activity_value').val()).toFixed(2),
-                currency: $('#activity_currency').find('option:selected').text(),
+                currency: currency,
                 who_paid: who_paid,
                 date: $('#activity_date').val(),
                 place: {
@@ -262,6 +263,7 @@
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('.ui.checkbox').checkbox();
+        $('#summary_currency').html($('.ui.dropdown').dropdown('get value'));
     };
 
 }());
