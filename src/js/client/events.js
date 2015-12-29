@@ -35,7 +35,7 @@
             Router.go('activities', {event_id: this._id});
         },
         'click .create_activity_button': function () {
-            Router.go('create_activity', {event_id: this._id});
+            Router.go('create_activity', {event_id: this._id, default_currency: this.currency});
         }
     });
 

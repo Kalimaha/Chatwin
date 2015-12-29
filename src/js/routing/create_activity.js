@@ -3,7 +3,7 @@
 
     'use strict';
 
-    Router.route('/create/activity/:event_id', {
+    Router.route('/create/activity/:event_id/:default_currency', {
         name: 'create_activity',
         template: 'create_activity_page',
         waitOn: function () {
@@ -17,7 +17,8 @@
             return {
                 single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
                 event_id: params.event_id,
-                user: Meteor.user()
+                user: Meteor.user(),
+                default_currency: params.default_currency
             };
         }
     });

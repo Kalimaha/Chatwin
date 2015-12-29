@@ -1,6 +1,10 @@
 <template name='flag_currencies'>
     <div class='ui fluid search selection dropdown'>
-        <input type='hidden' name='country' value='eur'>
+        {{#if default_currency}}
+            <input type='hidden' name='country' value='{{default_currency}}'>
+        {{else}}
+            <input type='hidden' name='country' value='eur'>
+        {{/if}}
         <i class='dropdown icon'></i>
         <div class='default text'>
             Please select the default currency for this event...
