@@ -12,7 +12,7 @@
         },
         data: function () {
             var user,
-                email,
+                user_id,
                 isFacebook = false,
                 isGoogle = false;
             user = Meteor.user();
@@ -27,16 +27,16 @@
 
             }
             if (isFacebook) {
-                email = user.services.facebook.email;
+                user_id = 'facebook_' + user.services.facebook.id;
             }
             if (isGoogle) {
-                email = user.services.google.email;
+                user_id = 'google_' + user.services.google.id;
             }
             return {
                 single_events: Meteor.Events.find({
                     'users': {
                         $elemMatch: {
-                            email: email
+                            user_id: user_id
                         }
                     }
                 })

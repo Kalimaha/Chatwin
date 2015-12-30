@@ -114,6 +114,7 @@
         isGoogle = user.services.google !== undefined;
         if (isFacebook) {
             event_user = {
+                user_id: 'facebook_' + user.services.facebook.id,
                 email: user.services.facebook.email,
                 name: user.services.facebook.name,
                 first_name: user.services.facebook.first_name,
@@ -123,6 +124,7 @@
         }
         if (isGoogle) {
             event_user = {
+                user_id: 'google_' + user.services.google.id,
                 email: user.services.google.email,
                 name: user.services.google.name,
                 first_name: user.services.google.given_name,
