@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session, $*/
+/*global Template, Router, Meteor, Session, $, HTTP*/
 (function () {
 
     'use strict';
@@ -11,7 +11,14 @@
             }, function () {
                 var user = Meteor.user();
                 if (user !== undefined) {
-                    Router.go('events');
+                    Meteor.call('save_facebook_friends', function (error, response) {
+                        if (error) {
+                            Session.set('errorMessage', error.reason);
+                            Router.go('error');
+                        } else {
+                            Router.go('events');
+                        }
+                    });
                 } else {
                     Session.set('errorMessage', 'Facebook login failed.');
                     Router.go('error');

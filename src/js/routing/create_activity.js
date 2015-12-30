@@ -9,14 +9,14 @@
         layoutTemplate: 'create_activity_footer',
         waitOn: function () {
             Meteor.subscribe('activities');
-            Meteor.subscribe('facebook_friends');
+            Meteor.subscribe('friends');
             Meteor.subscribe('getUserData');
             Meteor.subscribe('events');
         },
         data: function () {
             var params = this.params;
             return {
-                single_friends: Meteor.FacebookFriends.find({}, {sort: {name: 1}}),
+                single_friends: Meteor.Friends.find({owner: Meteor.userId()}, {sort: {name: 1}}),
                 event_id: params.event_id,
                 user: Meteor.user(),
                 default_currency: params.default_currency

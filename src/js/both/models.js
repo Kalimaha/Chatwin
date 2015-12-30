@@ -9,7 +9,7 @@
 
     Meteor.Activities = new Ground.Collection('activities');
 
-    Meteor.FacebookFriends = new Ground.Collection('facebook_friends');
+    Meteor.Friends = new Ground.Collection('friends');
 
     Ground.Collection(Meteor.users);
 

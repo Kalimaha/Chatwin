@@ -3,8 +3,13 @@
   src: url("/fonts/Cyanotype.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: 'JrHand';
+  src: url("/fonts/JrHand.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 html * {
-  font-family: Cyanotype, Lato, FontAwesome, sans-serif !important; }
+  font-family: JrHand, Lato, FontAwesome, sans-serif !important; }
 
 html, body {
   height: 100%; }

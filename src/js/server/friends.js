@@ -3,18 +3,21 @@
 
     'use strict';
 
-    Meteor.FacebookFriends.allow({
+    Meteor.Friends.allow({
         'insert': function () {
+            return true;
+        },
+        'remove': function () {
             return true;
         }
     });
 
-    Meteor.publish('facebook_friends', function () {
-        return Meteor.FacebookFriends.find();
+    Meteor.publish('friends', function () {
+        return Meteor.Friends.find();
     });
 
     Meteor.methods({
-        get_facebook_friends: function () {
+        save_facebook_friends: function () {
             var user = Meteor.users.findOne(this.userId),
                 access_token = user.services.facebook.accessToken,
                 i;
@@ -22,14 +25,15 @@
                 if (error) {
                     throw new Meteor.Error(500, 'Error while fetching Facebook friends.');
                 }
-                if (result.data.data.length !== Meteor.FacebookFriends.find().count()) {
-                    Meteor.FacebookFriends.remove();
+                if (result.data.data.length !== Meteor.Friends.find({owner: Meteor.userId()}).count()) {
+                    Meteor.Friends.remove();
                     for (i = 0; i < result.data.data.length; i += 1) {
-                        Meteor.FacebookFriends.insert({
+                        Meteor.Friends.insert({
                             name: result.data.data[i].name,
                             title: result.data.data[i].name,
                             id: result.data.data[i].id,
-                            picture: result.data.data[i].picture.data.url
+                            picture: result.data.data[i].picture.data.url,
+                            owner: Meteor.userId()
                         });
                     }
                 }

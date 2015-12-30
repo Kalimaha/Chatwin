@@ -6,7 +6,11 @@
     Router.route('/login', {
         name: 'login',
         template: 'login_page',
-        layoutTemplate: null
+        layoutTemplate: null,
+        waitOn: function () {
+            Meteor.subscribe('friends');
+            return Meteor.subscribe('getUserData');
+        }
     });
 
 }());
