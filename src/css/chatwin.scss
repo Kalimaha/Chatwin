@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'Cyanotype';
+  src: url('/fonts/Cyanotype.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html * {
+  font-family: Cyanotype, Lato, FontAwesome, sans-serif !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+div[data-role='content'] {
+  margin-top: 50px;
+}
+
+.page_title {
+  line-height: 1.7em;
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #fff;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+  color: #fff;
+  width: 100%;
+}
+
+.btn-google {
+  background-color: #d34836;
+  color: #fff;
+  width: 100%;
+}
+
+.avatar {
+  width: 2em;
+  height: 2em;
+  margin-left: 0.5em;
+}
+
+.v-space {
+  height: 3em;
+}
+
+.v-space-half {
+  height: 25px;
+}
+
+.v-space-double {
+  height: 6em;
+}
+
+.v-space-login {
+  height: 10rem;
+}
+
+button {
+  width: 100%;
+}
+
+.friends-list {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+h2 {
+  .white {
+    color: #ffffff !important;
+  }
+}

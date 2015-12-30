@@ -32,17 +32,31 @@
             }).modal('show');
         },
         'click .show_activities_button': function () {
-            Session.set('event_id', this._id);
-            Router.go('activities');
+            Router.go('activities', {event_id: this._id});
         },
         'click .create_activity_button': function () {
-            Router.go('create_activity', {event_id: this._id});
+            Router.go('create_activity', {event_id: this._id, default_currency: this.currency});
         }
     });
 
     Template.single_event.helpers({
         format_date: function (date) {
             return moment(date).format('DD MMM YYYY');
+        },
+        format_currency: function (currency) {
+            switch (currency.toUpperCase()) {
+            case 'EUR':
+                return '&euro;';
+            case 'USD':
+                return '&dollar;';
+            case 'GBP':
+                return '&pound;';
+            default:
+                return currency;
+            }
+        },
+        format_total: function (total) {
+            return parseFloat(total).toFixed(2);
         }
     });
 

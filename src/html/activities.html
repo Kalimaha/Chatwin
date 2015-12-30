@@ -4,7 +4,7 @@
     <div class='v-space-half'></div>
     <div class='ui container'>
         <div class='ui cards'>
-            {{#each single_activities.activities}}
+            {{#each event.activities}}
                 {{> single_activity}}
             {{else}}
                 <div class='ui container'>
@@ -21,8 +21,39 @@
             {{/each}}
         </div>
     </div>
+    <div class='v-space'></div>
+    <div class='v-space'></div>
 </template>
 
 <template name='single_activity'>
-    ads
+    <div class='ui horizontal divider'>
+        {{#if this.date}}
+            {{format_date this.date}}
+        {{else}}
+            <i class='calendar icon'></i>
+        {{/if}}
+    </div>
+    <div class='ui centered fluid card'>
+        <div class='content'>
+            <div class='header'>
+                {{this.name}}
+                <div class='right floated'>
+                    <i class='trash red icon delete_event_button' id='{{_id}}'></i>
+                </div>
+            </div>
+            <div class='description'>
+                {{this.who_paid.first_name}} paid {{{format_currency this.currency}}} {{format_total this.cost}}.
+            </div>
+        </div>
+        <div class='extra content'>
+            {{#if this.place.name}}
+                <i class='red marker icon'></i> {{this.place.name}}
+            {{/if}}
+            {{#if this.date}}
+                <div class='right floated'>
+                    {{format_date this.date}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
 </template>

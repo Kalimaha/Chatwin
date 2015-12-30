@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session, $, moment*/
+/*global Template, Router, Meteor, Session, $, moment, document, google*/
 (function () {
 
     'use strict';
@@ -10,60 +10,10 @@
         },
 
         'click .add_activity_button': function () {
-            var that = this;
             if (typeof Meteor.isValidActivityForm() === 'object') {
-                Meteor.validate_form();
-                $('#modal_warning_' + this.event_id).modal({
-                    selector: {
-                        approve: '.actions .ok'
-                    },
-                    closable: false,
-                    onApprove: function () {
-                        return true;
-                    }
-                }).modal('show');
+                Meteor.show_warning(this.event_id);
             } else {
-                $('#modal_summary_' + this.event_id).modal({
-                    selector: {
-                        approve  : '.actions .ok',
-                        deny     : '.actions .cancel'
-                    },
-                    closable: false,
-                    onApprove: function () {
-                        var who_paid = Meteor.who_paid(),
-                            activity = {
-                                name: $('#activity_title').val(),
-                                cost: parseFloat($('#activity_value').val()).toFixed(2),
-                                currency: $('#activity_currency').find('option:selected').text(),
-                                who_paid: who_paid
-                            };
-                        console.log(activity);
-                        console.log(that.event_id);
-                        Meteor.Events.update(
-                            that.event_id,
-                            {
-                                $push: {
-                                    activities: activity
-                                }
-                            }, function (error, response) {
-                                console.log(error);
-                                if (error) {
-                                    Session.set('errorMessage', error.reason);
-                                    Router.go('error');
-                                } else {
-                                    console.log(response);
-                                    Meteor.call('add_user_to_event', that.event_id, who_paid, function (error, response) {
-                                        console.log(error);
-                                        console.log(response);
-                                    });
-                                }
-                            });
-                        return true;
-                    },
-                    onDeny: function () {
-                        return true;
-                    }
-                }).modal('show');
+                Meteor.show_summary(this.event_id, this.default_currency);
             }
         },
 
@@ -75,8 +25,8 @@
             Meteor.validate_form();
         },
 
-        'change #activity_currency': function () {
-            $('#summary_currency').html($('#activity_currency').find('option:selected').text());
+        'change .ui.dropdown': function () {
+            $('#summary_currency').html($('.ui.dropdown').dropdown('get value'));
         },
 
         'change #i_paid': function () {
@@ -99,10 +49,6 @@
             $('#summary_name').html($('#activity_title').val().toLowerCase());
         },
 
-        'change #activity_place_google': function () {
-            $('#summary_place').html($('#activity_place_google').val());
-        },
-
         'change #activity_date': function () {
             $('#summary_date').html($('#activity_date').val());
         },
@@ -116,6 +62,95 @@
         }
 
     });
+
+    Meteor.show_warning = function (event_id) {
+        Meteor.validate_form();
+        $('#modal_warning_' + event_id).modal({
+            selector: {
+                approve: '.actions .ok'
+            },
+            closable: false,
+            onApprove: function () {
+                return true;
+            }
+        }).modal('show');
+    };
+
+    Meteor.show_summary = function (event_id, default_currency) {
+        $('#modal_summary_' + event_id).modal({
+            selector: {
+                approve  : '.actions .ok',
+                deny     : '.actions .cancel'
+            },
+            closable: false,
+            onApprove: function () {
+                Meteor.save_activity(event_id, default_currency);
+                return true;
+            },
+            onDeny: function () {
+                return true;
+            }
+        }).modal('show');
+    };
+
+    Meteor.save_activity = function (event_id, default_currency) {
+        var who_paid = Meteor.who_paid(),
+            place = Meteor.autocomplete.getPlace(),
+            currency = $('.ui.dropdown').dropdown('get value'),
+            cost = parseFloat($('#activity_value').val()).toFixed(2),
+            original_cost = cost,
+            original_currency = currency,
+            activity;
+        if (Array.isArray(currency)) {
+            currency = currency[1];
+            original_currency = currency[1];
+        }
+        Meteor.call('exchange_currency', cost, default_currency, currency, function (error, result) {
+            if (error) {
+                Session.set('errorMessage', error.reason);
+            }
+            cost = result;
+            activity = {
+                name: $('#activity_title').val(),
+                cost: cost,
+                original_cost: original_cost,
+                original_currency: original_currency,
+                currency: default_currency,
+                who_paid: who_paid,
+                date: $('#activity_date').val(),
+                place: {
+                    name: place !== undefined ? place.name : place,
+                    address: place !== undefined ? place.formatted_address : place,
+                    lat: place !== undefined ? place.geometry.location.lat() : place,
+                    lon: place !== undefined ? place.geometry.location.lng() : place,
+                    icon: place !== undefined ? place.icon : place
+                }
+            };
+            Meteor.Events.update(
+                event_id,
+                {
+                    $push: {
+                        activities: activity
+                    }
+                },
+                function (error) {
+                    if (error) {
+                        Session.set('errorMessage', error.reason);
+                        Router.go('error');
+                    } else {
+                        Meteor.call('add_user_to_event', event_id, who_paid, function (error) {
+                            if (error) {
+                                Session.set('errorMessage', error.reason);
+                                Router.go('error');
+                            } else {
+                                Router.go('events');
+                            }
+                        });
+                    }
+                }
+            );
+        });
+    };
 
     Meteor.who_paid = function () {
         var who,
@@ -231,15 +266,18 @@
     };
 
     Template.create_activity_page.rendered = function () {
-        var autocomplete;
         $('#activity_date').val((new Date()).toISOString().split('T')[0]);
         $('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
-        autocomplete = new google.maps.places.Autocomplete(
-            (document.getElementById('activity_place_google')), {types: ['geocode']}
+        Meteor.autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('activity_place_google')
         );
+        google.maps.event.addListener(Meteor.autocomplete, 'place_changed', function () {
+            $('#summary_place').html(Meteor.autocomplete.getPlace().name);
+        });
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('.ui.checkbox').checkbox();
+        $('#summary_currency').html($('.ui.dropdown').dropdown('get value'));
     };
 
 }());

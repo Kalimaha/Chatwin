@@ -10,9 +10,13 @@
         },
 
         'click #create_event_button': function () {
-            var event_name = $('#event_name').val();
+            var event_name = $('#event_name').val(),
+                currency = $('.ui.dropdown').dropdown('get value');
+            if (currency === 'default') {
+                currency = 'eu';
+            }
             if (event_name !== undefined && event_name.length > 0) {
-                Meteor.call('create_event', event_name, function (error) {
+                Meteor.call('create_event', event_name, currency, function (error) {
                     if (error) {
                         Session.set('errorMessage', error.reason);
                         Router.go('error');
@@ -37,5 +41,9 @@
         }
 
     });
+
+    Template.create_event_page.rendered = function () {
+        $('.ui.dropdown').dropdown();
+    };
 
 }());

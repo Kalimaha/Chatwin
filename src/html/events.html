@@ -40,19 +40,24 @@
             <div class='description'>
                 {{activities.length}} {{_ 'activities'}}
                 <div class='right floated meta'>
-                    {{total}} &euro;
+                    {{format_total total}} {{{format_currency currency}}}
                 </div>
             </div>
         </div>
         <div class='extra content'>
             <div class='left floated' style='margin-right: 1rem;'>
             {{#if activities.length}}
-                <button class='ui mini basic button show_activities_button' id='{{_id}}'>
-                    <i class='folder icon'></i> {{_ 'show_activities'}}
-                </button>
+                <div class='two ui icon buttons'>
+                    <button class='ui mini basic button show_activities_button' id='{{_id}}'>
+                        <i class='list icon'></i>
+                    </button>
+                    <button class='ui mini basic button create_activity_button' id='{{_id}}'>
+                        <i class='icon magic'></i>
+                    </button>
+                </div>
             {{else}}
                 <button class='ui mini basic button create_activity_button' id='{{_id}}'>
-                    <i class='icon magic'></i> Create the first activity
+                    <i class='icon magic'></i>
                 </button>
             {{/if}}
             </div>
