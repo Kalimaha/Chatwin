@@ -1,9 +1,18 @@
 <template name='login_page'>
     <div class='v-space'></div>
     <div class='ui container'>
-        <h2 class='ui header center aligned'>
-            {{_ 'login'}}
+        <h2 class='ui header center aligned inverted'>
+            {{_ 'chatwin'}}
         </h2>
+        <div class='ui horizontal divider inverted'>
+            <i class='key icon'></i>
+        </div>
+        <h4 class='ui header center aligned inverted'>
+            Welcome to the Chatwin app.
+            <br>
+            Please login with your favourite social network to start.
+        </h4>
+        <div class='v-space-login'></div>
         <div class='ui vertical segment'>
             <button class='ui facebook button' id='facebook_button'>
                 <i class='facebook icon'></i> {{_ 'login_facebook'}}
@@ -11,7 +20,7 @@
         </div>
         <div class='ui vertical segment'>
             <button class='ui google plus button' id='google_button'>
-                <i class='google plus icon'></i> {{_ 'login_google'}}
+                <i class='google icon'></i> {{_ 'login_google'}}
             </button>
         </div>
     </div>

@@ -1,4 +1,4 @@
-/*global Template, Router, Meteor, Session*/
+/*global Template, Router, Meteor, Session, $*/
 (function () {
 
     'use strict';
@@ -34,5 +34,12 @@
         }
 
     });
+
+    Template.login_page.rendered = function () {
+        var src = '/images/leather.jpg',
+            body = $('body');
+        body.css('backgroundImage', 'url(' + src + ')');
+        body.css('background-repeat', 'repeat');
+    };
 
 }());
