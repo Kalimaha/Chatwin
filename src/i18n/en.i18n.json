@@ -54,5 +54,7 @@
   "at": "at",
   "an_unknown_place": "an unknown place",
   "yes_save": "Yes, save it",
-  "no_edit": "No, I want to make some changes"
+  "no_edit": "No, I want to make some changes",
+  "welcome_to_chatwin": "Welcome to the Chatwin app!",
+  "please_social_login": "Please login with your favourite social network to start."
 }
