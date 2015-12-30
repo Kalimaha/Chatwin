@@ -25,8 +25,8 @@
         'click #create_event_button': function () {
             var event_name = $('#event_name').val(),
                 currency = $('.ui.dropdown').dropdown('get value');
-            if (currency === 'default') {
-                currency = 'eu';
+            if (Array.isArray(currency)) {
+                currency = currency[1];
             }
             if (event_name !== undefined && event_name.length > 0) {
                 Meteor.call('create_event', event_name, currency, function (error) {

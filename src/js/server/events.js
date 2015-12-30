@@ -33,7 +33,7 @@
                 date_last_update: new Date(),
                 owner: Meteor.userId(),
                 activities: [],
-                total: parseFloat(0).toFixed(2),
+                total: 0.0,
                 users: [
                     Meteor.create_event_user()
                 ]

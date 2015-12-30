@@ -133,6 +133,9 @@
                 {
                     $push: {
                         activities: activity
+                    },
+                    $inc: {
+                        total: parseFloat(cost)
                     }
                 },
                 function (error) {
