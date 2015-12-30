@@ -18,3 +18,12 @@
         </a>
     </div>
 </template>
+
+<template name='create_activity_footer'>
+    {{> yield}}
+    <div class='ui one item bottom fixed menu inverted'>
+        <a class='item add_activity_button' id='{{event_id}}'>
+            <i class='save icon'></i> {{_ 'create_activity'}}
+        </a>
+    </div>
+</template>

@@ -9,14 +9,6 @@
             Router.go('events');
         },
 
-        'click .add_activity_button': function () {
-            if (typeof Meteor.isValidActivityForm() === 'object') {
-                Meteor.show_warning(this.event_id);
-            } else {
-                Meteor.show_summary(this.event_id, this.default_currency);
-            }
-        },
-
         'keyup .activity_form': function () {
             Meteor.validate_form();
         },
@@ -61,6 +53,16 @@
             }
         }
 
+    });
+
+    Template.create_activity_footer.events({
+        'click .add_activity_button': function () {
+            if (typeof Meteor.isValidActivityForm() === 'object') {
+                Meteor.show_warning(this.event_id);
+            } else {
+                Meteor.show_summary(this.event_id, this.default_currency);
+            }
+        }
     });
 
     Meteor.show_warning = function (event_id) {

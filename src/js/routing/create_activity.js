@@ -6,6 +6,7 @@
     Router.route('/create/activity/:event_id/:default_currency', {
         name: 'create_activity',
         template: 'create_activity_page',
+        layoutTemplate: 'create_activity_footer',
         waitOn: function () {
             Meteor.subscribe('activities');
             Meteor.subscribe('facebook_friends');
