@@ -38,7 +38,13 @@
                 </div>
             </div>
             <div class='description'>
-                {{activities.length}} {{_ 'activities'}}
+                {{#if activities.length}}
+                    <a class='show_activities_button' id='{{_id}}'>
+                        {{activities.length}} {{_ 'activities'}}
+                    </a>
+                {{else}}
+                    {{activities.length}} {{_ 'activities'}}
+                {{/if}}
                 <div class='right floated meta'>
                     {{format_total total}} {{{format_currency currency}}}
                 </div>
@@ -53,6 +59,9 @@
                     </button>
                     <button class='ui mini basic button create_activity_button' id='{{_id}}'>
                         <i class='icon magic'></i>
+                    </button>
+                    <button class='ui mini basic button show_map_button' id='{{_id}}'>
+                        <i class='fa fa-map-o'></i>
                     </button>
                 </div>
             {{else}}

@@ -4,7 +4,7 @@
     <div class='v-space-half'></div>
     <div class='ui container'>
         <form class='ui form'>
-            <div class='field'>
+            <div class='field required'>
                 <label for='event_title'>
                     {{_ 'event_name'}}
                 </label>
@@ -16,7 +16,7 @@
                 </div>
                 {{{_ 'please_insert_name_event'}}}
             </div>
-            <div class='field'>
+            <div class='field required'>
                 <label for='currency'>
                     {{_ 'activity_currency'}}
                 </label>
@@ -27,8 +27,8 @@
             </div>
         </form>
         <div class='v-space-half'></div>
-        <button class='ui green button' id='create_event_button'>
-            <i class='wizard icon'></i> {{_ 'create_event'}}
-        </button>
+        <!--<button class='ui green button' id='create_event_button'>-->
+            <!--<i class='wizard icon'></i> {{_ 'create_event'}}-->
+        <!--</button>-->
     </div>
 </template>

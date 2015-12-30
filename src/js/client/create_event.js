@@ -9,6 +9,19 @@
             Router.go('events');
         },
 
+        'keyup #event_name': function () {
+            if ($('#event_name').val().length > 0) {
+                $('.form').removeClass('warning');
+                $('.field').removeClass('error');
+            } else {
+                $('.form').addClass('warning');
+                $('.field').addClass('error');
+            }
+        }
+
+    });
+
+    Template.create_event_footer.events({
         'click #create_event_button': function () {
             var event_name = $('#event_name').val(),
                 currency = $('.ui.dropdown').dropdown('get value');
@@ -28,21 +41,14 @@
                 $('.field').addClass('error');
                 $('.form').addClass('warning');
             }
-        },
-
-        'keyup #event_name': function () {
-            if ($('#event_name').val().length > 0) {
-                $('.form').removeClass('warning');
-                $('.field').removeClass('error');
-            } else {
-                $('.form').addClass('warning');
-                $('.field').addClass('error');
-            }
         }
-
     });
 
     Template.create_event_page.rendered = function () {
+        var src = '/images/paper.jpg',
+            body = $('body');
+        body.css('backgroundImage', 'url(' + src + ')');
+        body.css('background-repeat', 'repeat');
         $('.ui.dropdown').dropdown();
     };
 
