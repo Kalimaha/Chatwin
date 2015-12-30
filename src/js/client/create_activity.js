@@ -18,19 +18,19 @@
         },
 
         'change .ui.dropdown': function () {
-            $('#summary_currency').html($('.ui.dropdown').dropdown('get value'));
+            $('#summary_currency').html($('.ui.dropdown.currency').dropdown('get value'));
         },
 
         'change #i_paid': function () {
-            $('#summary_user').html(Meteor.who_paid().first_name);
+            $('#summary_user').html(Meteor.who_paid().name);
         },
 
         'change #friend_paid': function () {
-            $('#summary_user').html(Meteor.who_paid().first_name);
+            $('#summary_user').html(Meteor.who_paid().name);
         },
 
         'change #email_paid': function () {
-            $('#summary_user').html(Meteor.who_paid().first_name);
+            $('#summary_user').html(Meteor.who_paid().name);
         },
 
         'change #activity_value': function () {
@@ -164,11 +164,14 @@
             name,
             first_name,
             last_name,
-            user;
+            user = Meteor.user(),
+            user_id,
+            selected_item_id,
+            selected_item;
         switch ($('#who_paid_tab').find('a.active').data('tab')) {
         case 'user':
-            user = Meteor.user();
             if (user.services.facebook !== undefined) {
+                user_id = 'facebook_' + user.services.facebook.id;
                 email = user.services.facebook.email;
                 name = user.services.facebook.name;
                 first_name = user.services.facebook.first_name;
@@ -176,6 +179,7 @@
                 picture = 'http://graph.facebook.com/' + user.services.facebook.id + '/picture/?type=large';
             }
             if (Meteor.user().services.google !== undefined) {
+                user_id = 'google_' + user.services.google.id;
                 email = user.services.google.email;
                 name = user.services.google.name;
                 first_name = user.services.google.given_name;
@@ -184,10 +188,19 @@
             }
             break;
         case 'friends':
-            who = {
-                name: $('.tab.active .selection .text').text().trim(),
-                email: $('.tab.active .selection .text').text().trim()
-            };
+            selected_item_id = $('.ui.dropdown.friend').dropdown('get value');
+            selected_item = Meteor.Friends.findOne({id: selected_item_id});
+            email = undefined;
+            name = selected_item.name;
+            first_name = selected_item.name;
+            last_name = selected_item.name;
+            picture = selected_item.picture;
+            if (user.services.facebook !== undefined) {
+                user_id = 'facebook_' + selected_item.id;
+            }
+            if (user.services.google !== undefined) {
+                user_id = 'google_' + selected_item.id;
+            }
             break;
         case 'email':
             who = {
@@ -197,6 +210,7 @@
             break;
         }
         who = {
+            user_id: user_id,
             name: name,
             first_name: first_name,
             last_name: last_name,
@@ -282,7 +296,7 @@
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('.ui.checkbox').checkbox();
-        $('#summary_currency').html($('.ui.dropdown').dropdown('get value'));
+        $('#summary_currency').html($('.ui.dropdown.currency').dropdown('get value'));
     };
 
 }());

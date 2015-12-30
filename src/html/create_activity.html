@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class='ui bottom attached tab segment' data-tab='friends'>
-                    <div class='ui fluid search selection dropdown'>
+                    <div class='ui fluid search selection dropdown friend'>
                         <input id='friend_paid' type='hidden' name='user' class='activity_form'>
                         <i class='dropdown icon'></i>
                         <div class='default text'>
@@ -83,7 +83,7 @@
                                 {{_ 'please_select_a_friend'}}
                             </div>
                             {{#each single_friends}}
-                                <div class='item' data-value='{{_id}}'>
+                                <div class='item' id='{{id}}' data-value='{{id}}' data-name='{{name}}' data-picture='{{picture}}'>
                                     <img class='ui mini avatar image' src='{{picture}}'>
                                     {{name}}
                                 </div>
@@ -155,9 +155,9 @@
         </div>
         <div class='image content'>
             <div class='description'>
-                <b><span id='summary_user'></span></b> {{_ 'paid'}} <b><span id='summary_currency'></span></b>
-                <b><span id='summary_value'></span></b> {{_ 'for'}} <b><span id='summary_name'></span></b> {{_ 'on'}}
-                <b><span id='summary_date'></span></b> {{_ 'at'}} <b><span id='summary_place'>{{_ 'an_unknown_place'}}</span></b>.
+                <span id='summary_user'></span> {{_ 'paid'}} <span id='summary_currency'></span>
+                <span id='summary_value'></span> {{_ 'for'}} <span id='summary_name'></span> {{_ 'on'}}
+                <span id='summary_date'></span> {{_ 'at'}} <span id='summary_place'>{{_ 'an_unknown_place'}}</span>.
                 {{_ 'is_it_correct'}}
             </div>
         </div>

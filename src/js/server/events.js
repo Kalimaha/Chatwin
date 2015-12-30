@@ -83,7 +83,7 @@
                     users: {
                         $not: {
                             $elemMatch: {
-                                email: user.email
+                                user_id: user.user_id
                             }
                         }
                     }
