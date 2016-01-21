@@ -24,10 +24,7 @@
     Template.create_event_footer.events({
         'click #create_event_button': function () {
             var event_name = $('#event_name').val(),
-                currency = $('.ui.dropdown').dropdown('get value');
-            if (Array.isArray(currency)) {
-                currency = currency[1];
-            }
+                currency = $('#currency').val();
             if (event_name !== undefined && event_name.length > 0) {
                 Meteor.call('create_event', event_name, currency, function (error) {
                     if (error) {
@@ -38,8 +35,7 @@
                     }
                 });
             } else {
-                $('.field').addClass('error');
-                $('.form').addClass('warning');
+                $('.form-group.name').addClass('has-error');
             }
         }
     });
