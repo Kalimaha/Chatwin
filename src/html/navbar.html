@@ -1,25 +1,29 @@
-<template name='navbar'>
-    <div class='ui three item top fixed menu inverted'>
+<template name="navbar">
+    <div class="col-xs-12 navbar-inverse navbar-fixed-top">
         {{#if show_back_button}}
-            <a class='item' id='back_button'>
-                <i class='fa fa-arrow-left'></i>
-            </a>
+            <div class="col-xs-4 text-center">
+                <a class="pull-left" id="back_button">
+                    <i class="fa fa-arrow-left fa-lg"></i>
+                </a>
+            </div>
         {{else}}
-            <a class='item' href="{{pathFor route='home'}}">
+            <div class="col-xs-4 text-center">
                 &nbsp;
-            </a>
+            </div>
         {{/if}}
-        <div class='item'>
+        <div class="col-xs-4 text-center text-white">
             {{navbar_title}}
         </div>
         {{#if show_create_button}}
-            <a class='item' id='create_button'>
-                <i class='wizard icon'></i>
-            </a>
+            <div class="col-xs-4 text-center">
+                <a class="pull-right" id="create_button">
+                    <i class="fa fa-magic fa-lg text-white"></i>
+                </a>
+            </div>
         {{else}}
-            <a class='item'>
+            <div class="col-xs-4 text-center">
                 &nbsp;
-            </a>
+            </div>
         {{/if}}
     </div>
 </template>
