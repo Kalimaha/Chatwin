@@ -1,0 +1,38 @@
+481  meteor run ios-device --mobile-server=http://chatwinapp.com/
+  482  meteor run ios-device --mobile-server=http://chatwinapp.com/
+  483  meteor run android-device --mobile-server=http://chatwinapp.com/
+  484  meteor add-platform android
+  485  meteor add-platform android --verbose
+  486  meteor run android-device --mobile-server=http://chatwinapp.com/
+  487  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  488  export ANDROID_HOME="/Volumes/DataSD/development/platforms/android-23"
+  489  echo ANDROID_HOME
+  490  echo $ANDROID_HOME
+  491  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  492  export ANDROID_TOOLS="/Volumes/DataSD/development/tools"
+  493  export ANDROID_PLATFORM_TOOLS="/Volumes/DataSD/development/platform-tools"
+  494  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  495  export ANDROID_HOME="/Volumes/DataSD/development/platforms/android-22"
+  496  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  497  brew install gradle
+  498  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  499  export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+  500  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  501  cd /Development/git-repositories/Chatwin/
+  502  export ANDROID_HOME="/Volumes/DataSD/development/platforms/android-23"
+  503  export ANDROID_PLATFORM_TOOLS="/Volumes/DataSD/development/platform-tools"
+  504  export ANDROID_TOOLS="/Volumes/DataSD/development/tools"
+  505  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  506  export PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
+  507  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  508  exho $ANDOIRD_HOME
+  509  exho $ANDROID_HOME
+  510  echo $ANDROID_HOME
+  511  export ANDROID_HOME="/Volumes/DataSD/development/platforms/android-22"
+  512  echo $ANDROID_HOME
+  513  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  514  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  515  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  516  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  517  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
+  518  meteor run android-device --mobile-server=http://chatwinapp.com/ --verbose
