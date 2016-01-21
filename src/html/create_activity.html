@@ -5,15 +5,79 @@
         <div class="v-space-half"></div>
         <div class="row">
             <div class="col-lg-12">
-                <label for="activity_title">
-                    {{_ "activity_name"}}
-                </label>
-                <input class="form-control activity_form" id="activity_title" placeholder="{{_ 'create_activity_placeholder'}}">
-                <span class="help-block">
-                    <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_name"}}
-                </span>
+                <div class="form-group name">
+                    <label for="activity_title">
+                        {{_ "activity_name"}}
+                    </label>
+                    <input class="form-control activity_form" id="activity_title" placeholder="{{_ 'create_activity_placeholder'}}">
+                    <span class="help-block">
+                        <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_name"}}
+                    </span>
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group name">
+                    <label for="activity_value">
+                        {{_ "activity_value"}}
+                    </label>
+                    <input class="form-control activity_form" id="activity_value" type="number" placeholder="{{_ 'activity_value_placeholder'}}">
+                    <span class="help-block">
+                        <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_value"}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group name">
+                    <label for="activity_friends">
+                        {{_ "activity_friends"}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group name">
+                    <label for="currency">
+                        {{_ "activity_currency"}}
+                    </label>
+                    {{> flag_currencies}}
+                    <span class="help-block">
+                        <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_currency"}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group name">
+                    <label for="activity_date">
+                        {{_ "activity_date"}}
+                    </label>
+                    <input class="form-control" id="activity_date" type="date" placeholder="{{_ 'activity_date_placeholder'}}">
+                    <span class="help-block">
+                        <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_date"}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group name">
+                    <label for="activity_place">
+                        {{_ "activity_place"}}
+                    </label>
+                    <input class="form-control" id="activity_place_google" placeholder="{{_ 'activity_place_placeholder'}}">
+                    <span class="help-block">
+                        <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_place"}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="v-space"></div>
     </div>
 </template>
 

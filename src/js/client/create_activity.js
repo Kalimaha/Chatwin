@@ -285,8 +285,8 @@
     };
 
     Template.create_activity_page.rendered = function () {
-        //$('#activity_date').val((new Date()).toISOString().split('T')[0]);
-        //$('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
+        $('#activity_date').val((new Date()).toISOString().split('T')[0]);
+        $('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
         //Meteor.autocomplete = new google.maps.places.Autocomplete(
         //    document.getElementById('activity_place_google')
         //);
@@ -297,6 +297,7 @@
         //$('.menu .item').tab();
         //$('.ui.checkbox').checkbox();
         //$('#summary_currency').html($('.ui.dropdown.currency').dropdown('get value'));
+        $('.js-example-basic-single').select2();
     };
 
 }());
