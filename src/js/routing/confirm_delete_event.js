@@ -12,8 +12,6 @@
         },
         data: function () {
             var params = this.params;
-            console.log(params.event_id);
-            console.log(params.event_title);
             return {
                 event_id: params.event_id,
                 event_title: params.event_title
