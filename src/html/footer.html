@@ -1,14 +1,32 @@
-<template name='footer'>
+<template name="footer">
     {{> yield}}
-    <div class='ui two item bottom fixed menu inverted'>
-        <a class='item' href="{{pathFor route='home'}}">
-            <i class='fa fa-home'></i>
-        </a>
-        <a class='item' href="{{pathFor route='logout'}}">
-            <i class='fa fa-sign-out'></i>
-        </a>
+    <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+        <div class="row" id="bottomNav">
+            <div class="col-xs-6 text-center">
+                <a href="{{pathFor route='home'}}">
+                    <i class="fa fa-home"></i>
+                </a>
+            </div>
+            <div class="col-xs-6 text-center">
+                <a href="{{pathFor route='logout'}}">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </template>
+
+<!--<template name='footer'>-->
+    <!--{{> yield}}-->
+    <!--<div class='ui two item bottom fixed menu inverted'>-->
+        <!--<a class='item' href="{{pathFor route='home'}}">-->
+            <!--<i class='fa fa-home'></i>-->
+        <!--</a>-->
+        <!--<a class='item' href="{{pathFor route='logout'}}">-->
+            <!--<i class='fa fa-sign-out'></i>-->
+        <!--</a>-->
+    <!--</div>-->
+<!--</template>-->
 
 <template name='create_event_footer'>
     {{> yield}}
