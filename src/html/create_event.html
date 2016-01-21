@@ -1,34 +1,63 @@
-<template name='create_event_page'>
-    {{> navbar navbar_title='New Event' show_create_button=false show_back_button=true}}
-    <div class='v-space'></div>
-    <div class='v-space-half'></div>
-    <div class='ui container'>
-        <form class='ui form'>
-            <div class='field required'>
-                <label for='event_title'>
+<template name="create_event_page">
+    {{> navbar navbar_title="New Event" show_create_button=false show_back_button=true}}
+    <div class="container">
+        <div class="v-space"></div>
+        <div class="v-space"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <label for="event_title">
                     {{_ 'event_name'}}
                 </label>
-                <input class='form-control' id='event_name' placeholder='{{_ "create_event_placeholder"}}'>
+                <input class="form-control" id="event_name" placeholder="{{_ 'create_event_placeholder'}}">
+                <span class="help-block">
+                    <i class="fa fa-info-circle"></i> {{_ "tooltip_event_name"}}
+                </span>
             </div>
-            <div class='ui warning message'>
-                <div class='header'>
-                    {{_ 'warning'}}
-                </div>
-                {{{_ 'please_insert_name_event'}}}
-            </div>
-            <div class='field required'>
-                <label for='currency'>
+            <div class="v-space-half"></div>
+            <div class="col-lg-12">
+                <label for="currency">
                     {{_ 'activity_currency'}}
                 </label>
                 {{> flag_currencies}}
+                <span class="help-block">
+                    <i class="fa fa-info-circle"></i> {{_ "tooltip_event_currency"}}
+                </span>
             </div>
-            <div class='ui info message'>
-                All the activity costs will be converted in the default currency.
-            </div>
-        </form>
-        <div class='v-space-half'></div>
-        <!--<button class='ui green button' id='create_event_button'>-->
-            <!--<i class='wizard icon'></i> {{_ 'create_event'}}-->
-        <!--</button>-->
+        </div>
     </div>
 </template>
+
+<!--<template name='create_event_page'>-->
+    <!--{{> navbar navbar_title='New Event' show_create_button=false show_back_button=true}}-->
+    <!--<div class='v-space'></div>-->
+    <!--<div class='v-space-half'></div>-->
+    <!--<div class='ui container'>-->
+        <!--<form class='ui form'>-->
+            <!--<div class='field required'>-->
+                <!--<label for='event_title'>-->
+                    <!--{{_ 'event_name'}}-->
+                <!--</label>-->
+                <!--<input class='form-control' id='event_name' placeholder='{{_ "create_event_placeholder"}}'>-->
+            <!--</div>-->
+            <!--<div class='ui warning message'>-->
+                <!--<div class='header'>-->
+                    <!--{{_ 'warning'}}-->
+                <!--</div>-->
+                <!--{{{_ 'please_insert_name_event'}}}-->
+            <!--</div>-->
+            <!--<div class='field required'>-->
+                <!--<label for='currency'>-->
+                    <!--{{_ 'activity_currency'}}-->
+                <!--</label>-->
+                <!--{{> flag_currencies}}-->
+            <!--</div>-->
+            <!--<div class='ui info message'>-->
+                <!--All the activity costs will be converted in the default currency.-->
+            <!--</div>-->
+        <!--</form>-->
+        <!--<div class='v-space-half'></div>-->
+        <!--&lt;!&ndash;<button class='ui green button' id='create_event_button'>&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class='wizard icon'></i> {{_ 'create_event'}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</button>&ndash;&gt;-->
+    <!--</div>-->
+<!--</template>-->

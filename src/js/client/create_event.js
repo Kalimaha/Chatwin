@@ -50,6 +50,7 @@
         body.css('backgroundImage', 'url(' + src + ')');
         body.css('background-repeat', 'repeat');
         $('.ui.dropdown').dropdown();
+        $('.js-example-basic-single').select2();
     };
 
 }());

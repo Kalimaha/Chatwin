@@ -23,34 +23,34 @@
     </div>
 </template>
 
-<template name='events_page'>
-    {{> navbar navbar_title='Events' show_create_button=true}}
-    <div class='v-space'></div>
-    <div class='v-space-half'></div>
-    <div class='ui container'>
-        <div class='ui cards'>
-            {{#each single_events}}
-                {{> single_event}}
-            {{else}}
-                <div class='ui container'>
-                    <div class='v-space-half'></div>
-                    <h2 class='ui header center aligned'>
-                        Welcome!
-                    </h2>
-                    <div class='ui horizontal divider'>
-                        <i class='fa fa-hand-spock-o'></i>
-                    </div>
-                    <h3 class='ui header center aligned'>
-                        You don't have any event yet. Create your first event with the <i class='fa fa-plus'></i>
-                        icon in the upper-right side of the screen.
-                    </h3>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-    <div class='v-space'></div>
-    <div class='v-space'></div>
-</template>
+<!--<template name='events_page'>-->
+    <!--{{> navbar navbar_title='Events' show_create_button=true}}-->
+    <!--<div class='v-space'></div>-->
+    <!--<div class='v-space-half'></div>-->
+    <!--<div class='ui container'>-->
+        <!--<div class='ui cards'>-->
+            <!--{{#each single_events}}-->
+                <!--{{> single_event}}-->
+            <!--{{else}}-->
+                <!--<div class='ui container'>-->
+                    <!--<div class='v-space-half'></div>-->
+                    <!--<h2 class='ui header center aligned'>-->
+                        <!--Welcome!-->
+                    <!--</h2>-->
+                    <!--<div class='ui horizontal divider'>-->
+                        <!--<i class='fa fa-hand-spock-o'></i>-->
+                    <!--</div>-->
+                    <!--<h3 class='ui header center aligned'>-->
+                        <!--You don't have any event yet. Create your first event with the <i class='fa fa-plus'></i>-->
+                        <!--icon in the upper-right side of the screen.-->
+                    <!--</h3>-->
+                <!--</div>-->
+            <!--{{/each}}-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class='v-space'></div>-->
+    <!--<div class='v-space'></div>-->
+<!--</template>-->
 
 <template name='single_event'>
     <div class='ui horizontal divider'>

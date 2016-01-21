@@ -1,48 +1,55 @@
-<template name='flag_currencies'>
-    <div class='ui fluid search selection dropdown currency'>
-        {{#if default_currency}}
-            <input type='hidden' name='country' value='{{default_currency}}'>
-        {{else}}
-            <input type='hidden' name='country' value='EUR'>
-        {{/if}}
-        <i class='dropdown icon'></i>
-        <div class='default text'>
-            Please select the default currency for this event...
-        </div>
-        <div class='menu'>
-            <div class='item' data-value='EUR'><i class='eu flag'></i>Euro</div>
-            <div class='item' data-value='USD'><i class='us flag'></i>US Dollar</div>
-            <div class='divider'></div>
-            <div class='item' data-value='AUD'><i class='au flag'></i>Australia Dollars</div>
-            <div class='item' data-value='BGN'><i class='bg flag'></i>Lev</div>
-            <div class='item' data-value='BRL'><i class='br flag'></i>Real</div>
-            <div class='item' data-value='CAD'><i class='ca flag'></i>Canadian Dollar</div>
-            <div class='item' data-value='CHF'><i class='ch flag'></i>Swiss Franc</div>
-            <div class='item' data-value='CNY'><i class='cn flag'></i>Renminbi</div>
-            <div class='item' data-value='CZK'><i class='cz flag'></i>Czech Koruna</div>
-            <div class='item' data-value='DKK'><i class='dk flag'></i>Danish Krone</div>
-            <div class='item' data-value='GBP'><i class='gb flag'></i>Pound</div>
-            <div class='item' data-value='HKD'><i class='hk flag'></i>Hong Kong Dollar</div>
-            <div class='item' data-value='HRK'><i class='hr flag'></i>Kuna</div>
-            <div class='item' data-value='HUF'><i class='hu flag'></i>Forint</div>
-            <div class='item' data-value='IDR'><i class='id flag'></i>Indonesian Rupiah</div>
-            <div class='item' data-value='ILS'><i class='il flag'></i>New Sheqel</div>
-            <div class='item' data-value='INR'><i class='in flag'></i>Indian Rupiah</div>
-            <div class='item' data-value='JPY'><i class='jp flag'></i>Yen</div>
-            <div class='item' data-value='KRW'><i class='kr flag'></i>Won</div>
-            <div class='item' data-value='MXN'><i class='mx flag'></i>Mexican Peso</div>
-            <div class='item' data-value='MYR'><i class='my flag'></i>Ringgit</div>
-            <div class='item' data-value='NOK'><i class='no flag'></i>Norwegian Krone</div>
-            <div class='item' data-value='NZD'><i class='nz flag'></i>New Zealand Dollar</div>
-            <div class='item' data-value='PHP'><i class='ph flag'></i>Philippine Peso</div>
-            <div class='item' data-value='PLN'><i class='pl flag'></i>Zloty</div>
-            <div class='item' data-value='RON'><i class='ro flag'></i>Leu</div>
-            <div class='item' data-value='RUB'><i class='ru flag'></i>Rubles</div>
-            <div class='item' data-value='SEK'><i class='se flag'></i>Swedish Kroner</div>
-            <div class='item' data-value='SGD'><i class='sg flag'></i>Singapore Dollar</div>
-            <div class='item' data-value='THB'><i class='th flag'></i>Bath</div>
-            <div class='item' data-value='TRY'><i class='tr flag'></i>Lira</div>
-            <div class='item' data-value='ZAR'><i class='za flag'></i>Rand</div>
-        </div>
-    </div>
+<template name="flag_currencies">
+    <select class="js-example-basic-single" style="width: 100%">
+        <option value="">{{_ "please_select_currency"}}</option>
+        <option value="EUR">Euro</option>
+    </select>
 </template>
+
+<!--<template name='flag_currencies'>-->
+    <!--<div class='ui fluid search selection dropdown currency'>-->
+        <!--{{#if default_currency}}-->
+            <!--<input type='hidden' name='country' value='{{default_currency}}'>-->
+        <!--{{else}}-->
+            <!--<input type='hidden' name='country' value='EUR'>-->
+        <!--{{/if}}-->
+        <!--<i class='dropdown icon'></i>-->
+        <!--<div class='default text'>-->
+            <!--Please select the default currency for this event...-->
+        <!--</div>-->
+        <!--<div class='menu'>-->
+            <!--<div class='item' data-value='EUR'><i class='eu flag'></i>Euro</div>-->
+            <!--<div class='item' data-value='USD'><i class='us flag'></i>US Dollar</div>-->
+            <!--<div class='divider'></div>-->
+            <!--<div class='item' data-value='AUD'><i class='au flag'></i>Australia Dollars</div>-->
+            <!--<div class='item' data-value='BGN'><i class='bg flag'></i>Lev</div>-->
+            <!--<div class='item' data-value='BRL'><i class='br flag'></i>Real</div>-->
+            <!--<div class='item' data-value='CAD'><i class='ca flag'></i>Canadian Dollar</div>-->
+            <!--<div class='item' data-value='CHF'><i class='ch flag'></i>Swiss Franc</div>-->
+            <!--<div class='item' data-value='CNY'><i class='cn flag'></i>Renminbi</div>-->
+            <!--<div class='item' data-value='CZK'><i class='cz flag'></i>Czech Koruna</div>-->
+            <!--<div class='item' data-value='DKK'><i class='dk flag'></i>Danish Krone</div>-->
+            <!--<div class='item' data-value='GBP'><i class='gb flag'></i>Pound</div>-->
+            <!--<div class='item' data-value='HKD'><i class='hk flag'></i>Hong Kong Dollar</div>-->
+            <!--<div class='item' data-value='HRK'><i class='hr flag'></i>Kuna</div>-->
+            <!--<div class='item' data-value='HUF'><i class='hu flag'></i>Forint</div>-->
+            <!--<div class='item' data-value='IDR'><i class='id flag'></i>Indonesian Rupiah</div>-->
+            <!--<div class='item' data-value='ILS'><i class='il flag'></i>New Sheqel</div>-->
+            <!--<div class='item' data-value='INR'><i class='in flag'></i>Indian Rupiah</div>-->
+            <!--<div class='item' data-value='JPY'><i class='jp flag'></i>Yen</div>-->
+            <!--<div class='item' data-value='KRW'><i class='kr flag'></i>Won</div>-->
+            <!--<div class='item' data-value='MXN'><i class='mx flag'></i>Mexican Peso</div>-->
+            <!--<div class='item' data-value='MYR'><i class='my flag'></i>Ringgit</div>-->
+            <!--<div class='item' data-value='NOK'><i class='no flag'></i>Norwegian Krone</div>-->
+            <!--<div class='item' data-value='NZD'><i class='nz flag'></i>New Zealand Dollar</div>-->
+            <!--<div class='item' data-value='PHP'><i class='ph flag'></i>Philippine Peso</div>-->
+            <!--<div class='item' data-value='PLN'><i class='pl flag'></i>Zloty</div>-->
+            <!--<div class='item' data-value='RON'><i class='ro flag'></i>Leu</div>-->
+            <!--<div class='item' data-value='RUB'><i class='ru flag'></i>Rubles</div>-->
+            <!--<div class='item' data-value='SEK'><i class='se flag'></i>Swedish Kroner</div>-->
+            <!--<div class='item' data-value='SGD'><i class='sg flag'></i>Singapore Dollar</div>-->
+            <!--<div class='item' data-value='THB'><i class='th flag'></i>Bath</div>-->
+            <!--<div class='item' data-value='TRY'><i class='tr flag'></i>Lira</div>-->
+            <!--<div class='item' data-value='ZAR'><i class='za flag'></i>Rand</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</template>-->

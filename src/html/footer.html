@@ -16,12 +16,16 @@
     </div>
 </template>
 
-<template name='create_event_footer'>
+<template name="create_event_footer">
     {{> yield}}
-    <div class='ui one item bottom fixed menu inverted'>
-        <a class='item' id='create_event_button'>
-            <i class='save icon'></i> {{_ 'create_event'}}
-        </a>
+    <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+        <div class="row" id="bottomNav">
+            <div class="col-xs-12 text-center">
+                <a id="create_event_button">
+                    <i class="fa fa-save text-white"></i> {{_ "create_event"}}
+                </a>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -29,7 +33,7 @@
     {{> yield}}
     <div class='ui one item bottom fixed menu inverted'>
         <a class='item add_activity_button' id='{{event_id}}'>
-            <i class='save icon'></i> {{_ 'create_activity'}}
+            <i class='save icon'></i> <p class="text-white">{{_ 'create_activity'}}</p>
         </a>
     </div>
 </template>

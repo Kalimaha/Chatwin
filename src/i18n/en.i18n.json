@@ -6,7 +6,7 @@
   "event": "Event",
   "activities_done": "activities done",
   "event_name": "Event Name",
-  "create_event": "Create Event",
+  "create_event": "Save Event",
   "create_event_placeholder": "e.g. Trip to NYC",
   "logout_successful": "Logout Successful",
   "activity_name": "Activity Name",
@@ -57,5 +57,8 @@
   "yes_save": "Yes, save it",
   "no_edit": "No, I want to make some changes",
   "welcome_to_chatwin": "Welcome to the Chatwin app!",
-  "please_social_login": "Please login with your favourite social network to start."
+  "please_social_login": "Please login with your favourite social network to start.",
+  "tooltip_event_name": "The name of your event.",
+  "tooltip_event_currency": "The default currency for this event. When you record an activity with a different currency, the value is automatically converted to the default currency.",
+  "please_select_currency": "Please select the default currency for this event..."
 }
