@@ -81,13 +81,17 @@ h2 {
 }
 
 .text-white {
-  color: #fff;
+  color: #fff !important;
   h2 {
     color: #fff
   }
   h4 {
     color: #fff
   }
+}
+
+.text-red {
+  color: #d34836 !important;
 }
 
 .col-xs-12.navbar-inverse.navbar-fixed-top {

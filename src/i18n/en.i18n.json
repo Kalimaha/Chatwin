@@ -60,5 +60,6 @@
   "please_social_login": "Please login with your favourite social network to start.",
   "tooltip_event_name": "The name of your event.",
   "tooltip_event_currency": "The default currency for this event. When you record an activity with a different currency, the value is automatically converted to the default currency.",
-  "please_select_currency": "Please select the default currency for this event..."
+  "please_select_currency": "Please select the default currency for this event...",
+  "confirm_delete_event": "Are you sure that you want to delete the event named "
 }

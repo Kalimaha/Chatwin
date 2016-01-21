@@ -8,28 +8,32 @@
             Router.go('create_event');
         },
         'click .delete_event_button': function () {
-            var that = this;
-            $('#modal_' + this._id).modal({
-                selector: {
-                    approve  : '.actions .ok',
-                    deny     : '.actions .cancel'
-                },
-                closable: false,
-                onApprove: function () {
-                    Meteor.call('remove_event', that._id, function (error) {
-                        if (error) {
-                            Session.set('errorMessage', error.reason);
-                            Router.go('error');
-                        } else {
-                            Router.go('events');
-                        }
-                    });
-                    return true;
-                },
-                onDeny: function () {
-                    return true;
-                }
-            }).modal('show');
+            Router.go('confirm_delete_event', {
+                event_id: this._id,
+                event_title: this.name
+            });
+            //$('#delete_event_' + this.id).modal('show');
+            //$('#modal_' + this._id).modal({
+            //    selector: {
+            //        approve  : '.actions .ok',
+            //        deny     : '.actions .cancel'
+            //    },
+            //    closable: false,
+            //    onApprove: function () {
+            //        Meteor.call('remove_event', that._id, function (error) {
+            //            if (error) {
+            //                Session.set('errorMessage', error.reason);
+            //                Router.go('error');
+            //            } else {
+            //                Router.go('events');
+            //            }
+            //        });
+            //        return true;
+            //    },
+            //    onDeny: function () {
+            //        return true;
+            //    }
+            //}).modal('show');
         },
         'click .show_activities_button': function () {
             Router.go('activities', {event_id: this._id});

@@ -61,11 +61,14 @@ h2 .white {
   color: #ffffff !important; }
 
 .text-white {
-  color: #fff; }
+  color: #fff !important; }
   .text-white h2 {
     color: #fff; }
   .text-white h4 {
     color: #fff; }
+
+.text-red {
+  color: #d34836 !important; }
 
 .col-xs-12.navbar-inverse.navbar-fixed-top {
   line-height: 5rem; }

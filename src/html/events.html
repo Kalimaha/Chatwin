@@ -1,6 +1,7 @@
 <template name="events_page">
     {{> navbar navbar_title='Events' show_create_button=true}}
     <div class="container">
+        <div class="v-space"></div>
         {{#each single_events}}
             {{> single_event}}
         {{else}}
@@ -23,103 +24,130 @@
     </div>
 </template>
 
-<!--<template name='events_page'>-->
-    <!--{{> navbar navbar_title='Events' show_create_button=true}}-->
-    <!--<div class='v-space'></div>-->
-    <!--<div class='v-space-half'></div>-->
-    <!--<div class='ui container'>-->
-        <!--<div class='ui cards'>-->
-            <!--{{#each single_events}}-->
-                <!--{{> single_event}}-->
-            <!--{{else}}-->
-                <!--<div class='ui container'>-->
-                    <!--<div class='v-space-half'></div>-->
-                    <!--<h2 class='ui header center aligned'>-->
-                        <!--Welcome!-->
-                    <!--</h2>-->
-                    <!--<div class='ui horizontal divider'>-->
-                        <!--<i class='fa fa-hand-spock-o'></i>-->
-                    <!--</div>-->
-                    <!--<h3 class='ui header center aligned'>-->
-                        <!--You don't have any event yet. Create your first event with the <i class='fa fa-plus'></i>-->
-                        <!--icon in the upper-right side of the screen.-->
-                    <!--</h3>-->
-                <!--</div>-->
-            <!--{{/each}}-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class='v-space'></div>-->
-    <!--<div class='v-space'></div>-->
-<!--</template>-->
-
-<template name='single_event'>
-    <div class='ui horizontal divider'>
-        {{format_date creation_date}}
-    </div>
-    <div class='ui centered fluid card' id='add_activity_to_{{_id}}'>
-        <div class='content'>
-            <div class='header'>
+<template name="single_event">
+    <div class="v-space"></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <b>
                 {{name}}
-                <div class='right floated'>
-                    <i class='trash red icon delete_event_button' id='{{_id}}'></i>
-                </div>
-            </div>
-            <div class='description'>
-                {{#if activities.length}}
-                    <a class='show_activities_button' id='{{_id}}'>
-                        {{activities.length}} {{_ 'activities'}}
-                    </a>
-                {{else}}
-                    {{activities.length}} {{_ 'activities'}}
-                {{/if}}
-                <div class='right floated meta'>
-                    {{format_total total}} {{{format_currency currency}}}
-                </div>
+            </b>
+            <i class="fa fa-trash fa-lg pull-right text-red delete_event_button" id="{{_id}}" data-title="{{name}}"></i>
+        </div>
+        <div class="panel-body">
+            {{#if activities.length}}
+                <a class="show_activities_button" id="{{_id}}">
+                    {{activities.length}} {{_ "activities"}}
+                </a>
+            {{else}}
+                {{activities.length}} {{_ "activities"}}
+            {{/if}}
+            <div class="pull-right">
+                {{format_total total}} {{{format_currency currency}}}
             </div>
         </div>
-        <div class='extra content'>
-            <div class='left floated' style='margin-right: 1rem;'>
-            {{#if activities.length}}
-                <div class='two ui icon buttons'>
-                    <button class='ui mini basic button show_activities_button' id='{{_id}}'>
-                        <i class='list icon'></i>
-                    </button>
-                    <button class='ui mini basic button create_activity_button' id='{{_id}}'>
-                        <i class='icon magic'></i>
-                    </button>
-                    <button class='ui mini basic button show_map_button' id='{{_id}}'>
-                        <i class='fa fa-map-o'></i>
-                    </button>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    {{#if activities.length}}
+                        <i class="fa fa-list fa-lg show_activities_button" id="{{_id}}"></i>
+                        &nbsp;
+                        <i class="fa fa-map fa-lg show_map_button" id="{{_id}}"></i>
+                        &nbsp;
+                        <i class="fa fa-magic fa-lg create_activity_button" id="{{_id}}"></i>
+                    {{else}}
+                        <i class="fa fa-magic fa-lg create_activity_button" id="{{_id}}"></i>
+                    {{/if}}
                 </div>
-            {{else}}
-                <button class='ui mini basic button create_activity_button' id='{{_id}}'>
-                    <i class='icon magic'></i>
-                </button>
-            {{/if}}
             </div>
-            {{#each users}}
-                <img class='right floated ui avatar image' src='{{picture}}'>
-            {{/each}}
         </div>
     </div>
-    <div class='ui modal' id='modal_{{_id}}'>
-        <div class='ui header center aligned'>
-            {{_ 'warning'}}
-        </div>
-        <div class='image content'>
-            <div class='description'>
-                {{_ 'remove_event_warning'}}
-            </div>
-        </div>
-        <div class='actions'>
-            <div class='ui tiny button cancel green'>
-                <i class='remove icon'></i>
-                {{_ 'no'}}
-            </div>
-            <div class='ui tiny button ok red'>
-                <i class='checkmark icon'></i>
-                {{_ 'yes'}}
+    <div class="modal fade" tabindex="-1" role="dialog" id="delete_event_{{_id}}">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
+<!--<template name='single_event'>-->
+    <!--<div class='ui horizontal divider'>-->
+        <!--{{format_date creation_date}}-->
+    <!--</div>-->
+    <!--<div class='ui centered fluid card' id='add_activity_to_{{_id}}'>-->
+        <!--<div class='content'>-->
+            <!--<div class='header'>-->
+                <!--{{name}}-->
+                <!--<div class='right floated'>-->
+                    <!--<i class='trash red icon delete_event_button' id='{{_id}}'></i>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class='description'>-->
+                <!--{{#if activities.length}}-->
+                    <!--<a class='show_activities_button' id='{{_id}}'>-->
+                        <!--{{activities.length}} {{_ 'activities'}}-->
+                    <!--</a>-->
+                <!--{{else}}-->
+                    <!--{{activities.length}} {{_ 'activities'}}-->
+                <!--{{/if}}-->
+                <!--<div class='right floated meta'>-->
+                    <!--{{format_total total}} {{{format_currency currency}}}-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class='extra content'>-->
+            <!--<div class='left floated' style='margin-right: 1rem;'>-->
+            <!--{{#if activities.length}}-->
+                <!--<div class='two ui icon buttons'>-->
+                    <!--<button class='ui mini basic button show_activities_button' id='{{_id}}'>-->
+                        <!--<i class='list icon'></i>-->
+                    <!--</button>-->
+                    <!--<button class='ui mini basic button create_activity_button' id='{{_id}}'>-->
+                        <!--<i class='icon magic'></i>-->
+                    <!--</button>-->
+                    <!--<button class='ui mini basic button show_map_button' id='{{_id}}'>-->
+                        <!--<i class='fa fa-map-marker'></i>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--{{else}}-->
+                <!--<button class='ui mini basic button create_activity_button' id='{{_id}}'>-->
+                    <!--<i class='icon magic'></i>-->
+                <!--</button>-->
+            <!--{{/if}}-->
+            <!--</div>-->
+            <!--{{#each users}}-->
+                <!--<img class='right floated ui avatar image' src='{{picture}}'>-->
+            <!--{{/each}}-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class='ui modal' id='modal_{{_id}}'>-->
+        <!--<div class='ui header center aligned'>-->
+            <!--{{_ 'warning'}}-->
+        <!--</div>-->
+        <!--<div class='image content'>-->
+            <!--<div class='description'>-->
+                <!--{{_ 'remove_event_warning'}}-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class='actions'>-->
+            <!--<div class='ui tiny button cancel green'>-->
+                <!--<i class='remove icon'></i>-->
+                <!--{{_ 'no'}}-->
+            <!--</div>-->
+            <!--<div class='ui tiny button ok red'>-->
+                <!--<i class='checkmark icon'></i>-->
+                <!--{{_ 'yes'}}-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</template>-->
