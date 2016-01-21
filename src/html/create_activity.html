@@ -1,3 +1,22 @@
+<template name="create_activity_page">
+    {{> navbar navbar_title='New Activity' show_create_button=false show_back_button=true}}
+    <div class="container">
+        <div class="v-space"></div>
+        <div class="v-space-half"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <label for="activity_title">
+                    {{_ "activity_name"}}
+                </label>
+                <input class="form-control activity_form" id="activity_title" placeholder="{{_ 'create_activity_placeholder'}}">
+                <span class="help-block">
+                    <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_name"}}
+                </span>
+            </div>
+        </div>
+    </div>
+</template>
+
 <template name='create_activity_page'>
     {{> navbar navbar_title='New Activity' show_create_button=false show_back_button=true}}
     <div class='v-space'></div>

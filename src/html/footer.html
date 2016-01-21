@@ -20,7 +20,7 @@
     {{> yield}}
     <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
         <div class="row" id="bottomNav">
-            <div class="col-xs-12 text-center">
+            <div class="col-lg-12 text-center">
                 <a id="create_event_button">
                     <i class="fa fa-save text-white"></i> {{_ "create_event"}}
                 </a>
@@ -29,16 +29,20 @@
     </div>
 </template>
 
-<template name='create_activity_footer'>
+<template name="create_activity_footer">
     {{> yield}}
-    <div class='ui one item bottom fixed menu inverted'>
-        <a class='item add_activity_button' id='{{event_id}}'>
-            <i class='save icon'></i> <p class="text-white">{{_ 'create_activity'}}</p>
-        </a>
+    <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a class="add_activity_button" id="{{event_id}}">
+                    <i class="fa fa-save text-white"></i> {{_ "create_activity"}}
+                </a>
+            </div>
+        </div>
     </div>
 </template>
 
-<template name='confirm_delete_event_footer'>
+<template name="confirm_delete_event_footer">
     {{> yield}}
     <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
         <div class="row" id="bottomNav">

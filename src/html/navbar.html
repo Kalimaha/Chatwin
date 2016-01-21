@@ -1,27 +1,27 @@
 <template name="navbar">
     <div class="col-xs-12 navbar-inverse navbar-fixed-top">
         {{#if show_back_button}}
-            <div class="col-xs-4 text-center">
+            <div class="col-xs-2 text-center">
                 <a class="pull-left" id="back_button">
                     <i class="fa fa-arrow-left fa-lg text-white"></i>
                 </a>
             </div>
         {{else}}
-            <div class="col-xs-4 text-center">
+            <div class="col-xs-2 text-center">
                 &nbsp;
             </div>
         {{/if}}
-        <div class="col-xs-4 text-center text-white">
+        <div class="col-xs-8 text-center text-white">
             {{navbar_title}}
         </div>
         {{#if show_create_button}}
-            <div class="col-xs-4 text-center">
+            <div class="col-xs-2 text-center">
                 <a class="pull-right" id="create_button">
                     <i class="fa fa-magic fa-lg text-white"></i>
                 </a>
             </div>
         {{else}}
-            <div class="col-xs-4 text-center">
+            <div class="col-xs-2 text-center">
                 &nbsp;
             </div>
         {{/if}}
