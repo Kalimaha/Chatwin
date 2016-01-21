@@ -53,10 +53,13 @@
                         &nbsp;
                         <i class="fa fa-map fa-lg show_map_button" id="{{_id}}"></i>
                         &nbsp;
-                        <i class="fa fa-magic fa-lg create_activity_button" id="{{_id}}"></i>
+                        <i class="fa fa-plus fa-lg create_activity_button" id="{{_id}}"></i>
                     {{else}}
-                        <i class="fa fa-magic fa-lg create_activity_button" id="{{_id}}"></i>
+                        <i class="fa fa-plus fa-lg create_activity_button" id="{{_id}}"></i>
                     {{/if}}
+                    {{#each users}}
+                        <img class="img-circle img-responsive avatar pull-right" src="{{picture}}">
+                    {{/each}}
                 </div>
             </div>
         </div>

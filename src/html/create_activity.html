@@ -35,6 +35,25 @@
                     <label for="activity_friends">
                         {{_ "activity_friends"}}
                     </label>
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#user" aria-controls="user" role="tab" data-toggle="tab">
+                                <i class="fa fa-user"></i>
+                            </a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="user">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <input type="checkbox" checked> {{_ "i_paid"}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block">
+                        <i class="fa fa-info-circle"></i> {{_ "tooltip_activity_friends"}}
+                    </span>
                 </div>
             </div>
         </div>

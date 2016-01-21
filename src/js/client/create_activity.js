@@ -287,9 +287,9 @@
     Template.create_activity_page.rendered = function () {
         $('#activity_date').val((new Date()).toISOString().split('T')[0]);
         $('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
-        //Meteor.autocomplete = new google.maps.places.Autocomplete(
-        //    document.getElementById('activity_place_google')
-        //);
+        Meteor.autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('activity_place_google')
+        );
         //google.maps.event.addListener(Meteor.autocomplete, 'place_changed', function () {
         //    $('#summary_place').html(Meteor.autocomplete.getPlace().name);
         //});
