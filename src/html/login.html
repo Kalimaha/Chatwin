@@ -1,27 +1,35 @@
-<template name='login_page'>
-    <div class='v-space'></div>
-    <div class='ui container'>
-        <h2 class='ui header center aligned inverted'>
-            {{_ 'chatwin'}}
-        </h2>
-        <div class='ui horizontal divider inverted'>
-            <i class='key icon'></i>
+<template name="login_page">
+    <div class="container">
+        <div class="v-space"></div>
+        <div class="row">
+            <div class="col-lg-12 text-center text-white">
+                <h2>
+                    {{_ "chatwin"}}
+                </h2>
+                <hr>
+                <h4>
+                    {{_ "welcome_to_chatwin"}}
+                </h4>
+                <h4>
+                    {{_ "please_social_login"}}
+                </h4>
+            </div>
         </div>
-        <h4 class='ui header center aligned inverted'>
-            {{_ 'welcome_to_chatwin'}}
-            <br>
-            {{_ 'please_social_login'}}
-        </h4>
-        <div class='v-space-login'></div>
-        <div class='ui vertical segment'>
-            <button class='ui facebook button' id='facebook_button'>
-                <i class='facebook icon'></i> {{_ 'login_facebook'}}
-            </button>
+        <div class="v-space-login"></div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <button class="btn btn-facebook" id="facebook_button">
+                    <i class="fa fa-facebook"></i> {{_ 'login_facebook'}}
+                </button>
+            </div>
         </div>
-        <div class='ui vertical segment'>
-            <button class='ui google plus button' id='google_button'>
-                <i class='google icon'></i> {{_ 'login_google'}}
-            </button>
+        <div class="v-space-half"></div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <button class="btn btn-google" id="google_button">
+                    <i class="fa fa-google"></i> {{_ 'login_google'}}
+                </button>
+            </div>
         </div>
     </div>
 </template>
