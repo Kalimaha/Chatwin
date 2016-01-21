@@ -1,3 +1,28 @@
+<template name="events_page">
+    {{> navbar navbar_title='Events' show_create_button=true}}
+    <div class="container">
+        {{#each single_events}}
+            {{> single_event}}
+        {{else}}
+            <div class="v-space"></div>
+            <div class="v-space"></div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>
+                        {{_ "welcome"}}
+                    </h2>
+                    <hr>
+                    <h4>
+                        {{_ "no_events_1"}}
+                        <i class="fa fa-magic"></i>
+                        {{_ "no_events_2"}}
+                    </h4>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</template>
+
 <template name='events_page'>
     {{> navbar navbar_title='Events' show_create_button=true}}
     <div class='v-space'></div>
