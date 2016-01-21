@@ -25,9 +25,9 @@ http
 email
 meteorhacks:ssr
 ground:db
-semantic:ui
-flemay:less-autoprefixer
 momentjs:moment
 tap:i18n
 mrt:googlemaps
 accounts-password
+twbs:bootstrap
+natestrauser:select2
