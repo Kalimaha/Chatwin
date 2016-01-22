@@ -2,12 +2,18 @@
     {{> navbar navbar_title='Activity Summary' show_create_button=false show_back_button=false}}
     <div class="container">
         <div class="v-space"></div>
-        <div class="v-space-half"></div>
+        <div class="v-space"></div>
         <div class="row">
             <div class="col-lg-12">
-                summary here
-                {{activity.title}}
-                {{activity.who_paid.name}}
+                <h3 class="text-center">
+                    {{activity.who_paid.first_name}} {{_ "paid"}} {{activity.currency}} {{format_number activity.cost}}
+                    {{#if activity.date}}&nbsp;{{_ "on"}} {{format_date activity.date}}{{/if}}
+                    {{#if activity.place}}&nbsp;{{_ "at"}} {{activity.place.name}}{{/if}}.
+                </h3>
+                <hr>
+                <h3 class="text-center">
+                    Do you want to save this activity?
+                </h3>
             </div>
         </div>
         <div class="v-space"></div>

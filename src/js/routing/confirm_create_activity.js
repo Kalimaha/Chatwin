@@ -14,7 +14,6 @@
             return Meteor.subscribe('getUserData');
         },
         onBeforeAction: function () {
-            console.log(Session.get('activity'));
             var u = Meteor.user();
             if (u === null || u.services === null) {
                 return Router.go('login');
@@ -26,7 +25,6 @@
             }
         },
         data: function () {
-            console.log(Session.get('activity'));
             var params = this.params;
             return {
                 event_id: params.event_id,
