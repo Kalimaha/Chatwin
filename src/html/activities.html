@@ -1,56 +1,51 @@
-<template name='activities_page'>
-    {{> navbar navbar_title='Activities' show_back_button=true show_create_button=true}}
-    <div class='v-space'></div>
-    <div class='v-space-half'></div>
-    <div class='ui container'>
-        <div class='ui cards'>
-            {{#each event.activities}}
-                {{> single_activity}}
-            {{else}}
-                <div class='ui container'>
-                    <div class='v-space-half'></div>
-                    <h2 class='ui header center aligned'>
-                        Welcome!
+<template name="activities_page">
+    {{> navbar navbar_title="Activities" show_back_button=true show_create_button=true}}
+    <div class="v-space"></div>
+    <!--<div class="v-space-half"></div>-->
+    <div class="container">
+        {{#each event.activities}}
+            {{> single_activity}}
+        {{else}}
+            <div class="v-space"></div>
+            <div class="v-space"></div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>
+                        {{_ "welcome"}}
                     </h2>
                     <hr>
-                    <h3 class='ui header center aligned'>
+                    <h4>
                         You don't have any activity yet. Create your first event with the <i class='fa fa-plus'></i>
                         icon in the upper-right side of the screen.
-                    </h3>
+                    </h4>
                 </div>
-            {{/each}}
-        </div>
+            </div>
+        {{/each}}
     </div>
-    <div class='v-space'></div>
-    <div class='v-space'></div>
+    <div class="v-space"></div>
+    <div class="v-space"></div>
 </template>
 
-<template name='single_activity'>
-    <div class='ui horizontal divider'>
-        {{#if this.date}}
-            {{format_date this.date}}
-        {{else}}
-            <i class='calendar icon'></i>
-        {{/if}}
-    </div>
-    <div class='ui centered fluid card'>
-        <div class='content'>
-            <div class='header'>
-                {{this.name}}
-                <div class='right floated'>
-                    <i class='trash red icon delete_event_button' id='{{_id}}'></i>
-                </div>
-            </div>
-            <div class='description'>
-                {{this.who_paid.first_name}} paid {{{format_currency this.currency}}} {{format_total this.cost}}.
+<template name="single_activity">
+    <div class="v-space"></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <b>
+                {{this.title}}
+            </b>
+            <div class="pull-right">
+                <i class="fa fa-trash fa-lg pull-right text-red delete_event_button" id="{{_id}}"></i>
             </div>
         </div>
-        <div class='extra content'>
+        <div class="panel-body">
+            {{this.who_paid.name}} {{_ "paid"}} {{{format_currency this.currency}}} {{format_total this.cost}}.
+        </div>
+        <div class="panel-footer">
             {{#if this.place.name}}
-                <i class='red marker icon'></i> {{this.place.name}}
+                <i class="fa fa-map-marker"></i> {{this.place.name}}
             {{/if}}
             {{#if this.date}}
-                <div class='right floated'>
+                <div class="pull-right">
                     {{format_date this.date}}
                 </div>
             {{/if}}
