@@ -77,4 +77,8 @@ h2 .white {
   line-height: 5rem;
   color: #fff !important; }
 
+.col-xs-12.navbar-inverse.navbar-fixed-bottom a {
+  color: #fff !important;
+  text-decoration: none !important; }
+
 /*# sourceMappingURL=chatwin.css.map */
