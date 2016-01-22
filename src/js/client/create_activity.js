@@ -7,6 +7,10 @@
 
         'click #back_button': function () {
             Router.go('events');
+        },
+
+        'keyup #activity_title': function () {
+            Meteor.validate_form();
         }
 
     });
@@ -17,36 +21,114 @@
                 place = Meteor.autocomplete.getPlace(),
                 default_currency = this.default_currency,
                 event_id = this.event_id;
-            a.title = $('#activity_title').val();
-            a.cost = $('#activity_value').val();
-            a.original_cost = a.cost;
-            a.currency = $('#currency').find('option:selected').val();
-            a.original_currency = a.currency;
-            a.place = {
-                name: place !== undefined ? place.name : place,
-                address: place !== undefined ? place.formatted_address : place,
-                lat: place !== undefined ? place.geometry.location.lat() : place,
-                lon: place !== undefined ? place.geometry.location.lng() : place,
-                icon: place !== undefined ? place.icon : place
-            };
-            a.date = $('#activity_date').val();
-            console.log(a);
-            console.log(default_currency);
-            Meteor.call('exchange_currency', a.cost, default_currency, a.currency, function (error, result) {
-                if (error) {
-                    Session.set('errorMessage', error.reason);
-                }
-                a.cost = result;
-                a.currency = default_currency;
-                Session.set('activity', a);
-                Router.go('confirm_create_activity', {
-                    event_id: event_id,
-                    default_currency: default_currency
+            if (Meteor.form_is_valid()) {
+                a.title = $('#activity_title').val();
+                a.cost = $('#activity_value').val();
+                a.original_cost = a.cost;
+                a.currency = $('#currency').find('option:selected').val();
+                a.original_currency = a.currency;
+                a.who_paid = Meteor.who_paid();
+                a.place = {
+                    name: place !== undefined ? place.name : place,
+                    address: place !== undefined ? place.formatted_address : place,
+                    lat: place !== undefined ? place.geometry.location.lat() : place,
+                    lon: place !== undefined ? place.geometry.location.lng() : place,
+                    icon: place !== undefined ? place.icon : place
+                };
+                a.date = $('#activity_date').val();
+                Meteor.call('exchange_currency', a.cost, default_currency, a.currency, function (error, result) {
+                    if (error) {
+                        Session.set('errorMessage', error.reason);
+                    }
+                    a.cost = result;
+                    a.currency = default_currency;
+                    Session.set('activity', a);
+                    Router.go('confirm_create_activity', {
+                        event_id: event_id,
+                        default_currency: default_currency
+                    });
                 });
-            });
-            return a;
+            }
         }
     });
+
+    Meteor.form_is_valid = function () {
+        return Meteor.validate_form();
+    };
+
+    Meteor.validate_form = function () {
+        if ($('#activity_title').val().length < 1) {
+            $('.form-group.title').addClass('has-error');
+            return false;
+        } else {
+            $('.form-group.title').removeClass('has-error');
+        }
+        if ($('#activity_value').val().length < 1) {
+            $('.form-group.value').addClass('has-error');
+            return false;
+        } else {
+            $('.form-group.value').removeClass('has-error');
+        }
+        return true;
+    };
+
+    Meteor.who_paid = function () {
+        var tab = $('ul li.active a').attr('aria-controls'),
+            email,
+            picture,
+            name,
+            first_name,
+            last_name,
+            user = Meteor.user(),
+            user_id,
+            selected_item_id,
+            selected_item,
+            who;
+        switch (tab) {
+            case 'user':
+                if (user.services.facebook !== undefined) {
+                    user_id = 'facebook_' + user.services.facebook.id;
+                    email = user.services.facebook.email;
+                    name = user.services.facebook.name;
+                    first_name = user.services.facebook.first_name;
+                    last_name = user.services.facebook.last_name;
+                    picture = 'http://graph.facebook.com/' + user.services.facebook.id + '/picture/?type=large';
+                }
+                if (Meteor.user().services.google !== undefined) {
+                    user_id = 'google_' + user.services.google.id;
+                    email = user.services.google.email;
+                    name = user.services.google.name;
+                    first_name = user.services.google.given_name;
+                    last_name = user.services.google.family_name;
+                    picture = user.services.google.picture;
+                }
+                break;
+            case 'users':
+                selected_item_id = $('#friends').find('option:selected').val();
+                selected_item = Meteor.Friends.findOne({id: selected_item_id});
+                email = undefined;
+                name = selected_item.name;
+                first_name = selected_item.name;
+                last_name = selected_item.name;
+                picture = selected_item.picture;
+                if (user.services.facebook !== undefined) {
+                    user_id = 'facebook_' + selected_item.id;
+                }
+                if (user.services.google !== undefined) {
+                    user_id = 'google_' + selected_item.id;
+                }
+                break;
+        }
+        who = {
+            user_id: user_id,
+            name: name,
+            first_name: first_name,
+            last_name: last_name,
+            picture: picture,
+            email: email
+        };
+        return who;
+    };
 
     Meteor.save_activity = function (event_id, default_currency) {
         var who_paid = Meteor.who_paid(),
