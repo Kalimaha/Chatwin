@@ -3,7 +3,7 @@
 
     'use strict';
 
-    Router.route('/confirm/create/activity/:event_id', {
+    Router.route('/confirm/create/activity/:event_id/:default_currency', {
         name: 'confirm_create_activity',
         template: 'confirm_create_activity_page',
         layoutTemplate: 'confirm_create_activity_footer',
@@ -30,7 +30,8 @@
             var params = this.params;
             return {
                 event_id: params.event_id,
-                activity: Session.get('activity')
+                activity: Session.get('activity'),
+                default_currency: params.default_currency
             };
         }
     });

@@ -40,7 +40,8 @@
                 a.currency = default_currency;
                 Session.set('activity', a);
                 Router.go('confirm_create_activity', {
-                    event_id: event_id
+                    event_id: event_id,
+                    default_currency: default_currency
                 });
             });
             return a;
@@ -110,12 +111,15 @@
     };
 
     Template.create_activity_page.rendered = function () {
-        $('#activity_date').val((new Date()).toISOString().split('T')[0]);
-        $('#summary_date').html(moment(new Date()).format('DD MMM YYYY'));
+        var a = Session.get('activity');
+        $('#activity_title').val(a.title || '');
+        $('#activity_value').val(a.cost || 0.00);
+        $('#activity_date').val(a.date || (new Date()).toISOString().split('T')[0]);
         Meteor.autocomplete = new google.maps.places.Autocomplete(
             document.getElementById('activity_place_google')
         );
         $('.js-example-basic-single').select2();
+        $('#currency').select2('val', a.original_currency || 'EUR');
     };
 
 }());
