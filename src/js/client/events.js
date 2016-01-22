@@ -12,34 +12,16 @@
                 event_id: this._id,
                 event_title: this.name
             });
-            //$('#delete_event_' + this.id).modal('show');
-            //$('#modal_' + this._id).modal({
-            //    selector: {
-            //        approve  : '.actions .ok',
-            //        deny     : '.actions .cancel'
-            //    },
-            //    closable: false,
-            //    onApprove: function () {
-            //        Meteor.call('remove_event', that._id, function (error) {
-            //            if (error) {
-            //                Session.set('errorMessage', error.reason);
-            //                Router.go('error');
-            //            } else {
-            //                Router.go('events');
-            //            }
-            //        });
-            //        return true;
-            //    },
-            //    onDeny: function () {
-            //        return true;
-            //    }
-            //}).modal('show');
         },
         'click .show_activities_button': function () {
             Router.go('activities', {event_id: this._id});
         },
         'click .create_activity_button': function () {
-            Router.go('create_activity', {event_id: this._id, default_currency: this.currency});
+            Session.set('activity', null);
+            Router.go('create_activity', {
+                event_id: this._id,
+                default_currency: this.currency
+            });
         }
     });
 

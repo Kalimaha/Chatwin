@@ -40,18 +40,14 @@
                     if (error) {
                         Session.set('errorMessage', error.reason);
                     }
-                    console.log(result);
                     a.cost = result;
                     a.currency = default_currency;
-                    console.log(a);
                     Session.set('activity', a);
                     Router.go('confirm_create_activity', {
                         event_id: event_id,
                         default_currency: default_currency
                     });
                 });
-            } else {
-                console.log('invalid form');
             }
         }
     });
@@ -197,15 +193,20 @@
     };
 
     Template.create_activity_page.rendered = function () {
-        var a = Session.get('activity');
-        $('#activity_title').val(a !== undefined ? a.title : '');
-        $('#activity_value').val(a !== undefined ? a.cost : null);
-        $('#activity_date').val(a !== undefined ? a.date : (new Date()).toISOString().split('T')[0]);
+        var a = Session.get('activity'),
+            default_currency = this.default_currency;
+        $('#activity_title').val(a !== undefined && a !== null ? a.title : '');
+        $('#activity_value').val(a !== undefined && a !== null ? a.cost : null);
+        $('#activity_date').val(a !== undefined && a !== null ? a.date : (new Date()).toISOString().split('T')[0]);
         Meteor.autocomplete = new google.maps.places.Autocomplete(
             document.getElementById('activity_place_google')
         );
         $('.js-example-basic-single').select2();
-        $('#currency').select2('val', a !== undefined ? a.original_currency : 'EUR');
+        if (a !== undefined && a !== null) {
+            $('#currency').select2('val', a.original_currency);
+        } else {
+            $('#currency').select2('val', this.data.default_currency);
+        }
     };
 
 }());

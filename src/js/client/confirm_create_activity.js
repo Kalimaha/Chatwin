@@ -33,6 +33,7 @@
                                 Session.set('errorMessage', error.reason);
                                 Router.go('error');
                             } else {
+                                Session.set('activity', null);
                                 Router.go('events');
                             }
                         });
