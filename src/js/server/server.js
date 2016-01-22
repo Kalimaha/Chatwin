@@ -13,8 +13,10 @@
 
     ServiceConfiguration.configurations.insert({
         service: 'facebook',
+        /* Production Account. */
         //appId: '500745063418802',
         //secret: '95a0b7cadc7006182c1f951bc8364637'
+        /* Test Account. */
         appId: '515104685316173',
         secret: '668bbfeb51693fdccd82b56db1714b01'
     });

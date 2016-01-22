@@ -109,7 +109,7 @@
             isFacebook,
             isGoogle,
             event_user;
-        user = Meteor.users.findOne(this.userId);
+        user = Meteor.user();
         isFacebook = user.services.facebook !== undefined;
         isGoogle = user.services.google !== undefined;
         if (isFacebook) {

@@ -26,7 +26,7 @@
             var event_name = $('#event_name').val(),
                 currency = $('#currency').val();
             if (event_name !== undefined && event_name.length > 0) {
-                Meteor.call('create_event', event_name, currency, function (error) {
+                Meteor.call('create_event', event_name, currency, function (error, response) {
                     if (error) {
                         Session.set('errorMessage', error.reason);
                         Router.go('error');
