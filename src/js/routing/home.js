@@ -8,14 +8,13 @@
             return Meteor.subscribe('getUserData');
         },
         onBeforeAction: function () {
-            var user = Meteor.user();
-            if (user === null || user.services === null) {
+            var u = Meteor.user();
+            if (u === null || u.services === null) {
                 return Router.go('login');
             }
-            if (user.services.facebook === undefined && user.services.google === undefined) {
+            if (u.services === undefined || (u.services.facebook === undefined && u.services.google === undefined)) {
                 return Router.go('login');
             } else {
-                console.log(user.services);
                 return Router.go('events');
             }
         }

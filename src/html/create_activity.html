@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="form-group name">
+                <div class="form-group value">
                     <label for="activity_value">
                         {{_ "activity_value"}}
                     </label>
@@ -37,15 +37,42 @@
                     </label>
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#user" aria-controls="user" role="tab" data-toggle="tab">
-                                <i class="fa fa-user"></i>
-                            </a></li>
+                            <li role="presentation" class="active">
+                                <a href="#user" aria-controls="user" role="tab" data-toggle="tab">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#users" aria-controls="users" role="tab" data-toggle="tab">
+                                    <i class="fa fa-users"></i>
+                                </a>
+                            </li>
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="user">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <input type="checkbox" checked> {{_ "i_paid"}}
+                                        <div style="padding: 1rem;">
+                                            <input type="checkbox" checked> {{_ "i_paid"}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="users">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div style="padding: 1rem;">
+                                            <select class="js-example-basic-single" id="friends" style="width: 100%;">
+                                                <option>{{_ "select_friend"}}</option>
+                                                {{#each single_friends}}
+                                                    <option value="{{id}}">{{name}}</option>
+                                                    <div class='item' id='{{id}}' data-value='{{id}}' data-name='{{name}}' data-picture='{{picture}}'>
+                                                        <img class='ui mini avatar image' src='{{picture}}'>
+                                                        {{name}}
+                                                    </div>
+                                                {{/each}}
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -163,12 +190,16 @@
                     </a>
                 </div>
                 <div class='ui bottom attached active tab segment' data-tab='user'>
-                    <div class='inline field'>
-                        <div class='ui toggle checkbox'>
-                            <input id='i_paid' type='checkbox' tabindex='0' class='hidden activity_form'>
-                            <label>
-                                {{_ 'i_paid'}} <i class='frown icon'></i>
-                            </label>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class='inline field'>
+                                <div class='ui toggle checkbox'>
+                                    <input id='i_paid' type='checkbox' tabindex='0' class='hidden activity_form'>
+                                    <label>
+                                        {{_ 'i_paid'}} <i class='frown icon'></i>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
