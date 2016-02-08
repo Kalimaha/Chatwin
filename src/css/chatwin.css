@@ -8,8 +8,13 @@
   src: url("/fonts/JrHand.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url("/fonts/Roboto-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 html * {
-  font-family: Lato, FontAwesome, sans-serif !important; }
+  font-family: Roboto-Light, Lato, FontAwesome, sans-serif !important; }
 
 html, body {
   height: 100%; }
@@ -49,9 +54,6 @@ div[data-role='content'] {
 
 .v-space-login {
   height: 10rem; }
-
-button {
-  width: 100%; }
 
 .friends-list {
   max-height: 150px;

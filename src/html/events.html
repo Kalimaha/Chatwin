@@ -2,6 +2,7 @@
     {{> navbar navbar_title='Events' show_create_button=true}}
     <div class="container">
         <div class="v-space"></div>
+        <div class="v-space"></div>
         {{#each single_events}}
             {{> single_event}}
         {{else}}
@@ -27,132 +28,58 @@
 </template>
 
 <template name="single_event">
-    <div class="v-space"></div>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <b>
-                {{name}}
-            </b>
-            <i class="fa fa-trash fa-lg pull-right text-red delete_event_button" id="{{_id}}" data-title="{{name}}"></i>
-        </div>
-        <div class="panel-body">
-            {{#if activities.length}}
-                <a class="show_activities_button" id="{{_id}}">
-                    {{activities.length}} {{_ "activities"}}
-                </a>
-            {{else}}
-                {{activities.length}} {{_ "activities"}}
-            {{/if}}
-            <div class="pull-right">
-                {{format_total total}} {{{format_currency currency}}}
-            </div>
-        </div>
-        <div class="panel-footer">
-            <div class="row">
-                <div class="col-lg-12">
-                    {{#if activities.length}}
-                        <i class="fa fa-list fa-lg show_activities_button" id="{{_id}}"></i>
-                        &nbsp;
-                        <i class="fa fa-map fa-lg show_map_button" id="{{_id}}"></i>
-                        &nbsp;
-                        <i class="fa fa-plus fa-lg create_activity_button" id="{{_id}}"></i>
-                    {{else}}
-                        <i class="fa fa-plus fa-lg create_activity_button" id="{{_id}}"></i>
-                    {{/if}}
-                    {{#each users}}
-                        <img class="img-circle img-responsive avatar pull-right" src="{{picture}}">
-                    {{/each}}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="thumbnail">
+                <div class="row" style="margin-top: 1rem;">
+                    <div class="col-xs-9">
+                        <span style="font-weight: bold; margin-left: 1rem;">
+                            {{name}}
+                        </span>
+                    </div>
+                    <div class="col-xs-3 text-right text-red" style="font-size: 1rem;">
+                        <i class="fa fa-trash fa-2x delete_event_button" style="margin-right: 1rem;" id="{{_id}}" data-title="{{name}}"></i>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" tabindex="-1" role="dialog" id="delete_event_{{_id}}">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Modal title</h4>
+                <hr style="margin-top: 1rem;">
+                <div class="row">
+                    <div class="col-xs-7">
+                        {{#if activities.length}}
+                            <span style="margin-left: 1rem;">
+                                <a class="show_activities_button" id="{{_id}}">
+                                    {{activities.length}} {{_ "activities"}}
+                                </a>
+                            </span>
+                        {{else}}
+                            <span style="margin-left: 1rem;">
+                                {{activities.length}} {{_ "activities"}}
+                            </span>
+                        {{/if}}
+                    </div>
+                    <div class="col-xs-5 text-right">
+                        <span style="margin-right: 1rem;">
+                            {{{format_currency currency}}} {{format_total total}}
+                        </span>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>One fine body&hellip;</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                <hr style="margin-bottom: 0.5rem;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{#if activities.length}}
+                            <button class="btn btn-success btn-xs show_activities_button" id="{{_id}}">
+                                Show Activities
+                            </button>
+                        {{else}}
+                            <button class="btn btn-success btn-xs create_activity_button" id="{{_id}}">
+                                Create New Activity
+                            </button>
+                        {{/if}}
+                        {{#each users}}
+                            <img class="img-circle img-responsive avatar pull-right" src="{{picture}}">
+                        {{/each}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
-<!--<template name='single_event'>-->
-    <!--<div class='ui horizontal divider'>-->
-        <!--{{format_date creation_date}}-->
-    <!--</div>-->
-    <!--<div class='ui centered fluid card' id='add_activity_to_{{_id}}'>-->
-        <!--<div class='content'>-->
-            <!--<div class='header'>-->
-                <!--{{name}}-->
-                <!--<div class='right floated'>-->
-                    <!--<i class='trash red icon delete_event_button' id='{{_id}}'></i>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class='description'>-->
-                <!--{{#if activities.length}}-->
-                    <!--<a class='show_activities_button' id='{{_id}}'>-->
-                        <!--{{activities.length}} {{_ 'activities'}}-->
-                    <!--</a>-->
-                <!--{{else}}-->
-                    <!--{{activities.length}} {{_ 'activities'}}-->
-                <!--{{/if}}-->
-                <!--<div class='right floated meta'>-->
-                    <!--{{format_total total}} {{{format_currency currency}}}-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class='extra content'>-->
-            <!--<div class='left floated' style='margin-right: 1rem;'>-->
-            <!--{{#if activities.length}}-->
-                <!--<div class='two ui icon buttons'>-->
-                    <!--<button class='ui mini basic button show_activities_button' id='{{_id}}'>-->
-                        <!--<i class='list icon'></i>-->
-                    <!--</button>-->
-                    <!--<button class='ui mini basic button create_activity_button' id='{{_id}}'>-->
-                        <!--<i class='icon magic'></i>-->
-                    <!--</button>-->
-                    <!--<button class='ui mini basic button show_map_button' id='{{_id}}'>-->
-                        <!--<i class='fa fa-map-marker'></i>-->
-                    <!--</button>-->
-                <!--</div>-->
-            <!--{{else}}-->
-                <!--<button class='ui mini basic button create_activity_button' id='{{_id}}'>-->
-                    <!--<i class='icon magic'></i>-->
-                <!--</button>-->
-            <!--{{/if}}-->
-            <!--</div>-->
-            <!--{{#each users}}-->
-                <!--<img class='right floated ui avatar image' src='{{picture}}'>-->
-            <!--{{/each}}-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class='ui modal' id='modal_{{_id}}'>-->
-        <!--<div class='ui header center aligned'>-->
-            <!--{{_ 'warning'}}-->
-        <!--</div>-->
-        <!--<div class='image content'>-->
-            <!--<div class='description'>-->
-                <!--{{_ 'remove_event_warning'}}-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class='actions'>-->
-            <!--<div class='ui tiny button cancel green'>-->
-                <!--<i class='remove icon'></i>-->
-                <!--{{_ 'no'}}-->
-            <!--</div>-->
-            <!--<div class='ui tiny button ok red'>-->
-                <!--<i class='checkmark icon'></i>-->
-                <!--{{_ 'yes'}}-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</template>-->
