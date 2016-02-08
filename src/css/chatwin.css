@@ -9,7 +9,7 @@
   font-weight: normal;
   font-style: normal; }
 html * {
-  font-family: JrHand, Lato, FontAwesome, sans-serif !important; }
+  font-family: Lato, FontAwesome, sans-serif !important; }
 
 html, body {
   height: 100%; }
@@ -39,7 +39,7 @@ div[data-role='content'] {
   margin-left: 0.5em; }
 
 .v-space {
-  height: 3em; }
+  height: 2.5em; }
 
 .v-space-half {
   height: 25px; }
@@ -80,5 +80,13 @@ h2 .white {
 .col-xs-12.navbar-inverse.navbar-fixed-bottom a {
   color: #fff !important;
   text-decoration: none !important; }
+
+.leaflet-touch .leaflet-bar a {
+  width: 15px !important;
+  height: 15px !important;
+  line-height: 15px !important; }
+
+.leaflet-touch .leaflet-control-zoom-in {
+  font-size: 15px !important; }
 
 /*# sourceMappingURL=chatwin.css.map */

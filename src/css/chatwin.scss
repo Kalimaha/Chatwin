@@ -13,7 +13,8 @@
 }
 
 html * {
-  font-family: JrHand, Lato, FontAwesome, sans-serif !important;
+  //font-family: JrHand, Lato, FontAwesome, sans-serif !important;
+  font-family: Lato, FontAwesome, sans-serif !important;
 }
 
 html, body {
@@ -50,7 +51,7 @@ div[data-role='content'] {
 }
 
 .v-space {
-  height: 3em;
+  height: 2.5em;
 }
 
 .v-space-half {
@@ -108,4 +109,14 @@ h2 {
     color: #fff !important;
     text-decoration: none !important;
   }
+}
+
+.leaflet-touch .leaflet-bar a {
+  width: 15px !important;
+  height: 15px !important;;
+  line-height: 15px !important;;
+}
+
+.leaflet-touch .leaflet-control-zoom-in {
+  font-size: 15px !important;;
 }
