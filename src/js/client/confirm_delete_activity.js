@@ -10,13 +10,17 @@
                 default_currency: this.default_currency
             });
         },
-        'click #delete_event_button': function () {
-            Meteor.call('delete_activity_button', this.event_id, function (error) {
+        'click #delete_activity_button': function () {
+            var that = this;
+            Meteor.call('delete_activity', this.event_id, this.activity_id, this.activity_cost, function (error) {
                 if (error) {
                     Session.set('errorMessage', error.reason);
                     Router.go('error');
                 } else {
-                    Router.go('events');
+                    Router.go('activities', {
+                        event_id: that.event_id,
+                        default_currency: that.default_currency
+                    });
                 }
             });
         }
