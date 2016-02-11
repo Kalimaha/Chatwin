@@ -19,6 +19,7 @@
             }
         },
         create_activity: function (event_id, activity) {
+            activity.id = uuid.new();
             Meteor.Events.update(
                 event_id,
                 {
@@ -29,7 +30,7 @@
                         total: parseFloat(activity.cost)
                     }
                 },
-                function (error, success) {
+                function (error) {
                     if (error) {
                         throw new Meteor.Error(500, 'Error while creating a new activity.');
                     }

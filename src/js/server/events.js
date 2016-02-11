@@ -80,10 +80,6 @@
     });
 
     Meteor.add_user_to_event = function (event_id, user) {
-        console.log('add_user_to_event');
-        console.log(event_id);
-        console.log(user);
-        console.log(user.user_id);
         return Meteor.Events.update(
             event_id,
             {
