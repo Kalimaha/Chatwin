@@ -26,12 +26,14 @@
         format_date: function (date) {
             var d = moment(date),
                 s = '';
+            s += '<span class="pull-right">';
             s += '<span style="font-size: 1rem;">';
             s += d.format('MMM');
-            s += '</span><br><span style="font-size: 1.2rem; font-weight: bold;">';
+            s += '</span><br><span style="font-size: 1.2rem; font-weight: bold;" class="text-red">';
             s += d.format('DD');
             s += '</span><br><span style="font-size: 1rem;">';
             s += d.format('YYYY');
+            s += '</span>';
             s += '</span>';
             return s;
         },
