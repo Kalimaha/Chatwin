@@ -7,18 +7,20 @@
 
         'click #back_button': function () {
             Router.go('events');
-        },
-
-        'click #create_button': function () {
-            if (Session.get('event_id') === undefined) {
-                Session.set('errorMessage', 'Event ID is undefined');
-                Router.go('error');
-            } else {
-                Router.go('create_activity', {event_id: Session.get('event_id')});
-            }
         }
 
     });
+
+    Template.activities_page.rendered = function () {
+        var event_id = this.data.event,
+            default_currency = this.data.default_currency;
+        $('#create_button').click(function () {
+            Router.go('create_activity', {
+                event_id: event_id,
+                default_currency: default_currency
+            });
+        });
+    };
 
     Template.single_activity.helpers({
         format_date: function (date) {

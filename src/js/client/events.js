@@ -14,7 +14,10 @@
             });
         },
         'click .show_activities_button': function () {
-            Router.go('activities', {event_id: this._id});
+            Router.go('activities', {
+                event_id: this._id,
+                default_currency: this.currency
+            });
         },
         'click .create_activity_button': function () {
             Session.set('activity', null);
