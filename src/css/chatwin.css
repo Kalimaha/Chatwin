@@ -13,8 +13,13 @@
   src: url("/fonts/Roboto-Light.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
 html * {
-  font-family: Roboto-Light, Lato, FontAwesome, sans-serif !important; }
+  font-family: Roboto-Light, Roboto-Bold, Lato, FontAwesome, sans-serif !important; }
 
 html, body {
   height: 100%; }
@@ -90,5 +95,11 @@ h2 .white {
 
 .leaflet-touch .leaflet-control-zoom-in {
   font-size: 15px !important; }
+
+.tab-pane.active {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd; }
 
 /*# sourceMappingURL=chatwin.css.map */

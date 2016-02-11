@@ -17,6 +17,36 @@
                 }
                 return out;
             }
+        },
+        create_activity: function (event_id, activity) {
+            console.log(event_id);
+            console.log(activity);
+            Meteor.Events.update(
+                event_id,
+                {
+                    $push: {
+                        activities: activity
+                    },
+                    $inc: {
+                        total: parseFloat(activity.cost)
+                    }
+                },
+                function (error, success) {
+                    console.log(error);
+                    console.log(success);
+                    if (error) {
+                        console.log(error);
+                        throw new Meteor.Error(500, 'Error while creating a new activity.');
+                    }
+                    Meteor.add_user_to_event(event_id, activity.who_paid, function (error, success) {
+                        console.log(error);
+                        console.log(success);
+                        if (error) {
+                            throw new Meteor.Error(500, 'Error while creating adding a user to the event.');
+                        }
+                    });
+                }
+            );
         }
     });
 

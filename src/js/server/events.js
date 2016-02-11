@@ -75,34 +75,37 @@
                     return result;
                 }
             );
-        },
-
-        add_user_to_event: function (event_id, user) {
-            return Meteor.Events.update(
-                {
-                    users: {
-                        $not: {
-                            $elemMatch: {
-                                user_id: user.user_id
-                            }
-                        }
-                    }
-                },
-                {
-                    $addToSet: {
-                        users: user
-                    }
-                },
-                function (error, result) {
-                    if (error) {
-                        throw new Meteor.Error(500, 'Error while creating a new event.');
-                    }
-                    return result;
-                }
-            );
         }
 
     });
+
+    Meteor.add_user_to_event = function (event_id, user) {
+        return Meteor.Events.update(
+            {
+                _id: event_id
+            },
+            {
+                users: {
+                    $not: {
+                        $elemMatch: {
+                            user_id: user.user_id
+                        }
+                    }
+                }
+            },
+            {
+                $addToSet: {
+                    users: user
+                }
+            },
+            function (error, result) {
+                if (error) {
+                    throw new Meteor.Error(500, 'Error while creating a new event.');
+                }
+                return result;
+            }
+        );
+    };
 
     Meteor.create_event_user = function () {
         var user,

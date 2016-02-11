@@ -19,9 +19,15 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('/fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 html * {
-  //font-family: JrHand, Lato, FontAwesome, sans-serif !important;
-  font-family: Roboto-Light, Lato, FontAwesome, sans-serif !important;
+  font-family: Roboto-Light, Roboto-Bold, Lato, FontAwesome, sans-serif !important;
 }
 
 html, body {
@@ -73,10 +79,6 @@ div[data-role='content'] {
   height: 10rem;
 }
 
-//button {
-//  width: 100%;
-//}
-
 .friends-list {
   max-height: 150px;
   overflow-y: auto;
@@ -126,4 +128,11 @@ h2 {
 
 .leaflet-touch .leaflet-control-zoom-in {
   font-size: 15px !important;;
+}
+
+.tab-pane.active {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }

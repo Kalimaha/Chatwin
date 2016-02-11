@@ -21,7 +21,6 @@
                 place = Meteor.autocomplete.getPlace(),
                 default_currency = this.default_currency,
                 event_id = this.event_id;
-            console.log(place);
             if (Meteor.form_is_valid()) {
                 a.title = $('#activity_title').val();
                 a.cost = $('#activity_value').val();
@@ -131,70 +130,6 @@
         };
         return who;
     };
-
-    //Meteor.save_activity = function (event_id, default_currency) {
-    //    var who_paid = Meteor.who_paid(),
-    //        place = Meteor.autocomplete.getPlace(),
-    //        currency = $('.ui.dropdown').dropdown('get value'),
-    //        cost = parseFloat($('#activity_value').val()).toFixed(2),
-    //        original_cost = cost,
-    //        original_currency = currency,
-    //        activity;
-    //    console.log('PLACE!!!');
-    //    console.log(place);
-    //    if (Array.isArray(currency)) {
-    //        currency = currency[1];
-    //        original_currency = currency[1];
-    //    }
-    //    Meteor.call('exchange_currency', cost, default_currency, currency, function (error, result) {
-    //        if (error) {
-    //            Session.set('errorMessage', error.reason);
-    //        }
-    //        cost = result;
-    //        activity = {
-    //            name: $('#activity_title').val(),
-    //            cost: cost,
-    //            original_cost: original_cost,
-    //            original_currency: original_currency,
-    //            currency: default_currency,
-    //            who_paid: who_paid,
-    //            date: $('#activity_date').val(),
-    //            place: {
-    //                name: place !== undefined ? place.name : place,
-    //                address: place !== undefined ? place.formatted_address : place,
-    //                lat: place !== undefined ? place.geometry.location.lat() : place,
-    //                lon: place !== undefined ? place.geometry.location.lng() : place,
-    //                icon: place !== undefined ? place.icon : place
-    //            }
-    //        };
-    //        Meteor.Events.update(
-    //            event_id,
-    //            {
-    //                $push: {
-    //                    activities: activity
-    //                },
-    //                $inc: {
-    //                    total: parseFloat(cost)
-    //                }
-    //            },
-    //            function (error) {
-    //                if (error) {
-    //                    Session.set('errorMessage', error.reason);
-    //                    Router.go('error');
-    //                } else {
-    //                    Meteor.call('add_user_to_event', event_id, who_paid, function (error) {
-    //                        if (error) {
-    //                            Session.set('errorMessage', error.reason);
-    //                            Router.go('error');
-    //                        } else {
-    //                            Router.go('events');
-    //                        }
-    //                    });
-    //                }
-    //            }
-    //        );
-    //    });
-    //};
 
     Template.create_activity_page.rendered = function () {
         var a = Session.get('activity'),
