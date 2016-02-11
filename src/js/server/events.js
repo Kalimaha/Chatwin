@@ -80,31 +80,47 @@
     });
 
     Meteor.add_user_to_event = function (event_id, user) {
-        return Meteor.Events.update(
+        console.log('add_user_to_event');
+        console.log(event_id);
+        console.log(user);
+        console.log(user.user_id);
+        Meteor.Events.update(
+            event_id,
             {
-                _id: event_id
-            },
-            {
-                users: {
-                    $not: {
-                        $elemMatch: {
-                            user_id: user.user_id
-                        }
-                    }
-                }
-            },
-            {
-                $addToSet: {
+                $push: {
                     users: user
                 }
             },
-            function (error, result) {
-                if (error) {
-                    throw new Meteor.Error(500, 'Error while creating a new event.');
-                }
-                return result;
+            function (error, success) {
+                console.log('error');
+                console.log(error);
+                console.log('success');
+                console.log(success);
             }
         );
+        //return Meteor.Events.update(
+        //    {
+        //        _id: event_id,
+        //        users: {
+        //            $not: {
+        //                $elemMatch: {
+        //                    user_id: user.user_id
+        //                }
+        //            }
+        //        }
+        //    },
+        //    {
+        //        $addToSet: {
+        //            users: user
+        //        }
+        //    },
+        //    function (error, result) {
+        //        if (error) {
+        //            throw new Meteor.Error(500, 'Error while creating a new event.');
+        //        }
+        //        return result;
+        //    }
+        //);
     };
 
     Meteor.create_event_user = function () {

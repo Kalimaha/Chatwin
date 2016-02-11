@@ -37,7 +37,7 @@
                         </span>
                         <br>
                         <span style="font-size: 1.2rem;" class="text-red">
-                            <i class="fa fa-map-marker"></i> {{this.place.name}}
+                            <i class="fa fa-map-marker"></i> {{#if this.place.name}}{{this.place.name}}{{else}}No location available for this activity{{/if}}
                         </span>
                     </div>
                     <div class="col-xs-3 text-center" style="font-size: 1rem;">

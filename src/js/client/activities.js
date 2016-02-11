@@ -14,9 +14,6 @@
     Template.activities_page.rendered = function () {
         var event_id = this.data.event._id,
             default_currency = this.data.default_currency;
-        console.log(this.data);
-        console.log(event_id);
-        console.log(default_currency);
         $('#create_button').click(function () {
             Router.go('create_activity', {
                 event_id: event_id,
