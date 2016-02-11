@@ -84,43 +84,20 @@
         console.log(event_id);
         console.log(user);
         console.log(user.user_id);
-        Meteor.Events.update(
+        return Meteor.Events.update(
             event_id,
             {
-                $push: {
+                $addToSet: {
                     users: user
                 }
             },
-            function (error, success) {
-                console.log('error');
-                console.log(error);
-                console.log('success');
-                console.log(success);
+            function (error, result) {
+                if (error) {
+                    throw new Meteor.Error(500, 'Error while creating a new event.');
+                }
+                return result;
             }
         );
-        //return Meteor.Events.update(
-        //    {
-        //        _id: event_id,
-        //        users: {
-        //            $not: {
-        //                $elemMatch: {
-        //                    user_id: user.user_id
-        //                }
-        //            }
-        //        }
-        //    },
-        //    {
-        //        $addToSet: {
-        //            users: user
-        //        }
-        //    },
-        //    function (error, result) {
-        //        if (error) {
-        //            throw new Meteor.Error(500, 'Error while creating a new event.');
-        //        }
-        //        return result;
-        //    }
-        //);
     };
 
     Meteor.create_event_user = function () {
