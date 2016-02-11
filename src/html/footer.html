@@ -77,3 +77,21 @@
         </div>
     </div>
 </template>
+
+<template name="confirm_delete_activity_footer">
+    {{> yield}}
+    <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+        <div class="row" id="bottomNav">
+            <div class="col-xs-6 text-center">
+                <a id="go_back_button" class="text-white">
+                    <i class="fa fa-remove"></i> Go Back
+                </a>
+            </div>
+            <div class="col-xs-6 text-center">
+                <a id="delete_activity_button" class="text-red">
+                    <i class="fa fa-check"></i> Delete Activity
+                </a>
+            </div>
+        </div>
+    </div>
+</template>

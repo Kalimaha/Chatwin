@@ -20,6 +20,16 @@
                 default_currency: default_currency
             });
         });
+        $('.delete_activity_button').click(function () {
+            var activity_id = this.id,
+                activity_title = $('#' + activity_id).text().trim();
+            Router.go('confirm_delete_activity', {
+                event_id: event_id,
+                activity_id: activity_id,
+                default_currency: default_currency,
+                activity_title: activity_title
+            });
+        });
     };
 
     Template.single_activity.helpers({

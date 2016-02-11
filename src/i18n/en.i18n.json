@@ -67,5 +67,6 @@
   "tooltip_activity_friends": "Who paid for this?",
   "tooltip_event_currency": "The default currency for this event. When you record an activity with a different currency, the value is automatically converted to the default currency.",
   "please_select_currency": "Please select the default currency for this event...",
-  "confirm_delete_event": "Are you sure that you want to delete the event named "
+  "confirm_delete_event": "Are you sure that you want to delete the event named ",
+  "confirm_delete_activity": "Are you sure that you want to delete the activity named "
 }
