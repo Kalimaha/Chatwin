@@ -25,6 +25,12 @@
                 event_id: this._id,
                 default_currency: this.currency
             });
+        },
+        'click .show_summary_button': function () {
+            Router.go('summary', {
+                event_id: this._id,
+                default_currency: this.currency
+            });
         }
     });
 
@@ -56,7 +62,7 @@
     });
 
     Template.events_page.rendered = function () {
-        var src = '/images/paper.jpg',
+        var src = '/images/background4.jpg',
             body = $('body');
         body.css('backgroundImage', 'url(' + src + ')');
         body.css('background-repeat', 'repeat');
