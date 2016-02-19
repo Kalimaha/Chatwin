@@ -11,6 +11,8 @@
 
     Meteor.Friends = new Ground.Collection('friends');
 
+    Meteor.Summary = new Ground.Collection('summary');
+
     Ground.Collection(Meteor.users);
 
 }());

@@ -3,7 +3,15 @@
     <div class="v-space"></div>
     <div class="container">
         <div class="v-space"></div>
-        Summary for {{event_id}}
+        {{#each summary_notes}}
+            <div class="thumbnail">
+                <div class="row" style="margin-top: 1rem; margin-bottom: 1rem;">
+                    <div class="col-xs-12">
+                        {{this.from_user}} owes {{{format_currency this.default_currency}}} {{format_total this.value}} to {{this.to_user}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
     </div>
     <div class="v-space"></div>
     <div class="v-space"></div>

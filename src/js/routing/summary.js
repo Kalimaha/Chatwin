@@ -1,4 +1,4 @@
-/*global Router, Meteor*/
+/*global Router, Meteor, Session*/
 (function () {
 
     'use strict';
@@ -7,11 +7,20 @@
         name: 'summary',
         template: 'summary_page',
         waitOn: function () {
+            var params = this.params;
             Meteor.subscribe('events');
-            return Meteor.subscribe('getUserData');
+            Meteor.subscribe('summary');
+            Meteor.subscribe('getUserData');
+            Meteor.call('create_summary', Meteor.Events.findOne(params.event_id), params.default_currency, function (error, response) {
+                if (error) {
+                    Session.set('errorMessage', error.reason);
+                    Router.go('error');
+                }
+            });
         },
         onBeforeAction: function () {
-            var u = Meteor.user();
+            var u = Meteor.user(),
+                that = this;
             if (u === null || u.services === null) {
                 return Router.go('login');
             }
@@ -24,9 +33,9 @@
         data: function () {
             var params = this.params;
             return {
-                event_id: params.event_id,
-                event: Meteor.Events.findOne(params.event_id),
-                default_currency: params.default_currency
+                summary_notes: Meteor.Summary.find({
+                    event_id: params.event_id
+                })
             };
         }
     });
