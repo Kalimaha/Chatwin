@@ -5,9 +5,9 @@
         <div class="v-space"></div>
         {{#each summary_notes}}
             <div class="thumbnail">
-                <div class="row" style="margin-top: 1rem; margin-bottom: 1rem;">
+                <div class="row" style="margin-top: 1rem; margin-bottom: 1rem; padding-left: 1rem; padding-right: 1rem;">
                     <div class="col-xs-12">
-                        {{this.from_user}} owes {{{format_currency this.default_currency}}} {{format_total this.value}} to {{this.to_user}}
+                        {{this.from_user}} owes <span class="badge">{{{format_currency this.default_currency}}} {{format_total this.value}}</span> to {{this.to_user}}
                     </div>
                 </div>
             </div>
