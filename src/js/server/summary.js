@@ -56,10 +56,10 @@
                     sub += parseFloat(data[j].cost);
                 }
             }
-            subtotals.push({user: buffer[i], total: sub});
+            subtotals.push({user: buffer[i], paid: sub});
         }
         for (i = 0; i < subtotals.length; i += 1) {
-            subtotals[i].delta = parseFloat(subtotals[i].total - each).toFixed(2);
+            subtotals[i].delta = parseFloat(subtotals[i].paid - each).toFixed(2);
         }
         subtotals.sort(function (a, b) {
             return parseFloat(b.delta) - parseFloat(a.delta);
@@ -71,9 +71,11 @@
                 negatives.push(subtotals[i]);
             }
         }
-        negatives_idx = negatives.length - 1;
-        positives_idx = positives.length - 1;
-        Meteor.owes(event_id, positives, positives_idx, negatives, negatives_idx, default_currency);
+        if (positives.length > 0) {
+            negatives_idx = negatives.length - 1;
+            positives_idx = positives.length - 1;
+            Meteor.owes(event_id, positives, positives_idx, negatives, negatives_idx, default_currency);
+        }
     };
 
     Meteor.owes = function (event_id, positives, positives_idx, negatives, negatives_idx, default_currency) {

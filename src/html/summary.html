@@ -3,15 +3,19 @@
     <div class="v-space"></div>
     <div class="container">
         <div class="v-space"></div>
-        {{#each summary_notes}}
-            <div class="thumbnail">
-                <div class="row" style="margin-top: 1rem; margin-bottom: 1rem; padding-left: 1rem; padding-right: 1rem;">
-                    <div class="col-xs-12">
-                        {{this.from_user}} owes <span class="badge">{{{format_currency this.default_currency}}} {{format_total this.value}}</span> to {{this.to_user}}
+            {{#each summary_notes}}
+                <div class="thumbnail">
+                    <div class="row" style="margin-top: 1rem; margin-bottom: 1rem; padding-left: 1rem; padding-right: 1rem;">
+                        <div class="col-xs-12">
+                            {{this.from_user}} owes <span class="badge">{{{format_currency this.default_currency}}} {{format_total this.value}}</span> to {{this.to_user}}
+                        </div>
                     </div>
                 </div>
-            </div>
-        {{/each}}
+            {{else}}    
+                <h1 class="text-center">
+                    You are even!
+                </h1>
+            {{/each}}
     </div>
     <div class="v-space"></div>
     <div class="v-space"></div>

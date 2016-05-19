@@ -3,6 +3,14 @@
 
     'use strict';
 
+    Template.summary_page.events({
+
+        'click #back_button': function () {
+            Router.go('events');
+        }
+
+    });
+
     Template.summary_page.rendered = function () {
         $('#back_button').click(function () {
             Router.go('events');
