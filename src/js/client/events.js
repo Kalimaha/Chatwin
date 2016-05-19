@@ -62,10 +62,10 @@
     });
 
     Template.events_page.rendered = function () {
-        var src = '/images/background4.jpg',
+        var src = '/images/ruled_tile.jpg',
             body = $('body');
-        // body.css('backgroundImage', 'url(' + src + ')');
-        //body.css('background-repeat', 'repeat');
+         body.css('backgroundImage', 'url(' + src + ')');
+         body.css('background-repeat', 'repeat');
     };
 
 }());
