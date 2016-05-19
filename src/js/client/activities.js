@@ -75,7 +75,7 @@
 
     Template.single_activity.rendered = function () {
         if (this.data.place !== undefined && this.data.place.id !== undefined) {
-            var map = L.map('map_' + this.data.place.id).setView([this.data.place.lat, this.data.place.lon], 16);
+            var map = L.map('map_' + this.data.id + '_' + this.data.place.id).setView([this.data.place.lat, this.data.place.lon], 16);
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
                 maxZoom: 18,
                 id: 'kalimaha.p2pi707h',
