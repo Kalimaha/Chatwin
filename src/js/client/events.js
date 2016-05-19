@@ -31,7 +31,13 @@
                 event_id: this._id,
                 default_currency: this.currency
             });
+        },
+        'click .show_map_button': function () {
+            Router.go('map', {
+                event_id: this._id
+            });
         }
+
     });
 
     Template.single_event.helpers({
@@ -64,8 +70,8 @@
     Template.events_page.rendered = function () {
         var src = '/images/ruled_tile.jpg',
             body = $('body');
-         body.css('backgroundImage', 'url(' + src + ')');
-         body.css('background-repeat', 'repeat');
+        body.css('backgroundImage', 'url(' + src + ')');
+        body.css('background-repeat', 'repeat');
     };
 
 }());
