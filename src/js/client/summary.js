@@ -30,8 +30,8 @@
     Template.summary_page.rendered = function () {
         var src = '/images/background4.jpg',
             body = $('body');
-        body.css('backgroundImage', 'url(' + src + ')');
-        body.css('background-repeat', 'repeat');
+        // body.css('backgroundImage', 'url(' + src + ')');
+        // body.css('background-repeat', 'repeat');
     };
 
 }());

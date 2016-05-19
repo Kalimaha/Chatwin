@@ -68,9 +68,11 @@
                         <button class="btn btn-success btn-sm create_activity_button" id="{{_id}}">
                             <i class="fa fa-plus"></i>
                         </button>
-                        <button class="btn btn-success btn-sm show_summary_button" id="{{_id}}">
-                            <i class="fa fa-list"></i>
-                        </button>
+                        {{#if activities.length}}
+                            <button class="btn btn-success btn-sm show_summary_button" id="{{_id}}">
+                                <i class="fa fa-money"></i>
+                            </button>
+                        {{/if}}    
                         {{#each users}}
                             <img class="img-circle img-responsive avatar pull-right" src="{{picture}}">
                         {{/each}}

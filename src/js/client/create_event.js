@@ -43,8 +43,8 @@
     Template.create_event_page.rendered = function () {
         var src = '/images/paper.jpg',
             body = $('body');
-        body.css('backgroundImage', 'url(' + src + ')');
-        body.css('background-repeat', 'repeat');
+        // body.css('backgroundImage', 'url(' + src + ')');
+        // body.css('background-repeat', 'repeat');
         $('.ui.dropdown').dropdown();
         $('.js-example-basic-single').select2();
     };

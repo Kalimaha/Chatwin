@@ -24,6 +24,7 @@
         data: function () {
             var user,
                 user_id,
+                name,
                 isFacebook = false,
                 isGoogle = false;
             user = Meteor.user();
@@ -39,6 +40,7 @@
             }
             if (isFacebook) {
                 user_id = 'facebook_' + user.services.facebook.id;
+                name = user.services.facebook.name
             }
             if (isGoogle) {
                 user_id = 'google_' + user.services.google.id;
@@ -47,7 +49,7 @@
                 single_events: Meteor.Events.find({
                     'users': {
                         $elemMatch: {
-                            user_id: user_id
+                            name: name
                         }
                     }
                 })
